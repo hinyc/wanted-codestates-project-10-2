@@ -1,5 +1,9 @@
 import React from 'react';
+
+import NavigationBar from '../Components/NavigationBar';
+
 import styled from 'styled-components';
+
 import OverallRecord from '../Components/OverallRecord';
 import UserinfoBox from '../Components/UserinfoBox';
 import RankChangeChart from '../Components/RankChangeChart';
@@ -8,7 +12,13 @@ import Matching from '../Components/Matching';
 const username = 'BBEESSTT';
 export default function Main() {
   return (
- <>
+
+    <>
+      <NavigationBar />
+      <UserinfoBox username={username} />
+      <OverallRecord />
+
+ 
     <div>
       <UserinfoBox username={username} />
       <OverallRecord />
@@ -19,6 +29,7 @@ export default function Main() {
         <RankChangeChart />
         <Matching />
       </Box>
+
     </>
   );
 }
