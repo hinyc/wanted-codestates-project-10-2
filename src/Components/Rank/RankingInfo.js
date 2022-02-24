@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const RankingInfo = () => {
+const RankingInfo = ({ setOnclick }) => {
   return (
     <PageDescription>
       <Wrapper>
@@ -17,7 +16,7 @@ const RankingInfo = () => {
             28일 24:00:00
           </Update>
         </Info>
-        <GuideBtn>랭킹가이드</GuideBtn>
+        <GuideBtn onClick={setOnclick}>랭킹가이드</GuideBtn>
       </Wrapper>
     </PageDescription>
   );
