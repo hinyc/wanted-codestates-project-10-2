@@ -20,14 +20,14 @@ export default function TeamsSelector() {
         onClick={selectSoloHandler}
         isSelectSolo={isSelectSolo}
       >
-        <i class="fa-solid fa-user"></i> 개인전
+        <i className="fa-solid fa-user"></i> 개인전
       </Selector>
       <Selector
         className="team"
         onClick={selectTeamHandler}
         isSelectSolo={!isSelectSolo}
       >
-        <i class="fa-solid fa-users"></i> 팀전
+        <i className="fa-solid fa-users"></i> 팀전
       </Selector>
     </Container>
   );

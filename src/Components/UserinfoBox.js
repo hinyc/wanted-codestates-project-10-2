@@ -40,13 +40,13 @@ export default function UserinfoBox({ username }) {
             </div>
             <Buttons>
               <Button>
-                <i class="fa-solid fa-arrow-rotate-right"></i> 전적갱신
+                <i className="fa-solid fa-arrow-rotate-right"></i> 전적갱신
               </Button>
               <Button>
-                <i class="fa-solid fa-bell"></i> 신고하기
+                <i className="fa-solid fa-bell"></i> 신고하기
               </Button>
               <Button>
-                <i class="fa-solid fa-share-nodes"></i> 공유하기
+                <i className="fa-solid fa-share-nodes"></i> 공유하기
               </Button>
             </Buttons>
           </div>
@@ -54,7 +54,7 @@ export default function UserinfoBox({ username }) {
         <div className="right">
           <PageView>
             <p className="text">
-              <i class="fa-solid fa-eye"></i> 페이지뷰
+              <i className="fa-solid fa-eye"></i> 페이지뷰
             </p>
             <p className="number">{pageView}</p>
           </PageView>
