@@ -1,12 +1,15 @@
 /* eslint-disable jsx-a11y/alt-text */
 
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { API } from '../Util/util';
+import ReportModal from './Common/ReportModal';
 import TeamsSelector from './Common/TeamsSelector';
 
 export default function UserinfoBox({ username }) {
+  const [showReport, setShowReport] = useState(false);
+
   console.log(username);
   console.log(API);
   const userImg =
@@ -23,50 +26,52 @@ export default function UserinfoBox({ username }) {
   //   .then((res) => console.log(res));
 
   return (
-    <Container>
-      <div className="subContainer">
-        <div className="left">
-          <img src={userImg} />
-        </div>
-        <div className="center">
-          <h1>
-            {`${username} `}
-            <img src={userClass} />
-          </h1>
+    <>
+      <Container>
+        <div className="subContainer">
+          <div className="left">
+            <img src={userImg} />
+          </div>
+          <div className="center">
+            <h1>
+              {`${username} `}
+              <img src={userClass} />
+            </h1>
 
-          <div className="flex">
-            <div className="vs">
-              <TeamsSelector />
+            <div className="flex">
+              <div className="vs">
+                <TeamsSelector />
+              </div>
+              <Buttons>
+                <Button>
+                  <i className="fa-solid fa-arrow-rotate-right"></i> 전적갱신
+                </Button>
+                <Button onClick={() => setShowReport(true)}>
+                  <i className="fa-solid fa-bell"></i> 신고하기
+                </Button>
+                <Button>
+                  <i className="fa-solid fa-share-nodes"></i> 공유하기
+                </Button>
+              </Buttons>
             </div>
-            <Buttons>
-              <Button>
-                <i className="fa-solid fa-arrow-rotate-right"></i> 전적갱신
-              </Button>
-              <Button>
-                <i className="fa-solid fa-bell"></i> 신고하기
-              </Button>
-              <Button>
-                <i className="fa-solid fa-share-nodes"></i> 공유하기
-              </Button>
-            </Buttons>
+          </div>
+          <div className="right">
+            <PageView>
+              <p className="text">
+                <i className="fa-solid fa-eye"></i> 페이지뷰
+              </p>
+              <p className="number">{pageView}</p>
+            </PageView>
           </div>
         </div>
-        <div className="right">
-          <PageView>
-            <p className="text">
-              <i className="fa-solid fa-eye"></i> 페이지뷰
-            </p>
-            <p className="number">{pageView}</p>
-          </PageView>
-        </div>
-      </div>
-    </Container>
+      </Container>
+      {showReport && <ReportModal setShowReport={setShowReport} />}
+    </>
   );
 }
 
 const Container = styled.div`
   color: #1f334a;
-  margin: 30px;
   width: 1000px;
   height: 177px;
   border: 1px solid #f2f2f2;
