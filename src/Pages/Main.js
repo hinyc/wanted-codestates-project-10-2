@@ -1,4 +1,5 @@
 import React from 'react';
+import Summary from '../Components/Summary';
 
 import styled from 'styled-components';
 
@@ -16,6 +17,7 @@ export default function Main() {
       <OverallRecord />
 
       <Box>
+        <Summary />
         <RankChangeChart />
       </Box>
     </>
