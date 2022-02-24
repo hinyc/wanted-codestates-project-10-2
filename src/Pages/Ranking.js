@@ -1,5 +1,9 @@
 import React from 'react';
-
+import RankingBox from '../Components/Rank/RankerBox';
 export default function Ranking() {
-  return <div>ranking</div>;
+  return (
+    <div>
+      <RankingBox />
+    </div>
+  );
 }
