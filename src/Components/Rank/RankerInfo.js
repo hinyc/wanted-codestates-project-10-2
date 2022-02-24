@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import DoughnutChart from './DoughnutChart';
 
 const RankerInfo = ({ imgSrc }) => {
   return (
@@ -13,11 +14,17 @@ const RankerInfo = ({ imgSrc }) => {
       <PercentWrapper>
         <WinBox>
           <p style={{ fontWeight: 'bold' }}>승률</p>
-          <ProgressCircle>60%</ProgressCircle>
+          <ProgressCircle>
+            <DoughnutChart percent="80" color="#0077ff" delay="1000" />
+            <DoughnutChart />
+          </ProgressCircle>
         </WinBox>
         <RetireBox>
           <p style={{ fontWeight: 'bold' }}>리타이어율</p>
-          <ProgressCircle>60%</ProgressCircle>
+          <ProgressCircle>
+            <DoughnutChart percent="40" color="#F62459" delay={1000} />
+            <DoughnutChart />
+          </ProgressCircle>
         </RetireBox>
       </PercentWrapper>
     </RankerWrapper>
@@ -92,10 +99,8 @@ const RetireBox = styled.div`
 `;
 const ProgressCircle = styled.div`
   margin: 20px auto;
-  width: 57px;
-  height: 57px;
-  background-color: #ebebeb;
-  border-radius: 50%;
+  width: 100px;
+  height: 100px;
 `;
 const MedalImage = styled.img.attrs((props) => ({
   src: props.src,

@@ -5,7 +5,7 @@ import RankingInfo from './RankingInfo';
 import Buttons from './Buttons';
 import Modal from './Modal';
 import './box.css';
-const LankerBox = () => {
+const RankerBox = () => {
   const [modalState, setModalState] = useState(false);
   const setOnclick = () => setModalState(true);
   return (
@@ -50,4 +50,4 @@ const Rankers = styled.div`
   display: flex;
   justify-content: center;
 `;
-export default LankerBox;
+export default RankerBox;
