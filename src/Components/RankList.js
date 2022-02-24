@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { API_KEY } from '../Util/util';
+import { API, headers } from '../Util/util';
 import RankCard from './RankCard';
 
 const RankList = () => {
@@ -23,12 +23,7 @@ const RankList = () => {
         userList.map((user) =>
           axios.get(
             `/kart/v1.0/users/${user}/matches?start_date=${date}&end_date=${date}&limit=200&match_types=e60946660f964b7aadf47691a6c663cc57b2cf8021761c9183aa1fabea1f8537`,
-            {
-              headers: {
-                Authorization: API_KEY,
-                ContentType: 'application/json',
-              },
-            },
+            headers,
           ),
         ),
       )
