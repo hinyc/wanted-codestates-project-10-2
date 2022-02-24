@@ -35,7 +35,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 const Info = styled.div`
-  padding-right: 700px;
+  padding-right: 600px;
   margin-bottom: 20px;
   min-width: 500px;
 `;
@@ -71,6 +71,10 @@ const GuideBtn = styled.button`
   font-family: Noto Sans KR;
   font-size: 12px;
   font-weight: 500;
+  &:hover {
+    background-color: #ffffff;
+    color: #005fcc;
+  }
 `;
 
 export default RankingInfo;

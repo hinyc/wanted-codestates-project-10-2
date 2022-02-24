@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import RankerInfo from './RankerInfo';
 import RankingInfo from './RankingInfo';
+import Buttons from './Buttons';
 import './box.css';
 const LankerBox = () => {
   return (
@@ -12,7 +13,10 @@ const LankerBox = () => {
       <div className="ocean">
         <div className="wave"></div>
       </div>
-      <RankingInfo />
+      <div style={{ width: '1200px', margin: '0 auto' }}>
+        <RankingInfo />
+        <Buttons />
+      </div>
       <Rankers>
         <RankerInfo imgSrc="https://tmi.nexon.com/img/assets/icon_goldmedal.png" />
         <RankerInfo imgSrc="https://tmi.nexon.com/img/assets/icon_silvermedal.png" />
