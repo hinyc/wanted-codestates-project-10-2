@@ -1,6 +1,4 @@
-
-
-import RankList from '../Component/RankList';
+import RankList from '../Components/RankList';
 import RankerBox from '../Components/Rank/Box';
 export default function Ranking() {
   return (
@@ -9,6 +7,5 @@ export default function Ranking() {
 
       <RankList />
     </div>
-    
   );
 }
