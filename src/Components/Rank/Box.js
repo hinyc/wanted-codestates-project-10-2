@@ -2,10 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import RankerInfo from './RankerInfo';
 import RankingInfo from './RankingInfo';
-
+import './box.css';
 const LankerBox = () => {
   return (
     <BaseWrapper>
+      <div className="ocean">
+        <div className="wave"></div>
+      </div>
+      <div className="ocean">
+        <div className="wave"></div>
+      </div>
       <RankingInfo />
       <Rankers>
         <RankerInfo imgSrc="https://tmi.nexon.com/img/assets/icon_goldmedal.png" />
