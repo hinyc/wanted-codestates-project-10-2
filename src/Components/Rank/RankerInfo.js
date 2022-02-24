@@ -1,6 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const RankerInfo = ({ imgSrc }) => {
+  return (
+    <RankerWrapper>
+      <MedalImage src={imgSrc} />
+      <NameWrapper>
+        <NickName>베이비컬렉션</NickName>
+        <RankNumber>순위 1위</RankNumber>
+        <Point>누적포인트 9,110PT</Point>
+      </NameWrapper>
+      <PercentWrapper>
+        <WinBox>
+          <p style={{ fontWeight: 'bold' }}>승률</p>
+          <ProgressCircle>60%</ProgressCircle>
+        </WinBox>
+        <RetireBox>
+          <p style={{ fontWeight: 'bold' }}>리타이어율</p>
+          <ProgressCircle>60%</ProgressCircle>
+        </RetireBox>
+      </PercentWrapper>
+    </RankerWrapper>
+  );
+};
 const RankerWrapper = styled.div`
   position: relative;
   display: flex;
@@ -82,28 +104,4 @@ const MedalImage = styled.img.attrs((props) => ({
   top: -12px;
   left: 10px;
 `;
-
-const RankerInfo = ({ imgSrc }) => {
-  return (
-    <RankerWrapper>
-      <MedalImage src={imgSrc} />
-      <NameWrapper>
-        <NickName>베이비컬렉션</NickName>
-        <RankNumber>순위 1위</RankNumber>
-        <Point>누적포인트 9,110PT</Point>
-      </NameWrapper>
-      <PercentWrapper>
-        <WinBox>
-          <p style={{ fontWeight: 'bold' }}>승률</p>
-          <ProgressCircle>60%</ProgressCircle>
-        </WinBox>
-        <RetireBox>
-          <p style={{ fontWeight: 'bold' }}>리타이어율</p>
-          <ProgressCircle>60%</ProgressCircle>
-        </RetireBox>
-      </PercentWrapper>
-    </RankerWrapper>
-  );
-};
-
 export default RankerInfo;

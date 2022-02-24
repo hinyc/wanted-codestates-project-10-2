@@ -35,7 +35,6 @@ const Wrapper = styled.div`
 `;
 const Info = styled.div`
   padding-right: 600px;
-  margin-bottom: 20px;
   min-width: 500px;
 `;
 const PageName = styled.p`
@@ -57,6 +56,7 @@ const Period = styled.p`
   font-size: 12px;
   font-weight: 400;
   padding-left: 10px;
+  margin-bottom: 8px;
   color: #fff;
 `;
 const Update = styled(Period)``;
@@ -65,6 +65,7 @@ const GuideBtn = styled.button`
   top: 110px;
   right: 10px;
   border: 1px solid #fff;
+  padding: 8px;
   color: #fff;
   background-color: #005fcc;
   font-family: Noto Sans KR;

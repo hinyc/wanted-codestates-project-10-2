@@ -27,7 +27,7 @@ const Button = styled.div`
   height: 45px;
   margin-bottom: 45px;
   min-width: 800px;
-  margin-left: 1rem;
+  margin-left: 5rem;
 `;
 const TeamSelectBtn = styled.div`
   position: relative;

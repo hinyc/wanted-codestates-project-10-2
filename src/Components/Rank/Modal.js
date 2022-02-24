@@ -37,8 +37,7 @@ const ModalWindow = styled.div`
   width: 800px;
   height: 700px;
   border-radius: 0.5rem;
-  background: url('https://tmi.nexon.com/img/assets/guide_desc.png')
-    center/cover no-repeat;
+  background: url('https://tmi.nexon.com/img/assets/guide_desc.png') no-repeat;
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -56,6 +55,7 @@ const CloseBtn = styled.button`
   border: 0;
   font-size: 1.3rem;
   border: 1px solid #eee;
+  padding: 8px 12px;
   cursor: pointer;
 `;
 export default Modal;
