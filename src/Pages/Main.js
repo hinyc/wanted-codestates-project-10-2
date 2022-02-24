@@ -1,11 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+import OverallRecord from '../Components/OverallRecord';
+import UserinfoBox from '../Components/UserinfoBox';
 import RankChangeChart from '../Components/RankChangeChart';
 import Matching from '../Components/Matching';
 
+const username = 'BBEESSTT';
 export default function Main() {
   return (
-    <>
+ <>
+    <div>
+      <UserinfoBox username={username} />
+      <OverallRecord />
+    </div>
+
+   
       <Box>
         <RankChangeChart />
         <Matching />
