@@ -16,6 +16,64 @@ const RecordListDropdown = () => {
         <li className="content">
           <div>
             <div className="rank">0</div>
+            <div className="kart">
+              <img src="" alt="누구의 카트"></img>
+            </div>
+            <div className="nickname">유저</div>
+            <div className="record">1'47'84</div>
+          </div>
+        </li>
+        <li className="content">
+          <div>
+            <div className="rank">0</div>
+            <div className="kart">카트</div>
+            <div className="nickname">유저</div>
+            <div className="record">1'47'84</div>
+          </div>
+        </li>
+        <li className="content">
+          <div>
+            <div className="rank">0</div>
+            <div className="kart">카트</div>
+            <div className="nickname">유저</div>
+            <div className="record">1'47'84</div>
+          </div>
+        </li>
+        <li className="content">
+          <div>
+            <div className="rank">0</div>
+            <div className="kart">카트</div>
+            <div className="nickname">유저</div>
+            <div className="record">1'47'84</div>
+          </div>
+        </li>
+        <li className="content">
+          <div>
+            <div className="rank">0</div>
+            <div className="kart">카트</div>
+            <div className="nickname">유저</div>
+            <div className="record">1'47'84</div>
+          </div>
+        </li>
+        <li className="content">
+          <div>
+            <div className="rank">0</div>
+            <div className="kart">카트</div>
+            <div className="nickname">유저</div>
+            <div className="record">1'47'84</div>
+          </div>
+        </li>
+        <li className="content">
+          <div>
+            <div className="rank">0</div>
+            <div className="kart">카트</div>
+            <div className="nickname">유저</div>
+            <div className="record">1'47'84</div>
+          </div>
+        </li>
+        <li className="content">
+          <div>
+            <div className="rank">0</div>
             <div className="kart">카트</div>
             <div className="nickname">유저</div>
             <div className="record">1'47'84</div>

@@ -4,6 +4,12 @@ import RecordListItem from './RecordListItem';
 import RecordListDropdown from './RecordListDropdown';
 
 const RecordListContainer = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleDropdownDisplay = () => {
+    setIsOpen((prev) => !prev);
+  };
+
   // const nickname = '헤드리강';
   // const APIKEY =
   //   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoiODA1NTY1NDIyIiwiYXV0aF9pZCI6IjIiLCJ0b2tlbl90eXBlIjoiQWNjZXNzVG9rZW4iLCJzZXJ2aWNlX2lkIjoiNDMwMDExMzkzIiwiWC1BcHAtUmF0ZS1MaW1pdCI6IjUwMDoxMCIsIm5iZiI6MTY0NTY5NTU0MSwiZXhwIjoxNjYxMjQ3NTQxLCJpYXQiOjE2NDU2OTU1NDF9.TPyu7LcgdWmibXO7SzSquHdecWt45WgkpANfuepAl58';
@@ -33,6 +39,8 @@ const RecordListContainer = () => {
       <h1>기록 전적 목록</h1>
       <button>fetch</button>
       <ListWrapper>
+        <RecordListItem handleDropdownDisplay={handleDropdownDisplay} />
+        {isOpen && <RecordListDropdown />}
         <RecordListItem />
         <RecordListItem />
         <RecordListItem />
