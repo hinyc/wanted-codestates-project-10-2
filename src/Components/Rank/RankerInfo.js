@@ -3,13 +3,15 @@ import styled from 'styled-components';
 
 const RankerWrapper = styled.div`
   position: relative;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
   background-color: #fff;
   border-radius: 10px;
   margin: 0 21px;
+  max-width: 300px;
   -webkit-box-shadow: 5px 5px 5px -5px rgb(0 0 0 / 21%);
 `;
 const NameWrapper = styled.div`
@@ -81,8 +83,7 @@ const MedalImage = styled.img.attrs((props) => ({
   left: 10px;
 `;
 
-const Ranker = ({ imgSrc }) => {
-  console.log(imgSrc);
+const RankerInfo = ({ imgSrc }) => {
   return (
     <RankerWrapper>
       <MedalImage src={imgSrc} />
@@ -105,4 +106,4 @@ const Ranker = ({ imgSrc }) => {
   );
 };
 
-export default Ranker;
+export default RankerInfo;
