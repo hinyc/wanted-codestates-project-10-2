@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { KartSummary } from './KartSummary';
 import { TrackSummary } from './TrackSummary';
@@ -6,15 +6,10 @@ import axios from 'axios';
 import { headers } from '../Util/util';
 
 function Summary() {
-  // const  a = [{
-  //   "accessId": "114571",
-  //   "name": "vV피렐라Vv",
-  //   "level": 90
-  // }];
   const nickname = 'vV피렐라Vv';
 
   const fetchUserAccessId = async () => {
-    axios
+    await axios
       .get(`/kart/v1.0/users/nickname/${encodeURI(nickname)}`, headers)
       .then((response) => response.data)
       .then((data) => {
@@ -28,12 +23,7 @@ function Summary() {
     const accessId = fetchUserAccessId();
     console.log('accessId', accessId);
   };
-  // useEffect(() => {
-  //   (async () => {
-  //     const response = await axios.get('/kart/v1.0/users/114571');
-  //     console.log(response);
-  //   })();
-  // }, []);
+
   const [clickedTab, setClickedTab] = useState('트랙');
   const changeColor = (e) => {
     let tabName = e.target.innerText;

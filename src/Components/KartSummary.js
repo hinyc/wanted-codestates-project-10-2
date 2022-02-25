@@ -126,18 +126,15 @@ const KartAndMap = styled.div`
 `;
 
 const KartImg = styled.div`
-  width: 152px;
+  width: 112px;
   height: 135px;
   border: 1px solid black;
-  @media screen and (max-width: 1630px) {
-    max-width: 378px;
-  }
 `;
 
 const KartImgNextMap = styled.div`
   display: flex;
   flex-direction: column;
-  width: 226.2px;
+  width: 162.5px;
   height: 135px;
   border: 1px solid black;
   & ul {
@@ -145,9 +142,6 @@ const KartImgNextMap = styled.div`
     padding: 0;
     margin: 0;
     list-style: none;
-  }
-  @media screen and (max-width: 1630px) {
-    max-width: 162.5px;
   }
 `;
 
@@ -168,21 +162,23 @@ const MapList = styled.li`
 `;
 
 const TableContainer = styled.div`
-  width: 428px;
+  width: 328px;
   height: 236px;
   overflow: scroll;
   overflow-x: hidden;
   font-size: 13px;
   & table {
-    width: 412px;
+    width: 312px;
+
     & thead {
-      width: 412px;
+      width: 312px;
       line-height: 35px;
       font-size: 13px;
       background-color: #fbfbfb;
       & tr {
         display: table-row;
         background-color: #fbfbfb;
+        line-height: 35px;
         & th {
           background-color: #fbfbfb;
         }
@@ -194,19 +190,8 @@ const TableContainer = styled.div`
         display: table-row;
         & td {
           line-height: 45px;
-          text-align: center;
+          font-size: 13px;
         }
-      }
-    }
-  }
-  @media screen and (max-width: 1630px) {
-    max-width: 312px;
-    & table {
-      width: 312px;
-      & thead {
-        width: 312px;
-        line-height: 35px;
-        font-size: 13px;
       }
     }
   }

@@ -18,9 +18,9 @@ export const TrackSummary = () => {
         <span>&nbsp;&nbsp;기록분포</span>
       </MapName>
       <GraphBox>
-        <GrapeContainer>
+        <GraphContainer>
           <TrackRankChart />
-        </GrapeContainer>
+        </GraphContainer>
       </GraphBox>
       <TableContainer>
         <table>
@@ -35,25 +35,28 @@ export const TrackSummary = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>ㅇ</td>
-              <td>
-                <a href="##">
-                  <img href="" alt="" />
-                  &nbsp;빌리지 고가의 질주
-                </a>
-              </td>
-              <td>1</td>
-              <td>01</td>
-              <td>15971</td>
-              <td>50</td>
-            </tr>
+            <Trtrtr />
           </tbody>
         </table>
       </TableContainer>
     </RecordBox>
   );
 };
+
+function Trtrtr({}) {
+  return (
+    <tr>
+      <td>
+        <input type="radio"></input>
+      </td>
+      <td>dfdfdfddf</td>
+      <td>dfdf</td>
+      <td>df</td>
+      <td>df</td>
+      <td>dfd</td>
+    </tr>
+  );
+}
 
 const RecordBox = styled.div`
   position: relative;
@@ -113,7 +116,7 @@ const GraphBox = styled.div`
   flex-direction: column;
 `;
 
-const GrapeContainer = styled.div`
+const GraphContainer = styled.div`
   display: flex;
   justify-content: center;
 `;
@@ -145,10 +148,9 @@ const TableContainer = styled.div`
         line-height: 35px;
         display: table-row;
         & td {
-        line-height: 45px;
-        width: 312px;
-        line-height: 35px;
-        font-size: 13px;
+          line-height: 45px;
+          font-size: 13px;
+        }
       }
     }
   }
