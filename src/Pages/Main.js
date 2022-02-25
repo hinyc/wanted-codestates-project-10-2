@@ -2,14 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 import UserinfoBox from '../Components/UserinfoBox';
 import Matching from '../Components/Matching';
+
+import RecordListContainer from '../Components/RecordListContainer';
+
 import OverallRecord from '../Components/Dashboard/OverallRecord';
 import RankChangeChartBox from '../Components/Dashboard/RankChangeChart/RankChangeChartBox';
 import CheeringMSGBox from '../Components/Dashboard/CheeringMSG/CheeringMSGBox';
+
 
 const username = 'BBEESSTT';
 export default function Main() {
   return (
     <>
+
 
       <InfoComponent />
       <Container>
@@ -22,7 +27,10 @@ export default function Main() {
         <RankChangeChartBox />
         <CheeringMSGBox />
       </Dashboard>
+
+      <RecordListContainer />
       </Container>
+
 
     </>
   );
