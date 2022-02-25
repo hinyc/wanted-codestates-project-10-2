@@ -5,13 +5,15 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { API } from '../Util/util';
 import ReportModal from './Common/ReportModal';
+import ShareModal from './Common/ShareModal';
 import TeamsSelector from './Common/TeamsSelector';
 
 export default function UserinfoBox({ username }) {
   const [showReport, setShowReport] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
 
-  console.log(username);
-  console.log(API);
+  // console.log(username);
+  // console.log(API);
   const userImg =
     'https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/character/42c729e64e31aea803e4881432f7b95129ce97535c29e4f9a72919a9f267b418.png';
   const userClass = 'https://tmi.nexon.com/img/icon_l3.png';
@@ -49,9 +51,12 @@ export default function UserinfoBox({ username }) {
                 <Button onClick={() => setShowReport(true)}>
                   <i className="fa-solid fa-bell"></i> 신고하기
                 </Button>
-                <Button>
+                <Button onClick={() => setShowShareModal(true)}>
                   <i className="fa-solid fa-share-nodes"></i> 공유하기
                 </Button>
+                {showShareModal && (
+                  <ShareModal setShowShareModal={setShowShareModal} />
+                )}
               </Buttons>
             </div>
           </div>
@@ -114,6 +119,7 @@ const Container = styled.div`
 `;
 
 const Buttons = styled.div`
+  position: relative;
   margin-left: 10px;
 `;
 
