@@ -86,8 +86,9 @@ export default function ConditionPage({ battleUser }) {
 const Condition = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 30px 20px;
+  justify-content: space-around;
   background-color: #3a4259;
+  height: 200px;
   .title {
     margin: 20px 0 0 10px;
     color: white;
