@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const Buttons = ({ isSelected, setIsSelected }) => {
+const Buttons = ({ isSelected, setIsSelected, setMatchType }) => {
   const initState = (idx) => {
     let newArr = [false, false];
     newArr[idx] = true;
@@ -9,9 +9,15 @@ const Buttons = ({ isSelected, setIsSelected }) => {
   };
   const setOnClickO = () => {
     initState(0);
+    setMatchType(
+      '7b9f0fd5377c38514dbb78ebe63ac6c3b81009d5a31dd569d1cff8f005aa881a',
+    );
   };
   const setOnClickT = () => {
     initState(1);
+    setMatchType(
+      'effd66758144a29868663aa50e85d3d95c5bc0147d7fdb9802691c2087f3416e',
+    );
   };
   return (
     <Wrapper>

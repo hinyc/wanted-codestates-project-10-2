@@ -6,7 +6,8 @@ import Buttons from './Buttons';
 import Modal from './Modal';
 import { OneInfos, TeamInfos } from '../../MockUP/rankData';
 import './box.css';
-const RankerBox = () => {
+import RankListTitle from './RankListTitle';
+const RankerBox = ({ top3MatchList, matchType, setMatchType }) => {
   const [modalState, setModalState] = useState(false);
   const setOnclick = () => setModalState(true);
   const defaultState = [true, false];
@@ -23,17 +24,25 @@ const RankerBox = () => {
         </div>
         <div className="info-wrap">
           <RankingInfo setOnclick={setOnclick} />
-          <Buttons isSelected={isSelected} setIsSelected={setIsSelected} />
+          <Buttons
+            isSelected={isSelected}
+            setIsSelected={setIsSelected}
+            setMatchType={setMatchType}
+          />
         </div>
         <Rankers>
-          {isSelected[0]
-            ? OneInfos.map((info) => {
+          {/* {isSelected[0]
+            ? top3MatchList.map((info) => {
                 return <RankerInfo info={info} />;
               })
-            : TeamInfos.map((info) => {
+            : top3MatchList.map((info) => {
                 return <RankerInfo info={info} />;
-              })}
+              })} */}
+          {top3MatchList.map((info) => {
+            return <RankerInfo info={info} />;
+          })}
         </Rankers>
+        <RankListTitle />
       </BaseWrapper>
     </>
   );
