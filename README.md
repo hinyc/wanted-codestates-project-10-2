@@ -1,6 +1,6 @@
 
 ## wanted-codestates-project-10-2 🌈
-📎 [카트라이더 전적검색 바로가기]()
+📎 [카트라이더 전적검색 바로가기](https://suspicious-liskov-27f338.netlify.app/ranking)
 
 
 ### 카트라이더 전적검색 TMI🦽
