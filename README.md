@@ -31,7 +31,8 @@
  <br />
  
 
-### 기술 스텍
+### 기술 스텍 🛠
+
 <img src="https://img.shields.io/badge/React-lightgray?style=flat-round&logo=React&logoColor=61DBFB"/></a> &nbsp;
 <img src="https://img.shields.io/badge/React--Router-lightgray?style=flat-round&logo=React-Router&logoColor=#CA4245"/></a> &nbsp;
 <img src="https://img.shields.io/badge/Styled--Components-lightgray?style=flat-round&logo=Styled-Components&logoColor=CA4245"/></a>&nbsp;
@@ -43,8 +44,8 @@
 ### 팀 구성 👨‍👨‍👧‍👧
 
 **팀장**
-`홍인열`
+[홍인열](https://github.com/hinyc)
 
 **팀원**
-`김주영` | `박창진` | `복지호` |` 우혁주` | `장혜민` | `전용태`
+[김주영](https://github.com/juo1221) | [박창진](https://github.com/SpearJin) | [복지호](https://github.com/Jiho31) | [우혁주](https://github.com/Space-Belt) | [장혜민](https://github.com/hyemin-jang) | [전용태](https://github.com/yong313)
 
