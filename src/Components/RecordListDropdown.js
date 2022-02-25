@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-const RecordListDropdown = () => {
+const RecordListDropdown = ({ recent10MatchList }) => {
+  const [playerListData, setPlayerListData] = useState(recent10MatchList);
+
+  // useEffect(() => {
+  //   console.log('hi');
+  //   // setPlayerListData(recent10MatchList);
+  //   // playerListData.forEach((players) => {
+  //   //   console.log(players);
+  //   //   const { characterName, matchRank, kart, matchRetired, matchTime } =
+  //   //     players;
+
+  //   //   // console.log(characterName, matchRank, kart, matchRetired, matchTime);
+  //   // });
+  // }, [recent10MatchList]);
+
   return (
     <DropdownContainer>
       <ul>
@@ -13,7 +27,38 @@ const RecordListDropdown = () => {
             <div className="record">기록</div>
           </div>
         </li>
-        <li className="content">
+        {playerListData.map((players) =>
+          // console.log(players);
+
+          players.sort().map((player) => {
+            const { characterName, matchRank, kart, matchRetired, matchTime } =
+              players[0];
+            const kartURI = `https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/kart/${kart}.png?v=1645788019`;
+
+            console.log(
+              characterName,
+              matchRank,
+              kart,
+              matchRetired,
+              matchTime,
+            );
+
+            return (
+              <li className="content">
+                <div>
+                  <div className="rank">{matchRank}</div>
+                  <div className="kart">
+                    <img src={kartURI} alt={`${characterName}의 카트`}></img>
+                  </div>
+                  <div className="nickname">{characterName}</div>
+                  <div className="record">1'47'84</div>
+                </div>
+              </li>
+            );
+          }),
+        )}
+
+        {/* <li className="content">
           <div>
             <div className="rank">0</div>
             <div className="kart">
@@ -78,7 +123,7 @@ const RecordListDropdown = () => {
             <div className="nickname">유저</div>
             <div className="record">1'47'84</div>
           </div>
-        </li>
+        </li> */}
       </ul>
     </DropdownContainer>
   );
