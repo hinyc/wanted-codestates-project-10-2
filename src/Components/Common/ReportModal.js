@@ -1,9 +1,24 @@
-import React, { useRef } from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useRef, useState } from 'react';
+import styled, { keyframes } from 'styled-components';
 
 export default function ReportModal({ setShowReport }) {
+  const [softRemover, setSoftRemover] = useState(false);
+
+  useEffect(() => {
+    return () => {
+      const setTime = setTimeout(() => {
+        setShowReport(false);
+        clearTimeout(setTime);
+      }, 200);
+    };
+  }, [setShowReport, softRemover]);
+
+  const removeModalHandler = () => {
+    setSoftRemover(true);
+  };
+
   return (
-    <>
+    <Wrapper softRemover={softRemover}>
       <Background />
       <Container>
         <div className="top text">유저신고</div>
@@ -13,15 +28,35 @@ export default function ReportModal({ setShowReport }) {
         <textarea></textarea>
 
         <div className="rightAlign">
-          <button onClick={() => setShowReport(false)}>아니오</button>
+          <button onClick={removeModalHandler}>아니오</button>
           <button>네</button>
         </div>
       </Container>
-      ;
-    </>
+    </Wrapper>
   );
 }
 
+const onAnimation = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+const offAnimation = keyframes`
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+`;
+
+const Wrapper = styled.div`
+  animation: ${(props) => (props.softRemover ? offAnimation : onAnimation)} 0.2s
+    linear;
+`;
 const Background = styled.div`
   background-color: #1f334a;
   opacity: 0.6;
