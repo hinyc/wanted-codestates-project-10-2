@@ -1,37 +1,33 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import ConditionBarPage from './ContionBarPage';
+import Race from './Race';
 
 export default function ConditionPage({ user, battleUser }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const onClickGame = () => {
+    if (battleUser) {
+      setIsOpen(true);
+    } else {
+      alert('유저없어');
+    }
+  };
+
   return (
     <Condition>
       <p className="title">컨디션</p>
       <ConditionBarPage user={user} />
       <ConditionBarPage battleUser={battleUser} />
-      {/* <ConditionBar>
-        {battleUser ? (
-          <p>{battleUser.name}</p>
-        ) : (
-          <p className="notUser">메인 상대가 없습니다</p>
-        )}
-        <div className="bar">
-          <div className="statusbar" ref={statusRef}>
-            <div className="base battle" ref={baseRef}></div>
-            <div className="drag">
-              <div
-                className="drag_handle"
-                ref={dragHandleRef}
-                onMouseDown={mouseDownHanlder}
-                onMouseUp={stopMove}
-                onMouseLeave={stopMove}
-              ></div>
-            </div>
-          </div>
-          <span>{battleWidth}%</span>
-        </div> */}
       <div className="fight_btn">
-        <button>Fight</button>
+        <button onClick={onClickGame}>Fight</button>
       </div>
+      {isOpen && (
+        <>
+          <Race user={user} battleUser={battleUser} />
+          <ModalBackground onClick={() => setIsOpen(false)} />
+        </>
+      )}
     </Condition>
   );
 }
@@ -68,4 +64,15 @@ const Condition = styled.div`
       cursor: pointer;
     }
   }
+`;
+
+const ModalBackground = styled.div`
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 8;
 `;
