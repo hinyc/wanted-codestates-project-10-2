@@ -1,3 +1,4 @@
+import React from 'react';
 import RankList from '../Components/RankList';
 import RankerBox from '../Components/Rank/Box';
 import { useEffect, useState } from 'react';
@@ -130,7 +131,9 @@ export default function Ranking() {
   return loading ? (
     <div>
       <RankerBox />
+
       <RankList matchList={MatchList} />
+
     </div>
   ) : (
     <div>로딩중</div>

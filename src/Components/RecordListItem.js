@@ -1,7 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const RecordListItem = () => {
+/* 
+ListItem 클래스 이름:
+- winner: 1등 (파란색)
+- retire: 리타이어 (빨간색)
+*/
+
+const RecordListItem = (props) => {
   const dummyData = {
     date: '1일 전',
     rank: '2',
@@ -20,7 +26,7 @@ const RecordListItem = () => {
   };
 
   return (
-    <ListItem>
+    <ListItem className="retire">
       <p className="date">{dummyData.date}</p>
       <p className="rank">
         <span className="rank-data">#{dummyData.rank}</span>
@@ -37,10 +43,6 @@ const RecordListItem = () => {
 };
 
 const ListItem = styled.li`
-  /* global styles */
-  list-style: none;
-  box-sizing: border-box;
-
   width: 100%;
   height: 88px;
   background: #fff;
@@ -48,8 +50,14 @@ const ListItem = styled.li`
   border-left: 4px solid #a1a1a1;
   margin-bottom: 5px;
   display: flex;
-  align-items: center;
+  // align-items: center;
   text-align: center;
+
+  & > p {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
 
   .date {
     width: 65px;
@@ -67,7 +75,7 @@ const ListItem = styled.li`
     font-style: italic;
   }
   .rank-data {
-    // margin-right: 5px;
+    margin-right: 5px;
     font-size: 30px;
   }
   .track {
@@ -82,6 +90,14 @@ const ListItem = styled.li`
   }
   .open-dropdown {
     width: 40px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      background: #ebebeb;
+    }
 
     span {
       display: inline-block;
@@ -91,6 +107,42 @@ const ListItem = styled.li`
       border-top: 5px solid #a1a1a1;
     }
   }
+  .open-dropdown:before {
+  }
+
+  /* retire */
+  ${(props) =>
+    props.className === 'retire'
+      ? `
+    background: rgba(246, 36, 89, .05);
+    border-left: 4px solid #f62459;
+    
+    .rank {
+      color: #f62459;
+      opacity: 1;
+    }
+    .open-dropdown:hover {
+      background: rgba(246, 36, 89, .1);
+    }
+  `
+      : ``}
+
+  /* winner */
+  ${(props) =>
+    props.className === 'winner'
+      ? `
+    background: rgba(0, 119, 255, .05);
+    border-left: 4px solid #07f;
+    
+    .rank {
+      color: #07f;
+      opacity: 1;
+    }
+    .open-dropdown:hover {
+      background: rgba(0, 119, 255, .1);
+    }
+  `
+      : ``}
 `;
 
 export default RecordListItem;
