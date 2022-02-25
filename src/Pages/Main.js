@@ -6,6 +6,7 @@ import OverallRecord from '../Components/OverallRecord';
 import UserinfoBox from '../Components/UserinfoBox';
 import RankChangeChart from '../Components/RankChangeChart';
 import Matching from '../Components/Matching';
+import RecordListContainer from '../Components/RecordListContainer';
 
 const username = 'BBEESSTT';
 export default function Main() {
@@ -18,6 +19,7 @@ export default function Main() {
       <Box>
         <RankChangeChart />
       </Box>
+      <RecordListContainer />
     </>
   );
 }
