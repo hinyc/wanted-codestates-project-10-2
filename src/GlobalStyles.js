@@ -18,8 +18,8 @@ const GlobalStyles = createGlobalStyle`
       -ms-user-select: auto;
       user-select: auto;
     }
-    input:focus {
-      outline: none;
+    input {
+      border: none;
     }
     button {
       border: none;

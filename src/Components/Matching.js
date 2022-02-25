@@ -26,6 +26,7 @@ const Matching = () => {
 const MatchingBox = styled.div`
   width: 100%;
   height: 45px;
+  margin: 20px 0;
   display: flex;
   justify-content: center;
   align-items: center;
