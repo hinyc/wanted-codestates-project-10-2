@@ -72,7 +72,7 @@ export default function Ranking() {
         ),
       )
       .then((allRes) => {
-        console.log(allRes);
+        // console.log(allRes);
         setResDataList(allRes.map((res) => res.data));
       });
   }, [matchType]);
@@ -94,7 +94,7 @@ export default function Ranking() {
           data.matches[0].matches.reduce((acc, cur) => {
             return acc + Number(cur.player.matchRetired);
           }, 0) / matchCount;
-        console.log(matchCount, avgRank, winP, retireP);
+        // console.log(matchCount, avgRank, winP, retireP);
         arr.push({
           id: data.nickName,
           matchCount: matchCount,
@@ -108,7 +108,7 @@ export default function Ranking() {
   }, [resDataList]);
 
   useEffect(() => {
-    console.log(matchDataList);
+    // console.log(matchDataList);
     // 평균랭크 순 정렬하기
     const filtered = matchDataList.sort((data1, data2) => {
       return data1.avgRank - data2.avgRank;
@@ -142,7 +142,6 @@ export default function Ranking() {
 
   return loading ? (
     <div>
-
       <RankerBox
         top3MatchList={top3MatchList}
         matchType={matchType}
