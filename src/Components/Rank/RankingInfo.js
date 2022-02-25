@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const RankingInfo = ({ setOnclick }) => {
+const RankingInfo = ({ setOnclick, handleMouseEnter }) => {
   return (
     <PageDescription>
       <Wrapper>
@@ -12,11 +12,12 @@ const RankingInfo = ({ setOnclick }) => {
             28일 24:00:00
           </Period>
           <Update>
-            <span>랭킹 업데이트</span> 2022년 02월 01일 00:00:00 ~ 2022년 02월
-            28일 24:00:00
+            <span>최근 업데이트</span> 2022년 02월 25일 09:15:32
           </Update>
         </Info>
-        <GuideBtn onClick={setOnclick}>랭킹가이드</GuideBtn>
+        <GuideBtn onClick={setOnclick} onMouseEnter={handleMouseEnter}>
+          랭킹가이드
+        </GuideBtn>
       </Wrapper>
     </PageDescription>
   );
@@ -36,7 +37,7 @@ const Wrapper = styled.div`
   background-color: #005fcc;
 `;
 const Info = styled.div`
-  padding-right: 600px;
+  padding-right: 500px;
 `;
 const PageName = styled.p`
   font-size: 22px;
@@ -58,6 +59,7 @@ const Period = styled.p`
   font-weight: 400;
   padding-left: 10px;
   margin-bottom: 8px;
+  width: 400px;
   color: #fff;
 `;
 const Update = styled(Period)``;

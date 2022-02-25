@@ -7,7 +7,7 @@ const RankList = (props) => {
   return (
     <RankListContainer>
       {matchList.map((match, id) => (
-        <RankCard match={match} rank={id} />
+        <RankCard match={match} rank={id} key={id} />
       ))}
     </RankListContainer>
   );

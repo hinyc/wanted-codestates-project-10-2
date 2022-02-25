@@ -64,6 +64,7 @@ export default function Ranking() {
         ),
       )
       .then((allRes) => {
+
         setResDataList(allRes.map((res) => res.data));
       });
   }, [matchType]);
@@ -85,7 +86,7 @@ export default function Ranking() {
           data.matches[0].matches.reduce((acc, cur) => {
             return acc + Number(cur.player.matchRetired);
           }, 0) / matchCount;
-        console.log(matchCount, avgRank, winP, retireP);
+        // console.log(matchCount, avgRank, winP, retireP);
         arr.push({
           id: data.nickName,
           matchCount: matchCount,
