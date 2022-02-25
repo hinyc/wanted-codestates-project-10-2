@@ -9,25 +9,29 @@ import ReportModal from './Common/ReportModal';
 import ShareModal from './Common/ShareModal';
 import TeamsSelector from './Common/TeamsSelector';
 
-export default function UserinfoBox({ username }) {
+export default function UserinfoBox({ nickname, matchInfo }) {
   const [showReport, setShowReport] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
+
+  console.log('matchInfo', matchInfo);
+
+  const character = matchInfo[0].matches[0].player.character;
+
   const ModalOpenHandler = () => {
     document.body.style.overflow = 'hidden';
     setShowReport(true);
   };
 
-  // console.log(username);
+  // console.log(nickname);
   // console.log(API);
-  const userImg =
-    'https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/character/42c729e64e31aea803e4881432f7b95129ce97535c29e4f9a72919a9f267b418.png';
+  const userImg = `https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/character/${character}.png`;
   const userClass = 'https://tmi.nexon.com/img/icon_l3.png';
 
   const pageView = 734;
 
   // const URL = 'https://api.nexon.co.kr/kart/v1.0/users/nickname/';
   // const data = axios
-  //   .get(`${URL}/${username}`, {
+  //   .get(`${URL}/${nickname}`, {
   //     headers: { Authorization: API },
   //   })
   //   .then((res) => console.log(res));
@@ -41,7 +45,7 @@ export default function UserinfoBox({ username }) {
           </div>
           <div className="center">
             <h1>
-              {`${username} `}
+              {`${nickname} `}
               <img src={userClass} />
             </h1>
 

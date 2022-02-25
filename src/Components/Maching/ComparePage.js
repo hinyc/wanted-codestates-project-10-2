@@ -163,7 +163,7 @@ const Modal = styled.div`
   text-align: center;
   img {
     width: 300px;
-    height: 50vh;
+    height: 40vh;
     object-fit: contain;
   }
   p {

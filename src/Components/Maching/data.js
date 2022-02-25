@@ -23,4 +23,37 @@ export const userInfos = [
     cartImg:
       'https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/kart/d47aa62de79d88ecee263e07456555d99ff8957f1760d0f248667913acbc2b67.png?v=1645682865',
   },
+
+  {
+    id: 4,
+    name: '다오',
+    charImg:
+      'https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/character/201c61527a04d85cd2de0dad75ab0878ee4125129e57aabe47b3d3ac06df8d67.png',
+    cartImg:
+      'https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/kart/a142d9bb5a04f227108639b0f99132c4681e90d32c1933ea297a02c3d0da9101.png?v=1645779281',
+  },
+  {
+    id: 5,
+    name: '코코몽',
+    charImg:
+      'https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/character/2ecb10f5e23493727a80a91421d6242a18b131f743676e72317bde4bd5d27131.png',
+    cartImg:
+      'https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/kart/08efb8425240e0f05e51de9822e9ad323e8f38a4b2acb9abfbe756cf12c5778b.png?v=1645779281',
+  },
+  {
+    id: 6,
+    name: '미니언',
+    charImg:
+      'https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/character/cadf6b5367da4076be23547a5fbf7d482e05e558908b3071d858339a2aea508d.png',
+    cartImg:
+      'https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/kart/dd0685efa8397ab65468ea28f229fa61a1ca2e8fe7e311bcb3650d14509771b4.png?v=1645779281',
+  },
+  {
+    id: 7,
+    name: '짱구',
+    charImg:
+      'https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/character/03e6c20439f6cdee8470f26b0d5aff7406f6f7e0307f1fb491d6ce519504a135.png',
+    cartImg:
+      'https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/kart/0677a0822721cfd027cc8abf0920d05c03b5a57d2b837bea10bcc840ddc5e1d7.png?v=1645779281',
+  },
 ];
