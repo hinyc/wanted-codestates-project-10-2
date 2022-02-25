@@ -57,14 +57,11 @@ export const TrackSummary = () => {
 
 const RecordBox = styled.div`
   position: relative;
-  width: 430px;
+  width: 330px;
   height: 542px;
   border: 1px solid #f2f2f2;
   margin-bottom: 10px;
   background-color: #fff;
-  @media screen and (max-width: 1630px) {
-    max-width: 330px;
-  }
 `;
 
 const TrackOrKartRecord = styled.h5`
@@ -122,15 +119,15 @@ const GrapeContainer = styled.div`
 `;
 
 const TableContainer = styled.div`
-  width: 428px;
+  width: 328px;
   height: 236px;
   overflow: scroll;
   overflow-x: hidden;
   font-size: 13px;
   & table {
-    width: 412px;
+    width: 312px;
     & thead {
-      width: 412px;
+      width: 312px;
       line-height: 35px;
       font-size: 13px;
       background-color: #fbfbfb;
@@ -148,17 +145,7 @@ const TableContainer = styled.div`
         line-height: 35px;
         display: table-row;
         & td {
-          line-height: 45px;
-          text-align: center;
-        }
-      }
-    }
-  }
-  @media screen and (max-width: 1630px) {
-    max-width: 312px;
-    & table {
-      width: 312px;
-      & thead {
+        line-height: 45px;
         width: 312px;
         line-height: 35px;
         font-size: 13px;

@@ -202,11 +202,12 @@ const TableContainer = styled.div`
   @media screen and (max-width: 1630px) {
     max-width: 312px;
     & table {
-    width: 312px;
-    & thead {
       width: 312px;
-      line-height: 35px;
-      font-size: 13px;
+      & thead {
+        width: 312px;
+        line-height: 35px;
+        font-size: 13px;
+      }
     }
   }
 `;
