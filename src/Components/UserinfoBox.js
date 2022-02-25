@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 
-import axios from 'axios';
 import React, { useState } from 'react';
+import axios from 'axios';
+import { API } from '../Util/util';
 
 import styled from 'styled-components';
-import { API } from '../Util/util';
 import ReportModal from './Common/ReportModal';
 import ShareModal from './Common/ShareModal';
 import TeamsSelector from './Common/TeamsSelector';
