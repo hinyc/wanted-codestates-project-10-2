@@ -67,11 +67,14 @@ const Container = styled.div`
 `;
 
 const Top = styled.div`
-  width: 1000px;
+  width: 100%;
+  min-width: 1000px;
   height: 48px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #005fcc;
+
   .cart-logo {
     padding: 0 8px;
   }
@@ -84,11 +87,13 @@ const Top = styled.div`
   }
 `;
 const Nav = styled.div`
-  width: 1000px;
+  width: 100%;
+  min-width: 1000px;
   height: 55px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #005fcc;
   /* position: relative; */
   .full-width {
     width: 100wm;
