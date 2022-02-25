@@ -11,6 +11,7 @@ import RecordListContainer from '../Components/RecordListContainer';
 import OverallRecord from '../Components/Dashboard/OverallRecord';
 import RankChangeChartBox from '../Components/Dashboard/RankChangeChart/RankChangeChartBox';
 import CheeringMSGBox from '../Components/Dashboard/CheeringMSG/CheeringMSGBox';
+import Tabs from '../Components/Tabs';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
@@ -19,7 +20,6 @@ const username = 'BBEESSTT';
 export default function Main() {
   return (
     <>
-      {/* <InfoComponent /> */}
       <OneYear>
         <FontAwesomeIcon icon={faInfoCircle} className="icon" />
         카트라이더 매치데이터는 최근 1년치 데이터만 확인할 수 있습니다
@@ -33,6 +33,7 @@ export default function Main() {
           <RankChangeChartBox />
           <CheeringMSGBox />
         </Dashboard>
+        <Tabs />
         <SummaryWapper>
           <Summary />
           <RecordListContainer />
@@ -42,28 +43,19 @@ export default function Main() {
   );
 }
 
-function InfoComponent() {
-  return (
-    <Info>
-      <i className="fa-solid fa-circle-info"></i> 카트라이더 매치데이터는 최근
-      1년차 데이터만 확인할 수 있습니다
-    </Info>
-  );
-}
-
 const SummaryWapper = styled.div`
   width: 1000px;
   display: flex;
 `;
 
 const OneYear = styled.div`
-  margin: 15px auto;
-  padding-left: 15px;
+  margin: 18px auto;
+  padding-left: 7px;
   font-size: 12px;
   letter-spacing: -1px;
   width: 1000px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 
   .icon {
     font-size: 11.5px;
@@ -85,9 +77,4 @@ const Dashboard = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
-
-const Info = styled.div`
-  color: #1f334a;
-  font-size: 12px;
 `;

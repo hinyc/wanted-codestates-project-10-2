@@ -97,7 +97,7 @@ const Message = styled.div`
     top: 50%;
     transform: translateY(-50%);
     bottom: auto;
-    left: -9px;
+    left: -8.2px;
     border-style: solid;
     border-width: 9px 9px 9px 0;
     border-color: transparent #c3ced5;
@@ -111,7 +111,7 @@ const Message = styled.div`
     top: 50%;
     transform: translateY(-50%);
     bottom: auto;
-    left: -8px;
+    left: -7.2px;
     border: 1px solid #c3ced5;
     border-width: 8px 8px 8px 0;
     border-color: transparent #fff;
