@@ -15,8 +15,7 @@ import CheeringMSGBox from '../Components/Dashboard/CheeringMSG/CheeringMSGBox';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
-const username = 'BBEESSTT';
-export default function Main() {
+export default function Main({ nickname, matchInfo }) {
   return (
     <>
       {/* <InfoComponent /> */}
@@ -25,7 +24,7 @@ export default function Main() {
         카트라이더 매치데이터는 최근 1년치 데이터만 확인할 수 있습니다
       </OneYear>
       <Container>
-        <UserinfoBox username={username} />
+        <UserinfoBox nickname={nickname} matchInfo={matchInfo} />
         <Matching />
 
         <Dashboard>
