@@ -1,4 +1,7 @@
 import React from 'react';
+
+import Summary from '../Components/Summary';
+
 import styled from 'styled-components';
 import UserinfoBox from '../Components/UserinfoBox';
 import Matching from '../Components/Matching';
@@ -13,18 +16,21 @@ const username = 'BBEESSTT';
 export default function Main() {
   return (
     <>
+
       <InfoComponent />
       <Container>
         <UserinfoBox username={username} />
         <Matching />
 
         <Dashboard>
-          <OverallRecord />
-          <RankChangeChartBox />
-          <CheeringMSGBox />
-        </Dashboard>
 
-        <RecordListContainer />
+        <OverallRecord />
+        <RankChangeChartBox />
+        <CheeringMSGBox />
+      </Dashboard>
+  <Summary />
+      <RecordListContainer />
+
       </Container>
     </>
   );
