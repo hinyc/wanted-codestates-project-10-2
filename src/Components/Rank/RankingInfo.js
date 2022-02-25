@@ -27,15 +27,16 @@ const PageDescription = styled.div`
   background-color: #005fcc;
   display: flex;
   justify-content: center;
+  background-color: #005fcc;
 `;
 const Wrapper = styled.div`
   display: flex;
-  min-width: 800px;
   align-items: center;
+  min-width: 1000px;
+  background-color: #005fcc;
 `;
 const Info = styled.div`
   padding-right: 600px;
-  min-width: 500px;
 `;
 const PageName = styled.p`
   font-size: 22px;
@@ -62,6 +63,7 @@ const Period = styled.p`
 const Update = styled(Period)``;
 
 const GuideBtn = styled.button`
+  width: 100px;
   top: 110px;
   right: 10px;
   border: 1px solid #fff;
