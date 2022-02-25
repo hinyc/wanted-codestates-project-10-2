@@ -48,7 +48,6 @@ const SummaryWapper = styled.div`
 `;
 
 const OneYear = styled.div`
-
   margin: 18px auto;
   padding-left: 7px;
 
