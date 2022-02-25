@@ -9,7 +9,6 @@ import './box.css';
 
 import RankListTitle from './RankListTitle';
 const RankerBox = ({ top3MatchList, matchType, setMatchType }) => {
-
   const [modalState, setModalState] = useState(false);
   const setOnclick = () => setModalState(true);
   const defaultState = [true, false];
@@ -33,10 +32,8 @@ const RankerBox = ({ top3MatchList, matchType, setMatchType }) => {
           />
         </div>
         <Rankers>
-
-         
-          {top3MatchList.map((info) => {
-            return <RankerInfo info={info} />;
+          {top3MatchList.map((info, idx) => {
+            return <RankerInfo key={idx} info={info} />;
           })}
         </Rankers>
         <RankListTitle />
