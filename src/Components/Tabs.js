@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Toggle from './Common/Toggle';
 
 const Tabs = () => {
   const menuArr = [
@@ -16,6 +17,7 @@ const Tabs = () => {
   return (
     <>
       <TabBox>
+        <Toggle />
         <TabMenu>
           {menuArr.map((el, index) => {
             return (
