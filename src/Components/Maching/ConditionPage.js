@@ -1,31 +1,38 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 
-export default function ConditionPage() {
+export default function ConditionPage({ battleUser }) {
   let dragRef = useRef(null);
   let dragHandleRef = useRef(null);
   let positionX = useRef(null);
   let startPosition = useRef(null);
 
   const mouseDownHanlder = (e) => {
-    let rect = e.target.getBoundingClientRect();
-    let x = e.clientX - rect.left;
     e.preventDefault();
+    console.log(e.target.getBoundingClientRect());
     startPosition.current = e.clientX;
     document.onmousemove = move;
   };
 
   const move = (e) => {
-    // console.log(startPosition.current, positionX.current, e.clientX);
+    console.log(startPosition.current, positionX.current, e.clientX);
     // console.log(positionX.current - e.clientX);
     if (dragRef.current.getBoundingClientRect().x > e.clientX) {
       document.onmousemove = null;
       return;
     }
 
-    positionX.current = startPosition.current - e.clientX;
+    positionX.current =
+      startPosition.current - e.target.getBoundingClientRect().x;
 
     dragHandleRef.current.style.transform = `translateX(calc(-${positionX.current}px))`;
+  };
+
+  const statusbarWidthChange = (e) => {
+    console.log(dragRef.current.getBoundingClientRect());
+    let width = dragRef.current.getBoundingClientRect().x - e.clientX;
+    width = width / 100;
+    console.log(width);
   };
 
   return (
@@ -35,7 +42,11 @@ export default function ConditionPage() {
         <p>배찌</p>
         <div className="bar">
           <div className="statusbar">
-            <div className="base" ref={dragRef}></div>
+            <div
+              className="base"
+              ref={dragRef}
+              onClick={statusbarWidthChange}
+            ></div>
             <div className="drag">
               <div
                 className="drag_handle"
@@ -50,7 +61,11 @@ export default function ConditionPage() {
         </div>
       </ConditionBar>
       <ConditionBar>
-        <p>메인 상대가 없습니다</p>
+        {battleUser ? (
+          <p>{battleUser.name}</p>
+        ) : (
+          <p className="notUser">메인 상대가 없습니다</p>
+        )}
         <div className="bar">
           <div className="statusbar">
             <div className="base battle"></div>
@@ -106,6 +121,9 @@ const ConditionBar = styled.div`
   align-items: center;
   justify-content: space-between;
   color: #03d387;
+  .notUser {
+    color: #6d6c78;
+  }
   p {
     flex: 1.5;
     padding-left: 10px;

@@ -189,6 +189,9 @@ const Modal = styled.div`
       font-size: 12px;
       cursor: pointer;
     }
+    button:hover {
+      background-color: #03d387;
+    }
   }
 `;
 
