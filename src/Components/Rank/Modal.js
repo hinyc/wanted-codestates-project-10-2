@@ -25,21 +25,19 @@ const Modal = ({ setModalState }) => {
 const ModalBackground = styled.div`
   position: absolute;
   width: 100vw;
-  height: 100vh;
+  height: 200vh;
+  top: 0;
   background-color: #303030;
   opacity: 0.5;
   z-index: 10;
+  min-width: 1000px;
 `;
 const ModalWindow = styled.div`
-  display: flex;
   z-index: 10;
-  flex-direction: column;
-  width: 800px;
   height: 700px;
-  border-radius: 0.5rem;
-  background: url('https://tmi.nexon.com/img/assets/guide_desc.png') no-repeat;
-  justify-content: center;
-  align-items: center;
+  min-width: 1000px;
+  background: url('https://tmi.nexon.com/img/assets/guide_desc.png')
+    center/cover no-repeat;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -55,6 +53,7 @@ const CloseBtn = styled.button`
   border: 0;
   font-size: 1.3rem;
   border: 1px solid #eee;
+  border-radius: 50%;
   padding: 8px 12px;
   cursor: pointer;
 `;

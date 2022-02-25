@@ -16,7 +16,7 @@ export default function MachMain({ battleUser }) {
   return (
     <MachMainPage>
       <ComparePage user={user} battleUser={battleUser} />
-      <ConditionPage battleUser={battleUser} />
+      <ConditionPage battleUser={battleUser} user={user} />
     </MachMainPage>
   );
 }
