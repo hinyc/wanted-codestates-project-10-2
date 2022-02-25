@@ -160,12 +160,14 @@ const Modal = styled.div`
   width: 300px;
   transform: translate(-50%, -50%);
   z-index: 20;
+  text-align: center;
   img {
     width: 300px;
     height: 50vh;
     object-fit: contain;
   }
   p {
+    width: 100%;
     margin: 0 auto;
     padding: 10px 0;
     border-top-left-radius: 5px;

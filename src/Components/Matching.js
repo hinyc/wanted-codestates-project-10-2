@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalculator } from '@fortawesome/free-solid-svg-icons';
+import Match from './Maching/Match';
 
 const Matching = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
       <MatchingBox>
@@ -13,11 +16,17 @@ const Matching = () => {
           </Text>
         </LeftBox>
         <RightBox>
-          <MatchingButton>
+          <MatchingButton onClick={() => setIsOpen(true)}>
             <FontAwesomeIcon icon={faCalculator} className="icon" />
             매칭하기
           </MatchingButton>
         </RightBox>
+        {isOpen && (
+          <>
+            <Match />
+            <ModalBackground onClick={() => setIsOpen(false)} />
+          </>
+        )}
       </MatchingBox>
     </>
   );
@@ -123,3 +132,27 @@ const MatchingButton = styled.button`
 `;
 
 export default Matching;
+
+const MachingPage = styled.div`
+  position: fixed;
+  top: 50px;
+  right: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #1f1f36;
+  z-index: 9;
+  width: 100%;
+  max-width: 800px;
+  min-height: 320px;
+`;
+
+const ModalBackground = styled.div`
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 8;
+`;
