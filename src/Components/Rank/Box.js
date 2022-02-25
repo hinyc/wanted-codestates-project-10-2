@@ -21,7 +21,7 @@ const RankerBox = () => {
         <div className="ocean">
           <div className="wave"></div>
         </div>
-        <div style={{ width: '100%', margin: '0 auto' }}>
+        <div className="info-wrap">
           <RankingInfo setOnclick={setOnclick} />
           <Buttons isSelected={isSelected} setIsSelected={setIsSelected} />
         </div>
@@ -53,6 +53,11 @@ const BaseWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   overflow: hidden;
+
+  .info-wrap {
+    width: 1000px;
+    margin: 0 auto;
+  }
 `;
 const Rankers = styled.div`
   display: flex;
