@@ -32,14 +32,14 @@ const Buttons = ({ isSelected, setIsSelected }) => {
   );
 };
 const Wrapper = styled.div`
-  width: 100%;
+  width: 1000px;
   background-color: #005fcc;
 `;
 const Button = styled.div`
   position: relative;
   height: 45px;
   margin-bottom: 45px;
-  margin-left: 5rem;
+  /* margin-left: 5rem; */
 `;
 const TeamSelectBtn = styled.div`
   position: relative;
