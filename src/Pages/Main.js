@@ -11,16 +11,35 @@ const username = 'BBEESSTT';
 export default function Main() {
   return (
     <>
-      <UserinfoBox username={username} />
-      <Matching />
-      <OverallRecord />
+      <InfoComponent />
+      <Container>
+        <UserinfoBox username={username} />
+        <Matching />
+        <OverallRecord />
 
-      <Box>
-        <RankChangeChart />
-      </Box>
+        <Box>
+          <RankChangeChart />
+        </Box>
+      </Container>
     </>
   );
 }
+
+function InfoComponent() {
+  return (
+    <Info>
+      <i class="fa-solid fa-circle-info"></i> 카트라이더 매치데이터는 최근 1년차
+      데이터만 확인할 수 있습니다
+    </Info>
+  );
+}
+
+const Container = styled.div`
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const Box = styled.div`
   width: 100%;
@@ -30,4 +49,9 @@ const Box = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+`;
+
+const Info = styled.div`
+  color: #1f334a;
+  font-size: 12px;
 `;
