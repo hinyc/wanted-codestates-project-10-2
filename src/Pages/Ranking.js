@@ -8,6 +8,8 @@ import { headers } from '../Util/util';
 export default function Ranking() {
   // 개인전 matchType : 7b9f0fd5377c38514dbb78ebe63ac6c3b81009d5a31dd569d1cff8f005aa881a (스피드개인전)
   // 팀전 matchType : effd66758144a29868663aa50e85d3d95c5bc0147d7fdb9802691c2087f3416e (스피드 팀전)
+
+  // 모든 유저 정보를 얻는게 불가능해서 임의로 아래 유저들에 대해서만 랭킹 산정함
   const [userList, setUserList] = useState([
     '134525754',
     '1091146179',
@@ -29,16 +31,6 @@ export default function Ranking() {
     '1930010498',
   ]);
   const date = new Date();
-  // const startDate = new Date(
-  //   date.getFullYear(),
-  //   date.getMonth(),
-  //   date.getDate() - date.getDay(),
-  // );
-  // const endDate = new Date(
-  //   date.getFullYear(),
-  //   date.getMonth(),
-  //   date.getDate() + (6 - date.getDay()),
-  // );
   const startDate = new Date(
     +new Date(date.setHours(0, 0, 0, 0)) + 3240 * 10000,
   )
@@ -66,13 +58,12 @@ export default function Ranking() {
       .all(
         userList.map((user) =>
           axios.get(
-            `/kart/v1.0/users/${user}/matches?start_date=2022-02-20&end_date=2022-02-26&limit=200&match_types=${matchType}`,
+            `/kart/v1.0/users/${user}/matches?start_date=${startDate}&end_date=${endDate}&limit=200&match_types=${matchType}`,
             headers,
           ),
         ),
       )
       .then((allRes) => {
-        console.log(allRes);
         setResDataList(allRes.map((res) => res.data));
       });
   }, [matchType]);
@@ -108,11 +99,12 @@ export default function Ranking() {
   }, [resDataList]);
 
   useEffect(() => {
-    console.log(matchDataList);
     // 평균랭크 순 정렬하기
-    const filtered = matchDataList.sort((data1, data2) => {
-      return data1.avgRank - data2.avgRank;
-    });
+    const filtered = matchDataList
+      .filter((data) => data.winP !== 0 && data.retireP !== 0)
+      .sort((data1, data2) => {
+        return data1.avgRank - data2.avgRank;
+      });
     const top3 = [];
     top3.push({
       ...filtered[0],
@@ -142,7 +134,6 @@ export default function Ranking() {
 
   return loading ? (
     <div>
-
       <RankerBox
         top3MatchList={top3MatchList}
         matchType={matchType}
