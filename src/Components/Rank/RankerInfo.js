@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import DoughnutChart from './DoughnutChart';
 
 const RankerInfo = ({ info: { imgSrc, winP, retireP, id, number } }) => {
-  console.log(winP, retireP);
+
   return (
     <RankerWrapper>
       <MedalImage src={imgSrc} />
@@ -25,7 +25,9 @@ const RankerInfo = ({ info: { imgSrc, winP, retireP, id, number } }) => {
           <p style={{ fontWeight: 'bold' }}>리타이어율</p>
           <ProgressCircle>
             <DoughnutChart
-              percent={retireP * 100}
+
+
+              percent={retireP * 100 || 0.01}
               color="#F62459"
               delay={1000}
             />

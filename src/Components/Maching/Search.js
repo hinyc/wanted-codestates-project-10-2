@@ -88,11 +88,9 @@ const Search = styled.div`
   height: 40px;
   line-height: 40px;
   background-color: #4c4f62;
-  padding: 5px 5px 5px 0;
   p {
-    padding: 5px;
-    flex: 1;
     height: 100%;
+    flex: 1;
     background-color: #373d50;
     color: #4c4f62;
     text-align: center;
@@ -134,7 +132,7 @@ const User = styled.ul`
   display: flex;
   align-items: center;
   position: absolute;
-  top: 30px;
+  top: 100%;
   padding-left: 0;
   color: #6d6c78;
   list-style: none;
@@ -162,6 +160,7 @@ const Modal = styled.div`
   width: 300px;
   transform: translate(-50%, -50%);
   z-index: 20;
+  text-align: center;
   p {
     margin: 0 auto;
     border-top-left-radius: 5px;
@@ -188,6 +187,9 @@ const Modal = styled.div`
       color: #ffffff;
       font-size: 12px;
       cursor: pointer;
+    }
+    button:hover {
+      background-color: #03d387;
     }
   }
 `;

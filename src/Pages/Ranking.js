@@ -142,11 +142,13 @@ export default function Ranking() {
 
   return loading ? (
     <div>
+
       <RankerBox
         top3MatchList={top3MatchList}
         matchType={matchType}
         setMatchType={setMatchType}
       />
+
       <RankList matchList={MatchList} />
     </div>
   ) : (
