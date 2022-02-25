@@ -1,15 +1,23 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from 'react';
+
 import axios from 'axios';
+import React, { useState } from 'react';
+
+
 import styled from 'styled-components';
 import { API } from '../Util/util';
+import ReportModal from './Common/ReportModal';
+import ShareModal from './Common/ShareModal';
 import TeamsSelector from './Common/TeamsSelector';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 export default function UserinfoBox({ username }) {
-  console.log(username);
-  console.log(API);
+  const [showReport, setShowReport] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(false);
+
+  // console.log(username);
+  // console.log(API);
   const userImg =
     'https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/character/42c729e64e31aea803e4881432f7b95129ce97535c29e4f9a72919a9f267b418.png';
   const userClass = 'https://tmi.nexon.com/img/icon_l3.png';
@@ -25,10 +33,12 @@ export default function UserinfoBox({ username }) {
 
   return (
     <>
+
       <OneYear>
         <FontAwesomeIcon icon={faInfoCircle} className="icon" />
         카트라이더 매치데이터는 최근 1년치 데이터만 확인할 수 있습니다
       </OneYear>
+
       <Container>
         <div className="subContainer">
           <div className="left">
@@ -48,12 +58,17 @@ export default function UserinfoBox({ username }) {
                 <Button>
                   <i className="fa-solid fa-arrow-rotate-right"></i> 전적갱신
                 </Button>
-                <Button>
+
+                <Button onClick={() => setShowReport(true)}>
                   <i className="fa-solid fa-bell"></i> 신고하기
                 </Button>
-                <Button>
+                <Button onClick={() => setShowShareModal(true)}>
                   <i className="fa-solid fa-share-nodes"></i> 공유하기
                 </Button>
+                {showShareModal && (
+                  <ShareModal setShowShareModal={setShowShareModal} />
+                )}
+
               </Buttons>
             </div>
           </div>
@@ -67,6 +82,9 @@ export default function UserinfoBox({ username }) {
           </div>
         </div>
       </Container>
+
+      {showReport && <ReportModal setShowReport={setShowReport} />}
+
     </>
   );
 }
@@ -128,6 +146,7 @@ const Container = styled.div`
 `;
 
 const Buttons = styled.div`
+  position: relative;
   margin-left: 10px;
 `;
 
