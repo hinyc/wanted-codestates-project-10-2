@@ -5,7 +5,6 @@ export default function Ranking() {
   return (
     <div>
       <RankerBox />
-
       <RankList />
     </div>
   );
