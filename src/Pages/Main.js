@@ -35,7 +35,6 @@ export default function Main({ nickname, matchInfo }) {
         <Tabs />
         <SummaryWapper>
           <Summary />
-          <RecordListContainer />
         </SummaryWapper>
       </Container>
     </>
