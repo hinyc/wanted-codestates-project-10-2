@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { KartSummary } from './KartSummary';
 import { TrackSummary } from './TrackSummary';
@@ -6,22 +6,35 @@ import axios from 'axios';
 import { headers } from '../Util/util';
 
 function Summary() {
-  const nickname = 'vV피렐라Vv';
+  const nickname = 'dagdakdagdak';
+  const [accesssId, setAccessId] = useState('id');
 
   const fetchUserAccessId = async () => {
     await axios
       .get(`/kart/v1.0/users/nickname/${encodeURI(nickname)}`, headers)
       .then((response) => response.data)
       .then((data) => {
-        // data를 이용한 처리
-        console.log(data);
+        setAccessId(data.accessId);
       })
-      .catch((err) => console.error(err)); // 에러 처리
+      .catch((err) => console.error(err));
+  };
+
+  const UserData = async () => {
+    const response = await axios.get(
+      `/kart/v1.0/users/${encodeURI(
+        accesssId,
+      )}/matches?start_date=&end_date= &offset=0&limit=10&match_types=`,
+      headers,
+    );
+    const userDatas = await response.json();
+    console.log(userDatas);
   };
 
   const clickHandler = () => {
     const accessId = fetchUserAccessId();
+    const userDatas = UserData();
     console.log('accessId', accessId);
+    console.log('userDatas', userDatas);
   };
 
   const [clickedTab, setClickedTab] = useState('트랙');

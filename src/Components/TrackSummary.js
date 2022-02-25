@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import TrackRankChart from '../Components/Dashboard/TrackRankChart';
+import { SummaryTR } from './SummaryTR';
 
 export const TrackSummary = () => {
   return (
@@ -35,28 +36,15 @@ export const TrackSummary = () => {
             </tr>
           </thead>
           <tbody>
-            <Trtrtr />
+            {/* {datas.map((data, i) => (
+              <SummaryTR key={i} data={data} />
+            ))} */}
           </tbody>
         </table>
       </TableContainer>
     </RecordBox>
   );
 };
-
-function Trtrtr({}) {
-  return (
-    <tr>
-      <td>
-        <input type="radio"></input>
-      </td>
-      <td>dfdfdfddf</td>
-      <td>dfdf</td>
-      <td>df</td>
-      <td>df</td>
-      <td>dfd</td>
-    </tr>
-  );
-}
 
 const RecordBox = styled.div`
   position: relative;
