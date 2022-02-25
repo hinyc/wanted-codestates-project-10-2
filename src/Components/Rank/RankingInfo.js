@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const RankingInfo = ({ setOnclick }) => {
+const RankingInfo = ({ setOnclick, handleMouseEnter }) => {
   return (
     <PageDescription>
       <Wrapper>
@@ -16,7 +16,9 @@ const RankingInfo = ({ setOnclick }) => {
             28일 24:00:00
           </Update>
         </Info>
-        <GuideBtn onClick={setOnclick}>랭킹가이드</GuideBtn>
+        <GuideBtn onClick={setOnclick} onMouseEnter={handleMouseEnter}>
+          랭킹가이드
+        </GuideBtn>
       </Wrapper>
     </PageDescription>
   );
