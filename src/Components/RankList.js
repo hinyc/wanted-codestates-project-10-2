@@ -17,6 +17,7 @@ const RankList = (props) => {
 
 const RankListContainer = styled.div`
   background-color: #faf9f9;
+  min-width: 1000px;
 `;
 
 export default RankList;
