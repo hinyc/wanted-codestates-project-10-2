@@ -7,7 +7,7 @@ export default function Search() {
   return (
     <Container name="search">
       <Input ref={inputValue} placeholder="닉네임 검색" />
-      <Button>
+      <Button className="buttonBox">
         <i className="fa-solid fa-magnifying-glass"></i>
       </Button>
     </Container>
@@ -24,6 +24,11 @@ const Container = styled.div`
     font-size: 15px;
     top: 9px;
     right: 25px;
+  }
+
+  :hover > .buttonBox > .fa-magnifying-glass {
+    color: #fff;
+    transition: 0.3s ease;
   }
 `;
 
@@ -50,6 +55,7 @@ const Input = styled.input`
       color: #fff;
     }
   }
+
   :focus {
     border-bottom: 1px solid #fff;
     ::placeholder {

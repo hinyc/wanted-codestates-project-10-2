@@ -29,6 +29,20 @@ const CheeringMSG = () => {
 const MSGBox = styled.div`
   height: 75%;
   overflow: scroll;
+  position: relative;
+  left: 0;
+  animation: fadeInMSG 1.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  @keyframes fadeInMSG {
+    from {
+      opacity: 0;
+      left: 60px;
+    }
+    to {
+      opacity: 1;
+      left: 0;
+    }
+  }
 `;
 
 const MSG = styled.div`
@@ -66,7 +80,7 @@ const Right = styled.div`
 
 const Message = styled.div`
   width: 95%;
-  height: 85%;
+  height: 70%;
   display: inline-block;
   position: relative;
   padding: 10px;
@@ -82,7 +96,7 @@ const Message = styled.div`
     top: 50%;
     transform: translateY(-50%);
     bottom: auto;
-    left: -9.15px;
+    left: -9px;
     border-style: solid;
     border-width: 9px 9px 9px 0;
     border-color: transparent #c3ced5;
