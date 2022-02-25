@@ -11,8 +11,6 @@ const Buttons = () => {
         </TeamSelectBtn>
         <SpeedSelectBtn>
           <Total>통합</Total>
-          <Fast>매빠</Fast>
-          <Infinity>무부</Infinity>
         </SpeedSelectBtn>
       </Button>
     </Wrapper>
@@ -101,15 +99,8 @@ const SCommonStyle = styled.span`
 `;
 
 const Total = styled(SCommonStyle)`
-  border-width: 0.7px 0 0.7px 0.7px;
-  border-radius: 5px 0 0 5px;
-`;
-const Fast = styled(SCommonStyle)`
-  border-width: 0.7px 0 0.7px 0.7px;
-  border-radius: 0 0 0 0;
-`;
-const Infinity = styled(SCommonStyle)`
   border-width: 0.7px 0.7px 0.7px 0.7px;
-  border-radius: 0 5px 5px 0;
+  border-radius: 5px;
 `;
+
 export default Buttons;

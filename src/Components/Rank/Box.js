@@ -4,6 +4,7 @@ import RankerInfo from './RankerInfo';
 import RankingInfo from './RankingInfo';
 import Buttons from './Buttons';
 import Modal from './Modal';
+import { OneInfos, TeamInfos } from '../../MockUP/rankData';
 import './box.css';
 const RankerBox = () => {
   const [modalState, setModalState] = useState(false);
@@ -23,9 +24,9 @@ const RankerBox = () => {
           <Buttons />
         </div>
         <Rankers>
-          <RankerInfo imgSrc="https://tmi.nexon.com/img/assets/icon_goldmedal.png" />
-          <RankerInfo imgSrc="https://tmi.nexon.com/img/assets/icon_silvermedal.png" />
-          <RankerInfo imgSrc="https://tmi.nexon.com/img/assets/icon_bronzemedal.png" />
+          {OneInfos.map((info) => {
+            return <RankerInfo info={info} />;
+          })}
         </Rankers>
       </BaseWrapper>
     </>

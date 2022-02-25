@@ -2,27 +2,26 @@ import React from 'react';
 import styled from 'styled-components';
 import DoughnutChart from './DoughnutChart';
 
-const RankerInfo = ({ imgSrc }) => {
+const RankerInfo = ({ info: { imgSrc, winP, retireP, id, number } }) => {
   return (
     <RankerWrapper>
       <MedalImage src={imgSrc} />
       <NameWrapper>
-        <NickName>베이비컬렉션</NickName>
-        <RankNumber>순위 1위</RankNumber>
-        <Point>누적포인트 9,110PT</Point>
+        <NickName>{id}</NickName>
+        <RankNumber>순위 {number}위</RankNumber>
       </NameWrapper>
       <PercentWrapper>
         <WinBox>
           <p style={{ fontWeight: 'bold' }}>승률</p>
           <ProgressCircle>
-            <DoughnutChart percent="80" color="#0077ff" delay="1000" />
+            <DoughnutChart percent={winP} color="#0077ff" delay={1000} />
             <DoughnutChart />
           </ProgressCircle>
         </WinBox>
         <RetireBox>
           <p style={{ fontWeight: 'bold' }}>리타이어율</p>
           <ProgressCircle>
-            <DoughnutChart percent="40" color="#F62459" delay={1000} />
+            <DoughnutChart percent={retireP} color="#F62459" delay={1000} />
             <DoughnutChart />
           </ProgressCircle>
         </RetireBox>
@@ -61,7 +60,6 @@ const NickName = styled.div`
 const RankNumber = styled.div`
   font-size: 14px;
 `;
-const Point = styled.div``;
 
 const PercentWrapper = styled.div`
   display: -webkit-box;
