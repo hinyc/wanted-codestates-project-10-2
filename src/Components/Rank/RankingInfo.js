@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const RankingInfo = () => {
+const RankingInfo = ({ setOnclick }) => {
   return (
     <PageDescription>
       <Wrapper>
@@ -17,7 +16,7 @@ const RankingInfo = () => {
             28일 24:00:00
           </Update>
         </Info>
-        <GuideBtn>랭킹가이드</GuideBtn>
+        <GuideBtn onClick={setOnclick}>랭킹가이드</GuideBtn>
       </Wrapper>
     </PageDescription>
   );
@@ -28,16 +27,16 @@ const PageDescription = styled.div`
   background-color: #005fcc;
   display: flex;
   justify-content: center;
+  background-color: #005fcc;
 `;
 const Wrapper = styled.div`
   display: flex;
-  min-width: 800px;
   align-items: center;
+  min-width: 1000px;
+  background-color: #005fcc;
 `;
 const Info = styled.div`
   padding-right: 600px;
-  margin-bottom: 20px;
-  min-width: 500px;
 `;
 const PageName = styled.p`
   font-size: 22px;
@@ -58,14 +57,17 @@ const Period = styled.p`
   font-size: 12px;
   font-weight: 400;
   padding-left: 10px;
+  margin-bottom: 8px;
   color: #fff;
 `;
 const Update = styled(Period)``;
 
 const GuideBtn = styled.button`
+  width: 100px;
   top: 110px;
   right: 10px;
   border: 1px solid #fff;
+  padding: 8px;
   color: #fff;
   background-color: #005fcc;
   font-family: Noto Sans KR;

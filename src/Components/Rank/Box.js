@@ -1,28 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import RankerInfo from './RankerInfo';
 import RankingInfo from './RankingInfo';
 import Buttons from './Buttons';
+import Modal from './Modal';
+import { OneInfos, TeamInfos } from '../../MockUP/rankData';
 import './box.css';
-const LankerBox = () => {
+const RankerBox = () => {
+  const [modalState, setModalState] = useState(false);
+  const setOnclick = () => setModalState(true);
+  const defaultState = [true, false];
+  const [isSelected, setIsSelected] = useState(defaultState);
   return (
-    <BaseWrapper>
-      <div className="ocean">
-        <div className="wave"></div>
-      </div>
-      <div className="ocean">
-        <div className="wave"></div>
-      </div>
-      <div style={{ width: '1200px', margin: '0 auto' }}>
-        <RankingInfo />
-        <Buttons />
-      </div>
-      <Rankers>
-        <RankerInfo imgSrc="https://tmi.nexon.com/img/assets/icon_goldmedal.png" />
-        <RankerInfo imgSrc="https://tmi.nexon.com/img/assets/icon_silvermedal.png" />
-        <RankerInfo imgSrc="https://tmi.nexon.com/img/assets/icon_bronzemedal.png" />
-      </Rankers>
-    </BaseWrapper>
+    <>
+      {modalState && <Modal setModalState={setModalState} />}
+      <BaseWrapper>
+        <div className="ocean">
+          <div className="wave"></div>
+        </div>
+        <div className="ocean">
+          <div className="wave"></div>
+        </div>
+        <div style={{ width: '100%', margin: '0 auto' }}>
+          <RankingInfo setOnclick={setOnclick} />
+          <Buttons isSelected={isSelected} setIsSelected={setIsSelected} />
+        </div>
+        <Rankers>
+          {isSelected[0]
+            ? OneInfos.map((info) => {
+                return <RankerInfo info={info} />;
+              })
+            : TeamInfos.map((info) => {
+                return <RankerInfo info={info} />;
+              })}
+        </Rankers>
+      </BaseWrapper>
+    </>
   );
 };
 
@@ -34,14 +47,15 @@ const BaseWrapper = styled.div`
   position: relative;
   padding-top: 55px;
   width: 100%;
-  min-width: 800px;
+  min-width: 1000px;
   margin: 0 auto;
   background-color: #005fcc;
   justify-content: center;
   flex-direction: column;
+  overflow: hidden;
 `;
 const Rankers = styled.div`
   display: flex;
   justify-content: center;
 `;
-export default LankerBox;
+export default RankerBox;
