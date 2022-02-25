@@ -9,12 +9,13 @@ export default function ReportModal({ setShowReport }) {
       const setTime = setTimeout(() => {
         setShowReport(false);
         clearTimeout(setTime);
-      }, 200);
+      }, 100);
     };
   }, [setShowReport, softRemover]);
 
   const removeModalHandler = () => {
     setSoftRemover(true);
+    document.body.style.overflow = 'unset';
   };
 
   return (
@@ -62,8 +63,10 @@ const Background = styled.div`
   opacity: 0.6;
   position: fixed;
   top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
+  z-index: 8;
 `;
 const Container = styled.div`
   background-color: #fff;
@@ -72,6 +75,7 @@ const Container = styled.div`
   width: 348px;
   height: 290px;
   padding: 30px 24px 24px 24px;
+  z-index: 9;
   position: fixed;
   top: 50%;
   left: 50%;

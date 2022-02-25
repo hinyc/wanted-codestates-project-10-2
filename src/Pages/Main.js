@@ -12,11 +12,18 @@ import OverallRecord from '../Components/Dashboard/OverallRecord';
 import RankChangeChartBox from '../Components/Dashboard/RankChangeChart/RankChangeChartBox';
 import CheeringMSGBox from '../Components/Dashboard/CheeringMSG/CheeringMSGBox';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+
 const username = 'BBEESSTT';
 export default function Main() {
   return (
     <>
       {/* <InfoComponent /> */}
+      <OneYear>
+        <FontAwesomeIcon icon={faInfoCircle} className="icon" />
+        카트라이더 매치데이터는 최근 1년치 데이터만 확인할 수 있습니다
+      </OneYear>
       <Container>
         <UserinfoBox username={username} />
         <Matching />
@@ -49,8 +56,23 @@ const SummaryWapper = styled.div`
   display: flex;
 `;
 
+const OneYear = styled.div`
+  margin: 15px auto;
+  padding-left: 15px;
+  font-size: 12px;
+  letter-spacing: -1px;
+  width: 1000px;
+  display: flex;
+  justify-content: center;
+
+  .icon {
+    font-size: 11.5px;
+    color: #1f334a;
+    margin-right: 7px;
+  }
+`;
+
 const Container = styled.div`
-  padding-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
