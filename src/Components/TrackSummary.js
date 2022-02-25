@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import TrackRankChart from '../Components/Dashboard/TrackRankChart';
 
 export const TrackSummary = () => {
   return (
@@ -12,12 +13,14 @@ export const TrackSummary = () => {
         <span>37.14</span>
         &nbsp;%
       </AvarageHigh>
+      <MapName>
+        신화 신들의 세계
+        <span>&nbsp;&nbsp;기록분포</span>
+      </MapName>
       <GraphBox>
-        <MapName>
-          신화 신들의 세계
-          <span>&nbsp;&nbsp;기록분포</span>
-        </MapName>
-        <Graph></Graph>
+        <GrapeContainer>
+          <TrackRankChart />
+        </GrapeContainer>
       </GraphBox>
       <TableContainer>
         <table>
@@ -95,31 +98,27 @@ const AvarageHigh = styled.p`
   }
 `;
 
-const GraphBox = styled.div`
-  border-top: 1px solid #ccc;
-  margin: 0 25px 0 25px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  height: 259px;
-`;
-
 const MapName = styled.p`
-  margin: 0;
+  margin: 0 20px;
+  padding-top: 12px;
   font-size: 14px;
+  border-top: 1px solid #ccc;
   & span {
     color: #a1a1a1;
   }
 `;
 
-const Graph = styled.div`
-  width: 378px;
-  height: 188px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border: 1px solid silver;
-  @media screen and (max-width: 1630px) {
-    max-width: 278px;
-  }
+const GraphBox = styled.div`
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+const GrapeContainer = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 const TableContainer = styled.div`

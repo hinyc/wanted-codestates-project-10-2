@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { Chart as ChartJS, ArcElement } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
 import CountUp from 'react-countup';
 import { Doughnut } from 'react-chartjs-2';
 
-ChartJS.register(ArcElement);
+ChartJS.register(ArcElement, Tooltip);
 
 const DoughnutChart = ({ percent = 0, color = 'rgba(0,0,0,0.1)', delay }) => {
   const [hide, setHide] = useState(true);
@@ -29,6 +29,9 @@ const DoughnutChart = ({ percent = 0, color = 'rgba(0,0,0,0.1)', delay }) => {
         labels: [],
         datasets: [
           {
+            legend: {
+              display: false,
+            },
             data: [6, 13],
             backgroundColor: [color],
             borderColor: ['rgba(0,0,0,0)'],
@@ -42,12 +45,22 @@ const DoughnutChart = ({ percent = 0, color = 'rgba(0,0,0,0.1)', delay }) => {
         maintainAspectRatio: true,
         animation: {},
         cutout: '80%',
+        plugins: {
+          tooltip: {
+            enabled: false,
+          },
+        },
       }
     : {
         responsive: true,
         maintainAspectRatio: true,
         animation: false,
         cutout: '80%',
+        plugins: {
+          tooltip: {
+            enabled: false,
+          },
+        },
       };
   return (
     <>

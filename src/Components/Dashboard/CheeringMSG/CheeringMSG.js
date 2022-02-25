@@ -83,6 +83,7 @@ const Message = styled.div`
   height: 70%;
   display: inline-block;
   position: relative;
+  z-index: 7;
   padding: 10px;
   border: 1px solid #c3ced5;
   color: #333;

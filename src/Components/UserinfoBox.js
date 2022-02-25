@@ -3,18 +3,19 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 
-
 import styled from 'styled-components';
 import { API } from '../Util/util';
 import ReportModal from './Common/ReportModal';
 import ShareModal from './Common/ShareModal';
 import TeamsSelector from './Common/TeamsSelector';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 export default function UserinfoBox({ username }) {
   const [showReport, setShowReport] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
+  const ModalOpenHandler = () => {
+    document.body.style.overflow = 'hidden';
+    setShowReport(true);
+  };
 
   // console.log(username);
   // console.log(API);
@@ -33,12 +34,6 @@ export default function UserinfoBox({ username }) {
 
   return (
     <>
-
-      <OneYear>
-        <FontAwesomeIcon icon={faInfoCircle} className="icon" />
-        카트라이더 매치데이터는 최근 1년치 데이터만 확인할 수 있습니다
-      </OneYear>
-
       <Container>
         <div className="subContainer">
           <div className="left">
@@ -59,7 +54,7 @@ export default function UserinfoBox({ username }) {
                   <i className="fa-solid fa-arrow-rotate-right"></i> 전적갱신
                 </Button>
 
-                <Button onClick={() => setShowReport(true)}>
+                <Button onClick={ModalOpenHandler}>
                   <i className="fa-solid fa-bell"></i> 신고하기
                 </Button>
                 <Button onClick={() => setShowShareModal(true)}>
@@ -68,7 +63,6 @@ export default function UserinfoBox({ username }) {
                 {showShareModal && (
                   <ShareModal setShowShareModal={setShowShareModal} />
                 )}
-
               </Buttons>
             </div>
           </div>
@@ -84,23 +78,9 @@ export default function UserinfoBox({ username }) {
       </Container>
 
       {showReport && <ReportModal setShowReport={setShowReport} />}
-
     </>
   );
 }
-
-const OneYear = styled.div`
-  margin: 15px 0;
-  padding-left: 15px;
-  font-size: 12px;
-  letter-spacing: -1px;
-
-  .icon {
-    font-size: 11.5px;
-    color: #1f334a;
-    margin-right: 7px;
-  }
-`;
 
 const Container = styled.div`
   color: #1f334a;

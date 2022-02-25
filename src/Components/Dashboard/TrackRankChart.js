@@ -9,6 +9,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  Filler,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
@@ -20,25 +21,25 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
+  Filler,
 );
 
-const RankChangeChart = () => {
+const TrackRankChart = () => {
   const rankArry = [];
   const labelsArry = [];
-  for (let i = 50; i >= 1; i--) {
-    labelsArry.push(`이전 ${i}경기`);
+  for (let i = 30; i >= 1; i--) {
+    labelsArry.push(i);
     rankArry.push(Math.floor(Math.random() * 8 + 1));
   }
 
   const data = {
-    // 이전 1경기부터 50경기 x축
     labels: [...labelsArry],
     datasets: [
       {
         label: '순위',
-        fill: false,
+        fill: true,
+        backgroundColor: 'rgba(0, 119, 255, 0.1)',
         lineTension: 0.4,
-        backgroundColor: 'rgba(0, 119, 255, 1)',
         borderWidth: 1,
         borderColor: 'rgba(0, 119, 255, 1)',
         borderCapStyle: 'butt',
@@ -46,15 +47,15 @@ const RankChangeChart = () => {
         borderDashOffset: 0.0,
         borderJoinStyle: 'miter',
         pointBorderColor: 'rgba(0, 119, 255, 1)',
-        pointBackgroundColor: 'rgba(0, 119, 255, 1)',
-        pointBorderWidth: 2,
-        pointHoverRadius: 3,
+        pointBackgroundColor: 'rgba(0, 119, 255, 0.1)',
+        pointBorderWidth: 1,
+        pointHoverRadius: 2,
         pointHoverBackgroundColor: 'rgba(0, 119, 255, 1)',
         pointHoverBorderColor: 'rgba(0, 119, 255, 1)',
         pointHoverBorderWidth: 2,
         pointRadius: 2,
         pointHitRadius: 1,
-        // 이전 1경기부터 50경기 순위 데이터
+
         data: [...rankArry],
       },
     ],
@@ -71,10 +72,11 @@ const RankChangeChart = () => {
     },
     scales: {
       x: {
-        display: false,
+        display: true,
+        reverse: true,
       },
       yAxis: {
-        reverse: true,
+        reverse: false,
       },
     },
   };
@@ -89,10 +91,10 @@ const RankChangeChart = () => {
 };
 
 const ChartContainer = styled.div`
-  width: 80vw;
-  height: 100%;
+  width: auto;
+  height: auto;
   position: relative;
   z-index: 7;
 `;
 
-export default RankChangeChart;
+export default TrackRankChart;
