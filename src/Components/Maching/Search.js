@@ -1,10 +1,23 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 export default function SearchPage({ userInfos, setBattleUser }) {
   const [isOpen, setIsOpen] = useState(false);
   const [msg, setMsg] = useState('');
+  const [randomUser, setRandomUser] = useState([]);
   let inputRef = useRef('');
+
+  useEffect(() => {
+    const shuffle = [];
+    const arr = [...userInfos];
+
+    while (arr.length > 0) {
+      shuffle.push(arr.splice(Math.floor(Math.random() * arr.length), 1)[0]);
+    }
+    const result = [...randomUser, shuffle[0], shuffle[1], shuffle[3]];
+    setRandomUser(result);
+    console.log(result);
+  }, []);
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -19,6 +32,7 @@ export default function SearchPage({ userInfos, setBattleUser }) {
     const battle = userInfos.filter(
       (item) => item.name === inputRef.current.value,
     );
+
     if (battle[0]) {
       setBattleUser(battle[0]);
     } else {
@@ -55,15 +69,11 @@ export default function SearchPage({ userInfos, setBattleUser }) {
         </svg>
       </form>
       <User className="player_name" onClick={onClickHandler}>
-        <li>
-          <span>배찌</span>
-        </li>
-        <li>
-          <span>크롱</span>
-        </li>
-        <li>
-          <span>마리모</span>
-        </li>
+        {randomUser.map((item) => (
+          <li key={item.id}>
+            <span>{item.name}</span>
+          </li>
+        ))}
       </User>
       {isOpen && (
         <>

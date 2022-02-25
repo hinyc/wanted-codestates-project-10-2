@@ -1,30 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import styled from 'styled-components';
 import RankerInfo from './RankerInfo';
 import RankingInfo from './RankingInfo';
 import Buttons from './Buttons';
-import Modal from './Modal';
-import { OneInfos, TeamInfos } from '../../MockUP/rankData';
 import './box.css';
-
 import RankListTitle from './RankListTitle';
+
+const LazyModal = lazy(() => import('./Modal'));
+
 const RankerBox = ({ top3MatchList, matchType, setMatchType }) => {
   const [modalState, setModalState] = useState(false);
   const setOnclick = () => setModalState(true);
   const defaultState = [true, false];
   const [isSelected, setIsSelected] = useState(defaultState);
+  const handleMouseEnter = () => {
+    const component = import('./Modal');
+  };
   return (
     <>
-      {modalState && <Modal setModalState={setModalState} />}
+      <Suspense fallback={null}>
+        {modalState ? <LazyModal setModalState={setModalState} /> : null}
+      </Suspense>
       <BaseWrapper>
         <div className="ocean">
           <div className="wave"></div>
-        </div>
-        <div className="ocean">
           <div className="wave"></div>
         </div>
         <div className="info-wrap">
-          <RankingInfo setOnclick={setOnclick} />
+          <RankingInfo
+            setOnclick={setOnclick}
+            handleMouseEnter={handleMouseEnter}
+          />
           <Buttons
             isSelected={isSelected}
             setIsSelected={setIsSelected}
@@ -32,8 +38,11 @@ const RankerBox = ({ top3MatchList, matchType, setMatchType }) => {
           />
         </div>
         <Rankers>
-          {top3MatchList.map((info, idx) => {
-            return <RankerInfo key={idx} info={info} />;
+
+
+          {top3MatchList.map((info, id) => {
+            return <RankerInfo info={info} key={id} />;
+
           })}
         </Rankers>
         <RankListTitle />
@@ -41,7 +50,6 @@ const RankerBox = ({ top3MatchList, matchType, setMatchType }) => {
     </>
   );
 };
-
 const BaseWrapper = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;

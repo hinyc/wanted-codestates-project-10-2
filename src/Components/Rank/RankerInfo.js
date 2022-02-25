@@ -3,6 +3,14 @@ import styled from 'styled-components';
 import DoughnutChart from './DoughnutChart';
 
 const RankerInfo = ({ info: { imgSrc, winP, retireP, id, number } }) => {
+  if (
+    imgSrc === undefined ||
+    winP === undefined ||
+    retireP === undefined ||
+    id === undefined ||
+    number === undefined
+  )
+    return <div></div>;
 
   return (
     <RankerWrapper>
@@ -17,7 +25,11 @@ const RankerInfo = ({ info: { imgSrc, winP, retireP, id, number } }) => {
         <WinBox>
           <p style={{ fontWeight: 'bold' }}>승률</p>
           <ProgressCircle>
-            <DoughnutChart percent={winP * 100} color="#0077ff" delay={1000} />
+            <DoughnutChart
+              percent={winP * 100 || 0.01}
+              color="#0077ff"
+              delay={1000}
+            />
             <DoughnutChart />
           </ProgressCircle>
         </WinBox>
@@ -25,8 +37,6 @@ const RankerInfo = ({ info: { imgSrc, winP, retireP, id, number } }) => {
           <p style={{ fontWeight: 'bold' }}>리타이어율</p>
           <ProgressCircle>
             <DoughnutChart
-
-
               percent={retireP * 100 || 0.01}
               color="#F62459"
               delay={1000}
