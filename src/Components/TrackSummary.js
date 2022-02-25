@@ -33,12 +33,17 @@ export const TrackSummary = () => {
           </thead>
           <tbody>
             <tr>
-              <th>ㅇ</th>
-              <th>ㅇㅇㅇㅇㅇㅇㅇㅇ</th>
-              <th>1</th>
-              <th>01</th>
-              <th>15971</th>
-              <th>50</th>
+              <td>ㅇ</td>
+              <td>
+                <a href="##">
+                  <img href="" alt="" />
+                  &nbsp;빌리지 고가의 질주
+                </a>
+              </td>
+              <td>1</td>
+              <td>01</td>
+              <td>15971</td>
+              <td>50</td>
             </tr>
           </tbody>
         </table>
@@ -80,7 +85,7 @@ const TrackOrKartRecord = styled.h5`
 
 const AvarageHigh = styled.p`
   position: absolute;
-  top: 15px;
+  top: 27px;
   right: 28px;
   font-size: 12px;
   font-weight: 500;
@@ -133,6 +138,7 @@ const TableContainer = styled.div`
       & tr {
         display: table-row;
         background-color: #fbfbfb;
+        line-height: 35px;
         & th {
           background-color: #fbfbfb;
         }
@@ -140,14 +146,24 @@ const TableContainer = styled.div`
     }
     & tbody {
       & tr {
-        height: 46px;
+        line-height: 35px;
         display: table-row;
-        & th {
+        & td {
+          line-height: 45px;
+          text-align: center;
         }
       }
     }
   }
   @media screen and (max-width: 1630px) {
     max-width: 312px;
+    & table {
+      width: 312px;
+      & thead {
+        width: 312px;
+        line-height: 35px;
+        font-size: 13px;
+      }
+    }
   }
 `;

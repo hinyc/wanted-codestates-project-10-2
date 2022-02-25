@@ -17,9 +17,9 @@ export default function Main() {
       <OverallRecord />
 
       <Box>
-        <Summary />
         <RankChangeChart />
       </Box>
+      <Summary />
     </>
   );
 }

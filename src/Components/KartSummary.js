@@ -29,29 +29,29 @@ export const KartSummary = () => {
               </ul>
             </KartImgNextMap>
           </KartAndMap>
-          <TableContainer>
-            <table>
-              <thead>
-                <tr>
-                  <th>선택</th>
-                  <th>카트</th>
-                  <th>횟수</th>
-                  <th>승률</th>
-                  <th>리타율</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>ㅇ</th>
-                  <th>ㅇㅇㅇㅇㅇㅇㅇㅇ</th>
-                  <th>1</th>
-                  <th>01</th>
-                  <th>15971</th>
-                </tr>
-              </tbody>
-            </table>
-          </TableContainer>
         </KartBox>
+        <TableContainer>
+          <table>
+            <thead>
+              <tr>
+                <th>선택</th>
+                <th>카트</th>
+                <th>횟수</th>
+                <th>승률</th>
+                <th>리타율</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ㅇ</td>
+                <td>ㅇㅇㅇㅇㅇㅇㅇㅇ</td>
+                <td>1</td>
+                <td>01</td>
+                <td>15971</td>
+              </tr>
+            </tbody>
+          </table>
+        </TableContainer>
       </KartRecordBox>
     </>
   );
@@ -92,7 +92,6 @@ const KartBox = styled.div`
   margin: 0 25px 0 25px;
   padding-top: 15px;
   padding-bottom: 15px;
-  height: 259px;
 `;
 
 const KartGrade = styled.span`
@@ -121,12 +120,18 @@ const KartAndMap = styled.div`
   height: 155px;
   padding: 10px 0px;
   display: flex;
+  @media screen and (max-width: 1630px) {
+    max-width: 278px;
+  }
 `;
 
 const KartImg = styled.div`
   width: 152px;
   height: 135px;
   border: 1px solid black;
+  @media screen and (max-width: 1630px) {
+    max-width: 378px;
+  }
 `;
 
 const KartImgNextMap = styled.div`
@@ -140,6 +145,9 @@ const KartImgNextMap = styled.div`
     padding: 0;
     margin: 0;
     list-style: none;
+  }
+  @media screen and (max-width: 1630px) {
+    max-width: 162.5px;
   }
 `;
 
@@ -182,14 +190,23 @@ const TableContainer = styled.div`
     }
     & tbody {
       & tr {
-        height: 46px;
+        line-height: 35px;
         display: table-row;
-        & th {
+        & td {
+          line-height: 45px;
+          text-align: center;
         }
       }
     }
   }
   @media screen and (max-width: 1630px) {
     max-width: 312px;
+    & table {
+    width: 312px;
+    & thead {
+      width: 312px;
+      line-height: 35px;
+      font-size: 13px;
+    }
   }
 `;
