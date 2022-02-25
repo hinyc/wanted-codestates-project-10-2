@@ -9,7 +9,6 @@ const Matching = () => {
 
   return (
     <>
-      {/* prprpr */}
       <MatchingBox>
         <LeftBox>
           <Text>
