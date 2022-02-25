@@ -18,8 +18,6 @@ const RankerBox = ({ top3MatchList, matchType, setMatchType }) => {
       <BaseWrapper>
         <div className="ocean">
           <div className="wave"></div>
-        </div>
-        <div className="ocean">
           <div className="wave"></div>
         </div>
         <div className="info-wrap">
