@@ -19,6 +19,14 @@ export default function Ranking() {
     '1140973743',
     '957139120',
     '638197971',
+    '1577319674',
+    '1141480757',
+    '1611133164',
+    '184698949',
+    '252318885',
+    '117902742',
+    '1963422428',
+    '1930010498',
   ]);
   const date = new Date();
   // const startDate = new Date(
@@ -43,6 +51,9 @@ export default function Ranking() {
     .toISOString()
     .replace('T', ' ')
     .replace(/\..*/, '');
+  const [matchType, setMatchType] = useState(
+    '7b9f0fd5377c38514dbb78ebe63ac6c3b81009d5a31dd569d1cff8f005aa881a', // 개인전
+  );
   const [resDataList, setResDataList] = useState([]);
   const [matchDataList, setMatchDataList] = useState([]);
   const [top3MatchList, setTop3MatchList] = useState([]);
@@ -55,15 +66,16 @@ export default function Ranking() {
       .all(
         userList.map((user) =>
           axios.get(
-            `/kart/v1.0/users/${user}/matches?start_date=2022-02-20&end_date=2022-02-26&limit=200&match_types=7b9f0fd5377c38514dbb78ebe63ac6c3b81009d5a31dd569d1cff8f005aa881a`,
+            `/kart/v1.0/users/${user}/matches?start_date=2022-02-20&end_date=2022-02-26&limit=200&match_types=${matchType}`,
             headers,
           ),
         ),
       )
       .then((allRes) => {
+        console.log(allRes);
         setResDataList(allRes.map((res) => res.data));
       });
-  }, []);
+  }, [matchType]);
 
   useEffect(() => {
     const arr = [];
@@ -82,6 +94,7 @@ export default function Ranking() {
           data.matches[0].matches.reduce((acc, cur) => {
             return acc + Number(cur.player.matchRetired);
           }, 0) / matchCount;
+        console.log(matchCount, avgRank, winP, retireP);
         arr.push({
           id: data.nickName,
           matchCount: matchCount,
@@ -100,7 +113,6 @@ export default function Ranking() {
     const filtered = matchDataList.sort((data1, data2) => {
       return data1.avgRank - data2.avgRank;
     });
-    console.log(filtered);
     const top3 = [];
     top3.push({
       ...filtered[0],
@@ -130,7 +142,12 @@ export default function Ranking() {
 
   return loading ? (
     <div>
-      <RankerBox top3MatchList={top3MatchList} />
+
+      <RankerBox
+        top3MatchList={top3MatchList}
+        matchType={matchType}
+        setMatchType={setMatchType}
+      />
 
       <RankList matchList={MatchList} />
     </div>
