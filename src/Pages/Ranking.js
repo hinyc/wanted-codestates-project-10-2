@@ -130,10 +130,9 @@ export default function Ranking() {
 
   return loading ? (
     <div>
-      <RankerBox />
+      <RankerBox top3MatchList={top3MatchList} />
 
       <RankList matchList={MatchList} />
-
     </div>
   ) : (
     <div>로딩중</div>
