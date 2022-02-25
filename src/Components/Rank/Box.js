@@ -38,8 +38,11 @@ const RankerBox = ({ top3MatchList, matchType, setMatchType }) => {
           />
         </div>
         <Rankers>
+
+
           {top3MatchList.map((info, id) => {
             return <RankerInfo info={info} key={id} />;
+
           })}
         </Rankers>
         <RankListTitle />

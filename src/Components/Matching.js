@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalculator } from '@fortawesome/free-solid-svg-icons';
 import Match from './Maching/Match';
 
-const Matching = () => {
+const Matching = ({ nickname }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -12,7 +12,7 @@ const Matching = () => {
       <MatchingBox>
         <LeftBox>
           <Text>
-            1대1 매칭 시뮬레이터 - 'bbeesstt' 와 가상 대결을 펼쳐보세요.
+            {`1대1 매칭 시뮬레이터 - '${nickname}' 와 가상 대결을 펼쳐보세요.`}
           </Text>
         </LeftBox>
         <RightBox>

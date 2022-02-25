@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Search from './Common/Search';
 
-export default function NavigationBar() {
+export default function NavigationBar({ setNickname, setMatchInfo }) {
   const navigate = useNavigate();
   const cartLogoUrl = 'https://tmi.nexon.com/img/assets/logo_kart.png';
   const tmiLogoUrl = 'https://tmi.nexon.com/img/assets/tmi_logo_default_b.svg';
@@ -49,7 +49,7 @@ export default function NavigationBar() {
             </Menu>
           ))}
         </Menus>
-        <Search />
+        <Search setNickname={setNickname} setMatchInfo={setMatchInfo} />
       </Nav>
       <FullWidth />
     </Container>
