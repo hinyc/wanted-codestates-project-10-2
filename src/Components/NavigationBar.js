@@ -57,6 +57,10 @@ export default function NavigationBar() {
 }
 
 const Container = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   .flex {
     display: flex;
     align-items: center;
@@ -68,12 +72,11 @@ const Container = styled.div`
 
 const Top = styled.div`
   width: 100%;
-  min-width: 1000px;
+  width: 1000px;
   height: 48px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #005fcc;
 
   .cart-logo {
     padding: 0 8px;
@@ -88,7 +91,7 @@ const Top = styled.div`
 `;
 const Nav = styled.div`
   width: 100%;
-  min-width: 1000px;
+  width: 1000px;
   height: 55px;
   display: flex;
   justify-content: space-between;
