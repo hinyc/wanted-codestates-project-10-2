@@ -9,6 +9,8 @@ import './box.css';
 const RankerBox = () => {
   const [modalState, setModalState] = useState(false);
   const setOnclick = () => setModalState(true);
+  const defaultState = [true, false];
+  const [isSelected, setIsSelected] = useState(defaultState);
   return (
     <>
       {modalState && <Modal setModalState={setModalState} />}
@@ -21,12 +23,16 @@ const RankerBox = () => {
         </div>
         <div style={{ width: '1200px', margin: '0 auto' }}>
           <RankingInfo setOnclick={setOnclick} />
-          <Buttons />
+          <Buttons isSelected={isSelected} setIsSelected={setIsSelected} />
         </div>
         <Rankers>
-          {OneInfos.map((info) => {
-            return <RankerInfo info={info} />;
-          })}
+          {isSelected[0]
+            ? OneInfos.map((info) => {
+                return <RankerInfo info={info} />;
+              })
+            : TeamInfos.map((info) => {
+                return <RankerInfo info={info} />;
+              })}
         </Rankers>
       </BaseWrapper>
     </>

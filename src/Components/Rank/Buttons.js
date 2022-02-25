@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const Buttons = () => {
+const Buttons = ({ isSelected, setIsSelected }) => {
+  const initState = (idx) => {
+    let newArr = [false, false];
+    newArr[idx] = true;
+    setIsSelected(newArr);
+  };
+  const setOnClickO = () => {
+    initState(0);
+  };
+  const setOnClickT = () => {
+    initState(1);
+  };
   return (
     <Wrapper>
       <Button>
         <TeamSelectBtn>
-          <Team>개인전</Team>
-          <One>팀전</One>
+          <Team isSelected={isSelected[0]} onClick={setOnClickO}>
+            개인전
+          </Team>
+          <One isSelected={isSelected[1]} onClick={setOnClickT}>
+            팀전
+          </One>
         </TeamSelectBtn>
         <SpeedSelectBtn>
           <Total>통합</Total>
@@ -62,6 +77,8 @@ const TCommonStyle = styled.span`
   &:active {
     background-color: #ffffff;
   }
+  color: ${({ isSelected }) => (isSelected ? '#005fcc' : '#fff')};
+  background-color: ${({ isSelected }) => (isSelected ? '#fff' : '#005fcc')};
 `;
 const Team = styled(TCommonStyle)`
   border-width: 0.7px 0 0.7px 0.7px;
@@ -101,6 +118,8 @@ const SCommonStyle = styled.span`
 const Total = styled(SCommonStyle)`
   border-width: 0.7px 0.7px 0.7px 0.7px;
   border-radius: 5px;
+  color: #005fcc;
+  background-color: #fff;
 `;
 
 export default Buttons;

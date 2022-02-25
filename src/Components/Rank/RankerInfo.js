@@ -8,7 +8,9 @@ const RankerInfo = ({ info: { imgSrc, winP, retireP, id, number } }) => {
       <MedalImage src={imgSrc} />
       <NameWrapper>
         <NickName>{id}</NickName>
-        <RankNumber>순위 {number}위</RankNumber>
+        <RankNumber>
+          순위 <span style={{ fontWeight: 'bold' }}>{number}위</span>
+        </RankNumber>
       </NameWrapper>
       <PercentWrapper>
         <WinBox>
