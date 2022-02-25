@@ -1,33 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const Buttons = () => {
+const Buttons = ({ isSelected, setIsSelected }) => {
+  const initState = (idx) => {
+    let newArr = [false, false];
+    newArr[idx] = true;
+    setIsSelected(newArr);
+  };
+  const setOnClickO = () => {
+    initState(0);
+  };
+  const setOnClickT = () => {
+    initState(1);
+  };
   return (
     <Wrapper>
       <Button>
         <TeamSelectBtn>
-          <Team>개인전</Team>
-          <One>팀전</One>
+          <Team isSelected={isSelected[0]} onClick={setOnClickO}>
+            개인전
+          </Team>
+          <One isSelected={isSelected[1]} onClick={setOnClickT}>
+            팀전
+          </One>
         </TeamSelectBtn>
         <SpeedSelectBtn>
           <Total>통합</Total>
-          <Fast>매빠</Fast>
-          <Infinity>무부</Infinity>
         </SpeedSelectBtn>
       </Button>
     </Wrapper>
   );
 };
 const Wrapper = styled.div`
-  width: 100%;
+  width: 1000px;
   background-color: #005fcc;
 `;
 const Button = styled.div`
   position: relative;
   height: 45px;
   margin-bottom: 45px;
-  min-width: 800px;
-  margin-left: 1rem;
+  /* margin-left: 5rem; */
 `;
 const TeamSelectBtn = styled.div`
   position: relative;
@@ -64,6 +76,8 @@ const TCommonStyle = styled.span`
   &:active {
     background-color: #ffffff;
   }
+  color: ${({ isSelected }) => (isSelected ? '#005fcc' : '#fff')};
+  background-color: ${({ isSelected }) => (isSelected ? '#fff' : '#005fcc')};
 `;
 const Team = styled(TCommonStyle)`
   border-width: 0.7px 0 0.7px 0.7px;
@@ -101,15 +115,10 @@ const SCommonStyle = styled.span`
 `;
 
 const Total = styled(SCommonStyle)`
-  border-width: 0.7px 0 0.7px 0.7px;
-  border-radius: 5px 0 0 5px;
-`;
-const Fast = styled(SCommonStyle)`
-  border-width: 0.7px 0 0.7px 0.7px;
-  border-radius: 0 0 0 0;
-`;
-const Infinity = styled(SCommonStyle)`
   border-width: 0.7px 0.7px 0.7px 0.7px;
-  border-radius: 0 5px 5px 0;
+  border-radius: 5px;
+  color: #005fcc;
+  background-color: #fff;
 `;
+
 export default Buttons;

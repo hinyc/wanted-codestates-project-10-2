@@ -1,7 +1,9 @@
-import './App.css';
+import React from 'react';
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Main from './Pages/Main';
 import Ranking from './Pages/Ranking';
+
 import GlobalStyles from './GlobalStyles';
 import NavigationBar from './Components/NavigationBar';
 

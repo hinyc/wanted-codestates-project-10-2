@@ -39,7 +39,7 @@ const RankChangeChart = () => {
         fill: false,
         lineTension: 0.4,
         backgroundColor: 'rgba(0, 119, 255, 1)',
-        borderWidth: 1.2,
+        borderWidth: 1,
         borderColor: 'rgba(0, 119, 255, 1)',
         borderCapStyle: 'butt',
         borderDash: [],
@@ -47,13 +47,13 @@ const RankChangeChart = () => {
         borderJoinStyle: 'miter',
         pointBorderColor: 'rgba(0, 119, 255, 1)',
         pointBackgroundColor: 'rgba(0, 119, 255, 1)',
-        pointBorderWidth: 3,
+        pointBorderWidth: 2,
         pointHoverRadius: 3,
-        pointHoverBackgroundColor: 'rgba(0, 119, 255, 1))',
+        pointHoverBackgroundColor: 'rgba(0, 119, 255, 1)',
         pointHoverBorderColor: 'rgba(0, 119, 255, 1)',
-        pointHoverBorderWidth: 1,
-        pointRadius: 1,
-        pointHitRadius: 10,
+        pointHoverBorderWidth: 2,
+        pointRadius: 2,
+        pointHitRadius: 1,
         // 이전 1경기부터 50경기 순위 데이터
         data: [...rankArry],
       },
@@ -90,7 +90,7 @@ const RankChangeChart = () => {
 
 const ChartContainer = styled.div`
   width: 80vw;
-  height: 40vh;
+  height: 100%;
   position: relative;
 `;
 

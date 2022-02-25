@@ -6,7 +6,6 @@ import { faCalculator } from '@fortawesome/free-solid-svg-icons';
 const Matching = () => {
   return (
     <>
-      {/* 푸시푸시 */}
       <MatchingBox>
         <LeftBox>
           <Text>
@@ -25,39 +24,63 @@ const Matching = () => {
 };
 
 const MatchingBox = styled.div`
-  width: 100%;
+  width: 1000px;
   height: 45px;
+  margin: 20px 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: powderblue;
-  background: linear-gradient(-45deg,#ee7752,#f62459,#07f,#23d5ab);
+  background: linear-gradient(-45deg, #ee7752, #f62459, #07f, #23d5ab);
   background-size: 1800% 1800%;
 
   -webkit-animation: rainbow 20s ease infinite;
   -z-animation: rainbow 20s ease infinite;
   -o-animation: rainbow 20s ease infinite;
-    animation: rainbow 20s ease infinite;}
+  animation: rainbow 20s ease infinite;
 
   @-webkit-keyframes rainbow {
-      0%{background-position:0% 50%}
-      50%{background-position:100% 50%}
-      100%{background-position:0% 50%}
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
   @-moz-keyframes rainbow {
-      0%{background-position:0% 50%}
-      50%{background-position:100% 50%}
-      100%{background-position:0% 50%}
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
   @-o-keyframes rainbow {
-      0%{background-position:0% 50%}
-      50%{background-position:100% 50%}
-      100%{background-position:0% 50%}
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
-  @keyframes rainbow { 
-      0%{background-position:0% 50%}
-      50%{background-position:100% 50%}
-      100%{background-position:0% 50%}
+  @keyframes rainbow {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 `;
 

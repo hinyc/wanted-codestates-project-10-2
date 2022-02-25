@@ -45,7 +45,6 @@ export default function OverallRecord() {
 }
 
 const Container = styled.div`
-  margin: 50px;
   border: 1px solid #f2f2f2;
   background-color: #fff;
   width: 326.66px;
@@ -54,8 +53,8 @@ const Container = styled.div`
 
 const Title = styled.div`
   border-bottom: 1px solid #ccc;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: bold;
   height: 41px;
   margin: 0 12px;
   padding: 0 8px;
@@ -69,7 +68,7 @@ const Title = styled.div`
   }
 
   .summary {
-    font-size: 12px;
+    font-size: 0.7rem;
   }
 `;
 

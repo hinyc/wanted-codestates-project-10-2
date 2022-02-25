@@ -1,33 +1,71 @@
 import React from 'react';
 
-import styled from 'styled-components';
+import Summary from '../Components/Summary';
 
-import OverallRecord from '../Components/OverallRecord';
+import styled from 'styled-components';
 import UserinfoBox from '../Components/UserinfoBox';
-import RankChangeChart from '../Components/RankChangeChart';
 import Matching from '../Components/Matching';
+
+import RecordListContainer from '../Components/RecordListContainer';
+
+import OverallRecord from '../Components/Dashboard/OverallRecord';
+import RankChangeChartBox from '../Components/Dashboard/RankChangeChart/RankChangeChartBox';
+import CheeringMSGBox from '../Components/Dashboard/CheeringMSG/CheeringMSGBox';
 
 const username = 'BBEESSTT';
 export default function Main() {
   return (
     <>
-      <UserinfoBox username={username} />
-      <Matching />
-      <OverallRecord />
+      {/* <InfoComponent /> */}
+      <Container>
+        <UserinfoBox username={username} />
+        <Matching />
 
-      <Box>
-        <RankChangeChart />
-      </Box>
+        <Dashboard>
+          <OverallRecord />
+          <RankChangeChartBox />
+          <CheeringMSGBox />
+        </Dashboard>
+        <SummaryWapper>
+          <Summary />
+          <RecordListContainer />
+        </SummaryWapper>
+      </Container>
     </>
   );
 }
 
-const Box = styled.div`
+function InfoComponent() {
+  return (
+    <Info>
+      <i className="fa-solid fa-circle-info"></i> 카트라이더 매치데이터는 최근
+      1년차 데이터만 확인할 수 있습니다
+    </Info>
+  );
+}
+
+const SummaryWapper = styled.div`
+  width: 1000px;
+  display: flex;
+`;
+
+const Container = styled.div`
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Dashboard = styled.div`
   width: 100%;
-  height: 100vh;
+  height: auto;
   background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+`;
+
+const Info = styled.div`
+  color: #1f334a;
+  font-size: 12px;
 `;
