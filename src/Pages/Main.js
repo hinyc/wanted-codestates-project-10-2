@@ -16,21 +16,20 @@ const username = 'BBEESSTT';
 export default function Main() {
   return (
     <>
-
-      <InfoComponent />
+      {/* <InfoComponent /> */}
       <Container>
         <UserinfoBox username={username} />
         <Matching />
 
         <Dashboard>
-
-        <OverallRecord />
-        <RankChangeChartBox />
-        <CheeringMSGBox />
-      </Dashboard>
-  <Summary />
-      <RecordListContainer />
-
+          <OverallRecord />
+          <RankChangeChartBox />
+          <CheeringMSGBox />
+        </Dashboard>
+        <SummaryWapper>
+          <Summary />
+          <RecordListContainer />
+        </SummaryWapper>
       </Container>
     </>
   );
@@ -44,6 +43,11 @@ function InfoComponent() {
     </Info>
   );
 }
+
+const SummaryWapper = styled.div`
+  width: 1000px;
+  display: flex;
+`;
 
 const Container = styled.div`
   padding-top: 50px;
