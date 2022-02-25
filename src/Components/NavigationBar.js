@@ -58,6 +58,7 @@ export default function NavigationBar() {
 
 const Container = styled.div`
   width: 100%;
+  min-width: 1000px;
   display: flex;
   flex-direction: column;
   align-items: center;

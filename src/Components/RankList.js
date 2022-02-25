@@ -16,6 +16,9 @@ const RankList = (props) => {
 const RankListContainer = styled.div`
   background-color: #faf9f9;
 
+  min-width: 1000px;
+
+
   .list-header-container{
     width: 100%;
     display: flex;
@@ -49,6 +52,7 @@ const RankListContainer = styled.div`
       width: 20%;
     }
   }
+
 `;
 
 export default RankList;

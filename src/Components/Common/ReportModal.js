@@ -57,6 +57,7 @@ const offAnimation = keyframes`
 const Wrapper = styled.div`
   animation: ${(props) => (props.softRemover ? offAnimation : onAnimation)} 0.2s
     linear;
+  z-index: 9;
 `;
 const Background = styled.div`
   background-color: #1f334a;
