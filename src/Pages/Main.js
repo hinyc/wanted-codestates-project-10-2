@@ -25,7 +25,7 @@ export default function Main({ nickname, matchInfo }) {
       </OneYear>
       <Container>
         <UserinfoBox nickname={nickname} matchInfo={matchInfo} />
-        <Matching />
+        <Matching nickname={nickname} />
 
         <Dashboard>
           <OverallRecord />
@@ -57,12 +57,12 @@ const SummaryWapper = styled.div`
 
 const OneYear = styled.div`
   margin: 15px auto;
-  padding-left: 15px;
+  padding-left: 5px;
   font-size: 12px;
   letter-spacing: -1px;
   width: 1000px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 
   .icon {
     font-size: 11.5px;
