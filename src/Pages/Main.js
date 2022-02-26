@@ -34,7 +34,7 @@ export default function Main({ nickname, matchInfo }) {
         </Dashboard>
         <Tabs />
         <SummaryWapper>
-          <Summary />
+          <Summary nickname={nickname} matchInfo={matchInfo} />
           <RecordListContainer />
         </SummaryWapper>
       </Container>

@@ -2,40 +2,41 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { KartSummary } from './KartSummary';
 import { TrackSummary } from './TrackSummary';
-import axios from 'axios';
-import { headers } from '../Util/util';
+// import axios from 'axios';
+// import { headers } from '../Util/util';
 
-function Summary() {
-  const nickname = 'dagdakdagdak';
+function Summary({ matchInfo, nickname }) {
   const [accesssId, setAccessId] = useState('id');
 
-  const fetchUserAccessId = async () => {
-    await axios
-      .get(`/kart/v1.0/users/nickname/${encodeURI(nickname)}`, headers)
-      .then((response) => response.data)
-      .then((data) => {
-        setAccessId(data.accessId);
-      })
-      .catch((err) => console.error(err));
-  };
+  // console.log(matchInfo);
+  // const fetchUserAccessId = async () => {
+  //   await axios
+  //     .get(`/kart/v1.0/users/nickname/${encodeURI(nickname)}`, headers)
+  //     .then((response) => response.data)
+  //     .then((data) => {
+  //       setAccessId(data.accessId);
+  //     })
+  //     .catch((err) => console.error(err));
+  // };
 
-  const UserData = async () => {
-    const response = await axios.get(
-      `/kart/v1.0/users/${encodeURI(
-        accesssId,
-      )}/matches?start_date=&end_date= &offset=0&limit=10&match_types=`,
-      headers,
-    );
-    const userDatas = await response.json();
-    console.log(userDatas);
-  };
+  // console.log(matchInfo.data);
+  // const UserData = async () => {
+  //   const response = await axios.get(
+  //     `/kart/v1.0/users/${encodeURI(
+  //       accesssId,
+  //     )}/matches?start_date=&end_date= &offset=0&limit=10&match_types=`,
+  //     headers,
+  //   );
+  //   const userDatas = await response.json();
+  //   console.log(userDatas);
+  // };
 
-  const clickHandler = () => {
-    const accessId = fetchUserAccessId();
-    const userDatas = UserData();
-    console.log('accessId', accessId);
-    console.log('userDatas', userDatas);
-  };
+  // const clickHandler = () => {
+  //   const accessId = fetchUserAccessId();
+  //   const userDatas = UserData();
+  //   console.log('accessId', accessId);
+  //   console.log('userDatas', userDatas);
+  // };
 
   const [clickedTab, setClickedTab] = useState('트랙');
   const changeColor = (e) => {
@@ -63,8 +64,12 @@ function Summary() {
           </div>
         </li>
       </TrackKartNav>
-      {clickedTab === '트랙' ? <TrackSummary /> : <KartSummary />}
-      <button onClick={clickHandler}>아아아아아아</button>
+      {clickedTab === '트랙' ? (
+        <TrackSummary matchInfo={matchInfo} nickname={nickname} />
+      ) : (
+        <KartSummary matchInfo={matchInfo} nickname={nickname} />
+      )}
+      {/* <button onClick={clickHandler}>아아아아아아</button> */}
     </WholeTrack>
   );
 }

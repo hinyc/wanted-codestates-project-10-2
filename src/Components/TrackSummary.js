@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import TrackRankChart from '../Components/Dashboard/TrackRankChart';
 import { SummaryTR } from './SummaryTR';
 
-export const TrackSummary = () => {
+export const TrackSummary = ({ matchInfo, nickname }) => {
+  console.log(matchInfo);
   return (
     <RecordBox>
       <TrackOrKartRecord>
