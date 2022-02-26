@@ -115,7 +115,7 @@ const Menu = styled.div`
 const Desc = styled.div`
   width: 100%;
   max-width: 650px;
-  height: 100vh;
+  height: auto;
   background: powderblue;
   position: absolute;
   top: 70px;
@@ -123,7 +123,6 @@ const Desc = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 7rem;
 `;
 
 export default Tabs;
