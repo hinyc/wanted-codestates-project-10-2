@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { KartSummary } from './KartSummary';
 import { TrackSummary } from './TrackSummary';
 
-function Summary() {
+function Summary({ matchInfo }) {
   const [clickedTab, setClickedTab] = useState('트랙');
   const changeColor = (e) => {
     let tabName = e.target.innerText;
@@ -30,7 +30,11 @@ function Summary() {
           </div>
         </li>
       </TrackKartNav>
-      {clickedTab === '트랙' ? <TrackSummary /> : <KartSummary />}
+      {clickedTab === '트랙' ? (
+        <TrackSummary />
+      ) : (
+        <KartSummary matchInfo={matchInfo} />
+      )}
     </WholeTrack>
   );
 }
@@ -65,7 +69,7 @@ const TrackKartNav = styled.ul`
     }
     div.active {
       background-color: #ffffff;
-      border-bottom: 3px solid dodgerblue;
+      border-bottom: 3px solid #07f;
     }
     @media screen and (max-width: 1630px) {
       max-width: 330px;
