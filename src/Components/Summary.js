@@ -9,6 +9,7 @@ function Summary({ matchInfo, nickname }) {
   const [accesssId, setAccessId] = useState('id');
 
   console.log(matchInfo);
+  console.log(headers);
   // const fetchUserAccessId = async () => {
   //   await axios
   //     .get(`/kart/v1.0/users/nickname/${encodeURI(nickname)}`, headers)
