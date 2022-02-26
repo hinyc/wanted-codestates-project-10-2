@@ -13,6 +13,9 @@ export const matchTimeTimeExtractor = (matchTime) => {
   if (secondDot[0].length === 1) {
     secondDot[0] = '0'.concat(secondDot[0]);
   }
+  if (secondDot[1].length === 1) {
+    secondDot[1] = secondDot[1].concat('0');
+  }
   secondDot.unshift(min);
   return secondDot.join("'");
 };
