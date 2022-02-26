@@ -40,7 +40,7 @@ export default function Search({ setNickname, setMatchInfo }) {
         const start_date = makeDate(1);
         const end_date = makeDate();
         const offset = 0;
-        const limit = 100;
+        const limit = 200;
         const match_types =
           '7b9f0fd5377c38514dbb78ebe63ac6c3b81009d5a31dd569d1cff8f005aa881a';
         //개인전으로 데이터 확보
@@ -75,6 +75,7 @@ export default function Search({ setNickname, setMatchInfo }) {
       })
       .catch((err) => console.error(err)); // 에러 처리
   };
+
   return (
     <Container name="search">
       <Input ref={nickname} placeholder="닉네임 검색" />

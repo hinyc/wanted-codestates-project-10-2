@@ -33,17 +33,17 @@ export default function Main({ nickname, matchInfo }) {
           <CheeringMSGBox />
         </Dashboard>
         <Tabs />
-        <SummaryWapper>
-          <Summary />
+        <SummaryWrapper>
+          <Summary matchInfo={matchInfo} />
           <RecordListContainer />
-        </SummaryWapper>
+        </SummaryWrapper>
       </Container>
     </>
   );
 }
 
-const SummaryWapper = styled.div`
-  width: 1000px;
+const SummaryWrapper = styled.div`
+  min-width: 1000px;
   display: flex;
 `;
 
@@ -65,6 +65,9 @@ const OneYear = styled.div`
 `;
 
 const Container = styled.div`
+  width: 100%;
+  min-width: 1000px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
