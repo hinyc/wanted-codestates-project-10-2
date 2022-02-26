@@ -11,8 +11,7 @@ function Summary({ matchInfo, nickname }) {
   useEffect(() => {
     axios
       .get(
-        `https://api.nexon.co.kr/kart/v1.0/users/nickname/${encodeURI(
-          nickname.current.value,
+        `https://api.nexon.co.kr/kart/v1.0/users/nickname/BBEESSTT
         )}`,
         headers,
       )
