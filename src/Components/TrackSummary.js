@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import TrackRankChart from '../Components/Dashboard/TrackRankChart';
+import { SummaryTR } from './SummaryTR';
 
-export const TrackSummary = () => {
+export const TrackSummary = ({ matchInfo, nickname }) => {
+  console.log(matchInfo);
   return (
     <RecordBox>
       <TrackOrKartRecord>
@@ -18,9 +20,9 @@ export const TrackSummary = () => {
         <span>&nbsp;&nbsp;기록분포</span>
       </MapName>
       <GraphBox>
-        <GrapeContainer>
+        <GraphContainer>
           <TrackRankChart />
-        </GrapeContainer>
+        </GraphContainer>
       </GraphBox>
       <TableContainer>
         <table>
@@ -35,19 +37,9 @@ export const TrackSummary = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>ㅇ</td>
-              <td>
-                <a href="##">
-                  <img href="" alt="" />
-                  &nbsp;빌리지 고가의 질주
-                </a>
-              </td>
-              <td>1</td>
-              <td>01</td>
-              <td>15971</td>
-              <td>50</td>
-            </tr>
+            {/* {datas.map((data, i) => (
+              <SummaryTR key={i} data={data} />
+            ))} */}
           </tbody>
         </table>
       </TableContainer>
@@ -57,14 +49,11 @@ export const TrackSummary = () => {
 
 const RecordBox = styled.div`
   position: relative;
-  width: 430px;
+  width: 330px;
   height: 542px;
   border: 1px solid #f2f2f2;
   margin-bottom: 10px;
   background-color: #fff;
-  @media screen and (max-width: 1630px) {
-    max-width: 330px;
-  }
 `;
 
 const TrackOrKartRecord = styled.h5`
@@ -116,21 +105,21 @@ const GraphBox = styled.div`
   flex-direction: column;
 `;
 
-const GrapeContainer = styled.div`
+const GraphContainer = styled.div`
   display: flex;
   justify-content: center;
 `;
 
 const TableContainer = styled.div`
-  width: 428px;
+  width: 328px;
   height: 236px;
   overflow: scroll;
   overflow-x: hidden;
   font-size: 13px;
   & table {
-    width: 412px;
+    width: 312px;
     & thead {
-      width: 412px;
+      width: 312px;
       line-height: 35px;
       font-size: 13px;
       background-color: #fbfbfb;
@@ -149,19 +138,8 @@ const TableContainer = styled.div`
         display: table-row;
         & td {
           line-height: 45px;
-          text-align: center;
+          font-size: 13px;
         }
-      }
-    }
-  }
-  @media screen and (max-width: 1630px) {
-    max-width: 312px;
-    & table {
-      width: 312px;
-      & thead {
-        width: 312px;
-        line-height: 35px;
-        font-size: 13px;
       }
     }
   }
