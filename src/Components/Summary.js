@@ -8,6 +8,17 @@ import { headers } from '../Util/util';
 function Summary({ matchInfo, nickname }) {
   const [accesssId, setAccessId] = useState('id');
 
+  useEffect(() => {
+    axios
+      .get(
+        `/kart/v1.0/users/nickname/${encodeURI(nickname.current.value)}`,
+        headers,
+      )
+      .then((response) => response.data)
+      .then((data) => {
+        console.log(data);
+      });
+  }, []);
   console.log(matchInfo);
   console.log(headers);
   // const fetchUserAccessId = async () => {
