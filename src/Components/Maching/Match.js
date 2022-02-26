@@ -6,6 +6,7 @@ import { userInfos } from './data';
 
 export default function Match() {
   const [battleUser, setBattleUser] = useState('');
+
   return (
     <>
       <MachingPage>
