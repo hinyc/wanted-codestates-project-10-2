@@ -38,6 +38,8 @@ function Summary({ matchInfo, nickname }) {
   //   console.log('userDatas', userDatas);
   // };
 
+
+function Summary({ matchInfo }) {
   const [clickedTab, setClickedTab] = useState('트랙');
   const changeColor = (e) => {
     let tabName = e.target.innerText;
@@ -65,11 +67,11 @@ function Summary({ matchInfo, nickname }) {
         </li>
       </TrackKartNav>
       {clickedTab === '트랙' ? (
-        <TrackSummary matchInfo={matchInfo} nickname={nickname} />
+
+        <TrackSummary />
       ) : (
-        <KartSummary matchInfo={matchInfo} nickname={nickname} />
+        <KartSummary matchInfo={matchInfo} />
       )}
-      {/* <button onClick={clickHandler}>아아아아아아</button> */}
     </WholeTrack>
   );
 }
@@ -101,7 +103,7 @@ const TrackKartNav = styled.ul`
     }
     div.active {
       background-color: #ffffff;
-      border-bottom: 3px solid dodgerblue;
+      border-bottom: 3px solid #07f;
     }
   }
 `;
