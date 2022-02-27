@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { ReactComponent as FooterLogo } from '../Asset/footerLogo.svg';
 
-const Footer = () => {
+const Footer = ({ seletPage }) => {
   return (
     <>
-      <FooterContainer>
+      <FooterContainer seletPage={seletPage}>
         <FooterInner>
           <FooterTop>
             <FooterLogo id="LogoSvg" />
@@ -30,6 +30,8 @@ const FooterContainer = styled.div`
   margin: 0 auto;
   padding-bottom: 30px;
   position: relative;
+  background-color: ${(props) =>
+    props.seletPage === 'main' ? '#fff' : '#faf9f9'};
 `;
 
 const FooterInner = styled.div`

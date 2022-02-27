@@ -10,6 +10,7 @@ import NavigationBar from './Components/NavigationBar';
 import Footer from './Components/Footer';
 
 function App() {
+  const [seletPage, setSeletPage] = useState('main');
   const [nickname, setNickname] = useState(
     window.localStorage.getItem('nickname')
       ? window.localStorage.getItem('nickname')
@@ -34,12 +35,21 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Main nickname={nickname} matchInfo={matchInfo} />}
+            element={
+              <Main
+                nickname={nickname}
+                matchInfo={matchInfo}
+                setSeletPage={setSeletPage}
+              />
+            }
           />
-          <Route path="/ranking" element={<Ranking />} />
+          <Route
+            path="/ranking"
+            element={<Ranking setSeletPage={setSeletPage} />}
+          />
         </Routes>
       </Wrapper>
-      <Footer />
+      <Footer seletPage={seletPage} />
     </Router>
   );
 }

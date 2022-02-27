@@ -5,41 +5,40 @@ import { TrackSummary } from './TrackSummary';
 // import axios from 'axios';
 // import { headers } from '../Util/util';
 
-function Summary({ matchInfo, nickname }) {
-  const [accesssId, setAccessId] = useState('id');
+// const Summary = ({ matchInfo, nickname }) => {
+//   const [accesssId, setAccessId] = useState('id');
 
-  // console.log(matchInfo);
-  // const fetchUserAccessId = async () => {
-  //   await axios
-  //     .get(`/kart/v1.0/users/nickname/${encodeURI(nickname)}`, headers)
-  //     .then((response) => response.data)
-  //     .then((data) => {
-  //       setAccessId(data.accessId);
-  //     })
-  //     .catch((err) => console.error(err));
-  // };
+// console.log(matchInfo);
+// const fetchUserAccessId = async () => {
+//   await axios
+//     .get(`/kart/v1.0/users/nickname/${encodeURI(nickname)}`, headers)
+//     .then((response) => response.data)
+//     .then((data) => {
+//       setAccessId(data.accessId);
+//     })
+//     .catch((err) => console.error(err));
+// };
 
-  // console.log(matchInfo.data);
-  // const UserData = async () => {
-  //   const response = await axios.get(
-  //     `/kart/v1.0/users/${encodeURI(
-  //       accesssId,
-  //     )}/matches?start_date=&end_date= &offset=0&limit=10&match_types=`,
-  //     headers,
-  //   );
-  //   const userDatas = await response.json();
-  //   console.log(userDatas);
-  // };
+// console.log(matchInfo.data);
+// const UserData = async () => {
+//   const response = await axios.get(
+//     `/kart/v1.0/users/${encodeURI(
+//       accesssId,
+//     )}/matches?start_date=&end_date= &offset=0&limit=10&match_types=`,
+//     headers,
+//   );
+//   const userDatas = await response.json();
+//   console.log(userDatas);
+// };
 
-  // const clickHandler = () => {
-  //   const accessId = fetchUserAccessId();
-  //   const userDatas = UserData();
-  //   console.log('accessId', accessId);
-  //   console.log('userDatas', userDatas);
-  // };
+// const clickHandler = () => {
+//   const accessId = fetchUserAccessId();
+//   const userDatas = UserData();
+//   console.log('accessId', accessId);
+//   console.log('userDatas', userDatas);
+// };
 
-
-function Summary({ matchInfo }) {
+const Summary = ({ matchInfo }) => {
   const [clickedTab, setClickedTab] = useState('트랙');
   const changeColor = (e) => {
     let tabName = e.target.innerText;
@@ -67,14 +66,13 @@ function Summary({ matchInfo }) {
         </li>
       </TrackKartNav>
       {clickedTab === '트랙' ? (
-
         <TrackSummary />
       ) : (
         <KartSummary matchInfo={matchInfo} />
       )}
     </WholeTrack>
   );
-}
+};
 
 const WholeTrack = styled.div`
   width: 330px;

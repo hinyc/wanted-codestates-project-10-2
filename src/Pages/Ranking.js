@@ -5,10 +5,12 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { headers } from '../Util/util';
 
-export default function Ranking() {
+export default function Ranking({ setSeletPage }) {
   // 개인전 matchType : 7b9f0fd5377c38514dbb78ebe63ac6c3b81009d5a31dd569d1cff8f005aa881a (스피드개인전)
   // 팀전 matchType : effd66758144a29868663aa50e85d3d95c5bc0147d7fdb9802691c2087f3416e (스피드 팀전)
-
+  useEffect(() => {
+    setSeletPage('ranking');
+  }, [setSeletPage]);
   // 모든 유저 정보를 얻는게 불가능해서 임의로 아래 유저들에 대해서만 랭킹 산정함
   const [userList, setUserList] = useState([
     '134525754',
@@ -64,7 +66,6 @@ export default function Ranking() {
         ),
       )
       .then((allRes) => {
-
         setResDataList(allRes.map((res) => res.data));
       });
   }, [matchType]);
