@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { KartSummary } from './KartSummary';
 import { TrackSummary } from './TrackSummary';
+import axios from 'axios';
+import { headers } from '../Util/util';
 
-function Summary() {
+
+function Summary({ matchInfo, nickname }) {
+  const [accesssId, setAccessId] = useState('id');
+
   const [clickedTab, setClickedTab] = useState('트랙');
   const changeColor = (e) => {
     let tabName = e.target.innerText;
@@ -30,21 +35,24 @@ function Summary() {
           </div>
         </li>
       </TrackKartNav>
-      {clickedTab === '트랙' ? <TrackSummary /> : <KartSummary />}
+      {clickedTab === '트랙' ? (
+
+        <TrackSummary matchInfo={matchInfo} />
+
+      ) : (
+        <KartSummary matchInfo={matchInfo} />
+      )}
     </WholeTrack>
   );
 }
 
 const WholeTrack = styled.div`
-  min-width: 430px;
+  width: 330px;
   height: 691px;
-  @media screen and (max-width: 1630px) {
-    max-width: 330px;
-  }
 `;
 
 const TrackKartNav = styled.ul`
-  width: 430px;
+  width: 330px;
   margin: 0;
   padding: 0;
   height: 40px;
@@ -65,10 +73,7 @@ const TrackKartNav = styled.ul`
     }
     div.active {
       background-color: #ffffff;
-      border-bottom: 3px solid dodgerblue;
-    }
-    @media screen and (max-width: 1630px) {
-      max-width: 330px;
+      border-bottom: 3px solid #07f;
     }
   }
 `;

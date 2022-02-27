@@ -1,11 +1,10 @@
 import axios from 'axios';
 import React, { useRef } from 'react';
 import styled from 'styled-components';
-import { headers } from '../../Util/util';
+import { headers, PROXY } from '../../Util/util';
 
 export default function Search({ setNickname, setMatchInfo }) {
   const nickname = useRef();
-  //날짜생성기
   const makeDate = (lastYear) => {
     const numTwoMaker = (num) => (num < 10 ? `${'0' + num}` : num);
     let newDate = new Date();
@@ -29,7 +28,9 @@ export default function Search({ setNickname, setMatchInfo }) {
 
     axios
       .get(
-        `/kart/v1.0/users/nickname/${encodeURI(nickname.current.value)}`,
+        `${PROXY}/kart/v1.0/users/nickname/${encodeURI(
+          nickname.current.value,
+        )}`,
         headers,
       )
       .then((response) => response.data)
@@ -40,14 +41,14 @@ export default function Search({ setNickname, setMatchInfo }) {
         const start_date = makeDate(1);
         const end_date = makeDate();
         const offset = 0;
-        const limit = 100;
+        const limit = 200;
         const match_types =
           '7b9f0fd5377c38514dbb78ebe63ac6c3b81009d5a31dd569d1cff8f005aa881a';
         //개인전으로 데이터 확보
 
         axios
           .get(
-            `/kart/v1.0/users/${encodeURI(
+            `${PROXY}/kart/v1.0/users/${encodeURI(
               access_id,
             )}/matches?start_date=${encodeURI(start_date)}&end_date=${encodeURI(
               end_date,
@@ -75,6 +76,7 @@ export default function Search({ setNickname, setMatchInfo }) {
       })
       .catch((err) => console.error(err)); // 에러 처리
   };
+
   return (
     <Container name="search">
       <Input ref={nickname} placeholder="닉네임 검색" />

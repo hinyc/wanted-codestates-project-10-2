@@ -13,9 +13,10 @@ export default function UserinfoBox({ nickname, matchInfo }) {
   const [showReport, setShowReport] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
 
-  console.log('matchInfo', matchInfo);
-
-  const character = matchInfo[0].matches[0].player.character;
+  // console.log(matchInfo[0].matches[0].player.character);
+  const character = matchInfo
+    ? matchInfo[0].matches[0].player.character
+    : '42c729e64e31aea803e4881432f7b95129ce97535c29e4f9a72919a9f267b418';
 
   const ModalOpenHandler = () => {
     document.body.style.overflow = 'hidden';
@@ -29,6 +30,7 @@ export default function UserinfoBox({ nickname, matchInfo }) {
 
   const pageView = 734;
 
+  console.log('test');
   // const URL = 'https://api.nexon.co.kr/kart/v1.0/users/nickname/';
   // const data = axios
   //   .get(`${URL}/${nickname}`, {

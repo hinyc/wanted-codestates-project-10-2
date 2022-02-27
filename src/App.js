@@ -14,7 +14,9 @@ function App() {
       : 'BBEESSTT',
   );
   const [matchInfo, setMatchInfo] = useState(
-    JSON.parse(window.localStorage.getItem('matchInfo')),
+    JSON.parse(window.localStorage.getItem('matchInfo'))
+      ? JSON.parse(window.localStorage.getItem('matchInfo'))
+      : undefined,
   );
 
   return (
