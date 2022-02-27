@@ -49,7 +49,7 @@ export const KartSummary = ({ matchInfo }) => {
   const kartTotalList = makeKartTotalList(matchInfo[0].matches);
   const [selectKart, setSelectKart] = useState(0); // [{ 'kart', record: { '횟수', '승률', '리타율'}}]
   //카트 횟수 승률 리타율
-  console.log(selectKart);
+  // console.log(selectKart);
   const selectKartHandler = (e) => {
     setSelectKart(e.target.value);
   };
@@ -296,7 +296,6 @@ const KartImg = styled.div`
     max-width: 378px;
   }
   border: 1px solid black;
-
 `;
 
 const KartImgNextMap = styled.ul`
@@ -335,7 +334,6 @@ const MapList = styled.li`
   .track {
     margin-left: 5px;
   }
-
 `;
 
 const TableContainer = styled.div`

@@ -1,10 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import TrackRankChart from '../Components/Dashboard/TrackRankChart';
 import { SummaryTR } from './SummaryTR';
+import { trackListObj, matchTimeTimeExtractor } from '../Util/util';
 
-export const TrackSummary = ({ matchInfo, nickname }) => {
-  console.log(matchInfo);
+export const TrackSummary = ({ matchInfo }) => {
+  const makeTrackTotalList = (matches) => {
+    const trackTotalList = {};
+
+    matches.forEach((el) => {
+      let exist = false;
+      if (Object.keys(trackTotalList).length > 0) {
+        if (trackTotalList[el.trackId]) {
+          exist = true;
+        }
+      }
+      if (el.player.matchWin === '') {
+        return;
+      }
+      if (exist) {
+        trackTotalList[el.trackId] = {
+          count: trackTotalList[el.trackId].count + 1,
+          retired:
+            trackTotalList[el.trackId].retired + Number(el.player.matchRetired),
+          win:
+            Number(trackTotalList[el.trackId].win) + Number(el.player.matchWin),
+          trackRecord: [
+            ...trackTotalList[el.trackId].trackRecord,
+            [el.trackId, Number(el.player.matchTime)],
+          ],
+        };
+      } else {
+        trackTotalList[el.trackId] = {
+          count: 1,
+          retired: Number(el.player.matchRetired),
+          win: Number(el.player.matchWin),
+          trackRecord: [[el.trackId, Number(el.player.matchTime)]],
+        };
+      }
+    });
+    return Object.entries(trackTotalList).sort(
+      (a, b) => b[1].count - a[1].count,
+    );
+  };
+
+  const a = makeTrackTotalList(matchInfo[0].matches);
+  let trackRecords = a.map((record) => {
+    return record[1].trackRecord;
+  });
+  trackRecords.forEach((record, i) => {
+    record.sort((a, b) => a[1] - b[1]);
+  });
+  trackRecords = trackRecords.map((item) => item.filter((i) => i[1] !== 0));
+  const [selectTrack, setSelectTrack] = useState(0);
+
+  const selectTrackHandler = (e) => {
+    setSelectTrack(e.target.value);
+  };
+  // console.log(a.forEach((b) => console.log(b[1].trackRecord)));
+  console.log(a);
+  // console.log(a.forEach((item, i) => console.log(trackRecords[i])));
   return (
     <RecordBox>
       <TrackOrKartRecord>
@@ -16,7 +71,7 @@ export const TrackSummary = ({ matchInfo, nickname }) => {
         &nbsp;%
       </AvarageHigh>
       <MapName>
-        신화 신들의 세계
+        {trackListObj[a[selectTrack][0]]}
         <span>&nbsp;&nbsp;기록분포</span>
       </MapName>
       <GraphBox>
@@ -33,13 +88,38 @@ export const TrackSummary = ({ matchInfo, nickname }) => {
               <th>횟수</th>
               <th>승률</th>
               <th>기록</th>
-              <th>상위</th>
+              {/* <th>상위</th> */}
             </tr>
           </thead>
           <tbody>
-            {/* {datas.map((data, i) => (
-              <SummaryTR key={i} data={data} />
-            ))} */}
+            {a.map((el, idx) => (
+              <tr key={idx} className="body">
+                <td className="select">
+                  <input
+                    onClick={selectTrackHandler}
+                    type="radio"
+                    name="track"
+                    value={idx}
+                  />
+                </td>
+                <td className="track">
+                  <img
+                    src={`https://s3-ap-northeast-1.amazonaws.com/solution-userstats/kartimg/Category/unknown_1.png`}
+                    alt=""
+                  />
+                  <span>{trackListObj[el[0]]}</span>
+                </td>
+                <td className="count">{el[1].count}</td>
+                <td className="winRate">{`${Math.round(
+                  (el[1].win / el[1].count) * 100,
+                )}%`}</td>
+                <td className="record">
+                  {trackRecords[idx][0]
+                    ? matchTimeTimeExtractor(trackRecords[idx][0][1])
+                    : '-'}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </TableContainer>
@@ -116,31 +196,46 @@ const TableContainer = styled.div`
   overflow: scroll;
   overflow-x: hidden;
   font-size: 13px;
+  text-align: center;
   & table {
     width: 312px;
     & thead {
       width: 312px;
-      line-height: 35px;
+      line-height: 45px;
       font-size: 13px;
       background-color: #fbfbfb;
       & tr {
         display: table-row;
         background-color: #fbfbfb;
-        line-height: 35px;
+        line-height: 45px;
         & th {
           background-color: #fbfbfb;
         }
       }
     }
-    & tbody {
-      & tr {
-        line-height: 35px;
-        display: table-row;
-        & td {
-          line-height: 45px;
-          font-size: 13px;
-        }
+  }
+  & tbody {
+    & tr {
+      & td {
+        font-size: 13px;
       }
+    }
+    .track {
+      img {
+        width: 27px;
+      }
+      span {
+        margin-left: 10px;
+        line-height: 45px;
+      }
+    }
+    .select {
+      input {
+        width: 20px;
+      }
+    }
+    .count {
+      width: 30px;
     }
   }
 `;
