@@ -1,4 +1,4 @@
-/api/*  https://api.nexon.co.kr/:splat  200
+
 
 from = "/proxy/*"
   to = "https://api.nexon.co.kr/:splat"
