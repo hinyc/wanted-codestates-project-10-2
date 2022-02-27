@@ -30,7 +30,6 @@ const RankList = (props) => {
 
   return (
     <RankListContainer>
-
       {newMatchLIst.map((match, id) => (
         <RankCard
           match={match}
@@ -38,7 +37,6 @@ const RankList = (props) => {
           key={id}
           ref={id + 3 === newMatchLIst.length ? targetRef : undefined}
         />
-
       ))}
     </RankListContainer>
   );
