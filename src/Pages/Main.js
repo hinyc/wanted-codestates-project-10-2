@@ -23,7 +23,7 @@ export default function Main({ nickname, matchInfo, setSeletPage }) {
   console.log(nickname, matchInfo);
 
   return (
-    <>
+    <div>
       <OneYear>
         <FontAwesomeIcon icon={faInfoCircle} className="icon" />
         카트라이더 매치데이터는 최근 1년치 데이터만 확인할 수 있습니다
@@ -38,12 +38,13 @@ export default function Main({ nickname, matchInfo, setSeletPage }) {
           <CheeringMSGBox />
         </Dashboard>
 
-        <SummaryWrapper>
         <Tabs nickname={nickname} matchInfo={matchInfo} />
+        <SummaryWrapper>
           <Summary nickname={nickname} matchInfo={matchInfo} />
+          <RecordListContainer />
         </SummaryWrapper>
       </Container>
-    </>
+    </div>
   );
 }
 
