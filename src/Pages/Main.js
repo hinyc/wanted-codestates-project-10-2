@@ -37,10 +37,10 @@ export default function Main({ nickname, matchInfo, setSeletPage }) {
         </Dashboard>
         <Tabs />
 
-        <SummaryWrapper>
+        <SummaryWapper>
           <Summary nickname={nickname} matchInfo={matchInfo} />
           <RecordListContainer />
-        </SummaryWrapper>
+        </SummaryWapper>
       </Container>
     </>
   );
