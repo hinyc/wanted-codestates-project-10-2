@@ -138,7 +138,7 @@ export const KartSummary = ({ matchInfo }) => {
 
 const KartScoreTable = styled.div`
   border-top: 1px solid #f2f2f2;
-  width: 428px;
+  width: 328px;
   height: 236px;
   overflow: scroll;
   /* overflow: hidden; */
@@ -208,21 +208,18 @@ const KartScoreTable = styled.div`
   .retired {
     width: 13.6%;
   }
-  @media screen and (max-width: 1630px) {
-    max-width: 328px;
-  }
 `;
 
 const KartRecordBox = styled.div`
   position: relative;
-  width: 430px;
+  width: 330px;
   height: 501px;
   border: 1px solid #f2f2f2;
   margin-bottom: 10px;
   background-color: #fff;
-  @media screen and (max-width: 1630px) {
+  /* @media screen and (max-width: 1630px) {
     max-width: 330px;
-  }
+  } */
 `;
 
 const TrackOrKartRecord = styled.h5`
@@ -273,13 +270,10 @@ const KartName = styled.p`
 `;
 
 const KartAndMap = styled.div`
-  width: 378px;
+  width: 278px;
   height: 155px;
   padding: 10px 0px;
   display: flex;
-  @media screen and (max-width: 1630px) {
-    max-width: 278px;
-  }
 `;
 
 const KartImg = styled.div`
@@ -292,9 +286,9 @@ const KartImg = styled.div`
   img {
     height: 70px;
   }
-  @media screen and (max-width: 1630px) {
+  /* @media screen and (max-width: 1630px) {
     max-width: 378px;
-  }
+  } */
   border: 1px solid black;
 `;
 
@@ -333,41 +327,5 @@ const MapList = styled.li`
   }
   .track {
     margin-left: 5px;
-  }
-`;
-
-const TableContainer = styled.div`
-  width: 328px;
-  height: 236px;
-  overflow: scroll;
-  overflow-x: hidden;
-  font-size: 13px;
-  & table {
-    width: 312px;
-
-    & thead {
-      width: 312px;
-      line-height: 35px;
-      font-size: 13px;
-      background-color: #fbfbfb;
-      & tr {
-        display: table-row;
-        background-color: #fbfbfb;
-        line-height: 35px;
-        & th {
-          background-color: #fbfbfb;
-        }
-      }
-    }
-    & tbody {
-      & tr {
-        line-height: 35px;
-        display: table-row;
-        & td {
-          line-height: 45px;
-          font-size: 13px;
-        }
-      }
-    }
   }
 `;

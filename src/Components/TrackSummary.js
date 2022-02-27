@@ -216,20 +216,26 @@ const TableContainer = styled.div`
   }
   & tbody {
     & tr {
+      height: 45px;
       & td {
         font-size: 13px;
+        vertical-align: middle;
       }
     }
     .track {
+      height: 45px;
+      display: flex;
+      align-items: center;
       img {
         width: 27px;
+        height: 27px;
       }
       span {
         margin-left: 10px;
-        line-height: 45px;
       }
     }
     .select {
+      vertical-align: middle;
       input {
         width: 20px;
       }
