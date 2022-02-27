@@ -7,7 +7,6 @@ const RankList = (props) => {
   return (
     <RankListContainer>
       {matchList.map((match, id) => (
-
         <RankCard match={match} rank={id} key={id} />
       ))}
     </RankListContainer>
@@ -16,7 +15,7 @@ const RankList = (props) => {
 
 const RankListContainer = styled.div`
   background-color: #faf9f9;
-
+  padding-bottom: 100px;
   min-width: 1000px;
 
   .list-header-container {

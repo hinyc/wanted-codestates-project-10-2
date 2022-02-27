@@ -5,6 +5,8 @@ export const headers = {
   },
 };
 
+export const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+
 export const matchTimeTimeExtractor = (matchTime) => {
   const min = String(parseInt(matchTime / 1000 / 60));
   const secondDot = String(
@@ -12,6 +14,9 @@ export const matchTimeTimeExtractor = (matchTime) => {
   ).split('.');
   if (secondDot[0].length === 1) {
     secondDot[0] = '0'.concat(secondDot[0]);
+  }
+  if (secondDot[1].length === 1) {
+    secondDot[1] = secondDot[1].concat('0');
   }
   secondDot.unshift(min);
   return secondDot.join("'");
@@ -3843,6 +3848,7 @@ const kartList = [
     name: '골든샤크 9',
   },
 ];
+
 export const kartListObj = {};
 kartList.forEach((el) => {
   kartListObj[el.id] = el.name;

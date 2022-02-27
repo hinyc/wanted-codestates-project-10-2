@@ -49,7 +49,7 @@ export const KartSummary = ({ matchInfo }) => {
   const kartTotalList = makeKartTotalList(matchInfo[0].matches);
   const [selectKart, setSelectKart] = useState(0); // [{ 'kart', record: { '횟수', '승률', '리타율'}}]
   //카트 횟수 승률 리타율
-  console.log(selectKart);
+  // console.log(selectKart);
   const selectKartHandler = (e) => {
     setSelectKart(e.target.value);
   };
@@ -138,7 +138,7 @@ export const KartSummary = ({ matchInfo }) => {
 
 const KartScoreTable = styled.div`
   border-top: 1px solid #f2f2f2;
-  width: 428px;
+  width: 328px;
   height: 236px;
   overflow: scroll;
   /* overflow: hidden; */
@@ -208,21 +208,18 @@ const KartScoreTable = styled.div`
   .retired {
     width: 13.6%;
   }
-  @media screen and (max-width: 1630px) {
-    max-width: 328px;
-  }
 `;
 
 const KartRecordBox = styled.div`
   position: relative;
-  width: 430px;
+  width: 330px;
   height: 501px;
   border: 1px solid #f2f2f2;
   margin-bottom: 10px;
   background-color: #fff;
-  @media screen and (max-width: 1630px) {
+  /* @media screen and (max-width: 1630px) {
     max-width: 330px;
-  }
+  } */
 `;
 
 const TrackOrKartRecord = styled.h5`
@@ -273,17 +270,14 @@ const KartName = styled.p`
 `;
 
 const KartAndMap = styled.div`
-  width: 378px;
+  width: 278px;
   height: 155px;
   padding: 10px 0px;
   display: flex;
-  @media screen and (max-width: 1630px) {
-    max-width: 278px;
-  }
 `;
 
 const KartImg = styled.div`
-  width: 152px;
+  width: 112px;
   height: 135px;
   display: flex;
   justify-content: center;
@@ -292,15 +286,16 @@ const KartImg = styled.div`
   img {
     height: 70px;
   }
-  @media screen and (max-width: 1630px) {
+  /* @media screen and (max-width: 1630px) {
     max-width: 378px;
-  }
+  } */
+  border: 1px solid black;
 `;
 
 const KartImgNextMap = styled.ul`
   display: flex;
   flex-direction: column;
-  width: 226.2px;
+  width: 162.5px;
   height: 135px;
   & ul {
     flex: 1;
@@ -308,6 +303,7 @@ const KartImgNextMap = styled.ul`
     margin: 0;
     list-style: none;
   }
+
   @media screen and (max-width: 1630px) {
     max-width: 100%;
   }
@@ -324,6 +320,7 @@ const MapList = styled.li`
     width: 23px;
     height: 23px;
   }
+
   .group {
     display: flex;
     align-items: center;

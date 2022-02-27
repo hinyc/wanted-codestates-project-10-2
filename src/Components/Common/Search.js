@@ -1,11 +1,10 @@
 import axios from 'axios';
 import React, { useRef } from 'react';
 import styled from 'styled-components';
-import { headers } from '../../Util/util';
+import { headers, PROXY } from '../../Util/util';
 
 export default function Search({ setNickname, setMatchInfo }) {
   const nickname = useRef();
-  //날짜생성기
   const makeDate = (lastYear) => {
     const numTwoMaker = (num) => (num < 10 ? `${'0' + num}` : num);
     let newDate = new Date();
@@ -29,7 +28,9 @@ export default function Search({ setNickname, setMatchInfo }) {
 
     axios
       .get(
-        `/kart/v1.0/users/nickname/${encodeURI(nickname.current.value)}`,
+        `${PROXY}/kart/v1.0/users/nickname/${encodeURI(
+          nickname.current.value,
+        )}`,
         headers,
       )
       .then((response) => response.data)
@@ -47,7 +48,7 @@ export default function Search({ setNickname, setMatchInfo }) {
 
         axios
           .get(
-            `/kart/v1.0/users/${encodeURI(
+            `${PROXY}/kart/v1.0/users/${encodeURI(
               access_id,
             )}/matches?start_date=${encodeURI(start_date)}&end_date=${encodeURI(
               end_date,
