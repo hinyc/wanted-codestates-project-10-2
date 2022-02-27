@@ -20,6 +20,8 @@ export default function Main({ nickname, matchInfo, setSeletPage }) {
   useEffect(() => {
     setSeletPage('main');
   }, [setSeletPage]);
+  console.log(nickname, matchInfo);
+
   return (
     <>
       <OneYear>
@@ -35,11 +37,10 @@ export default function Main({ nickname, matchInfo, setSeletPage }) {
           <RankChangeChartBox />
           <CheeringMSGBox />
         </Dashboard>
-        <Tabs />
+        <Tabs nickname={nickname} matchInfo={matchInfo} />
 
         <SummaryWapper>
           <Summary nickname={nickname} matchInfo={matchInfo} />
-          <RecordListContainer />
         </SummaryWapper>
       </Container>
     </>
