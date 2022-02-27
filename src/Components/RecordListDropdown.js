@@ -1,20 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-const RecordListDropdown = ({ recent10MatchList }) => {
-  const [playerListData, setPlayerListData] = useState(recent10MatchList);
+const initialData = {
+  characterName: '',
+  matchRank: '리타이어',
+  kart: '', // player.kart로 카트 이름 조회
+  matchRetired: true,
+  matchTime: '-',
+};
+
+const RecordListDropdown = ({ recent10MatchList, players }) => {
+  // const [playerListData, setPlayerListData] = useState(recent10MatchList);
+  const [playersData, setPlayersData] = useState(players);
 
   // useEffect(() => {
-  //   console.log('hi');
-  //   // setPlayerListData(recent10MatchList);
-  //   // playerListData.forEach((players) => {
-  //   //   console.log(players);
-  //   //   const { characterName, matchRank, kart, matchRetired, matchTime } =
-  //   //     players;
-
-  //   //   // console.log(characterName, matchRank, kart, matchRetired, matchTime);
-  //   // });
-  // }, [recent10MatchList]);
+  //   const totalPlayers = players.length;
+  //   const fillEmptyPlayers = [];
+  //   for (let i = 0; i < 8 - totalPlayers; i++) {
+  //     fillEmptyPlayers.push(initialData);
+  //   }
+  //   setPlayersData((prev) => {
+  //     console.log(prev);
+  //     console.log(fillEmptyPlayers);
+  //     return prev;
+  //   });
+  // }, []);
 
   return (
     <DropdownContainer>
@@ -27,103 +37,25 @@ const RecordListDropdown = ({ recent10MatchList }) => {
             <div className="record">기록</div>
           </div>
         </li>
-        {playerListData.map((players) =>
-          // console.log(players);
+        {playersData.map((player, idx) => {
+          const { characterName, matchRank, kart, matchRetired, matchTime } =
+            player;
+          const kartURI = `https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/kart/${kart}.png?v=1645788019`;
 
-          players.sort().map((player) => {
-            const { characterName, matchRank, kart, matchRetired, matchTime } =
-              players[0];
-            const kartURI = `https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/kart/${kart}.png?v=1645788019`;
-
-            console.log(
-              characterName,
-              matchRank,
-              kart,
-              matchRetired,
-              matchTime,
-            );
-
-            return (
-              <li className="content">
-                <div>
-                  <div className="rank">{matchRank}</div>
-                  <div className="kart">
-                    <img src={kartURI} alt={`${characterName}의 카트`}></img>
-                  </div>
-                  <div className="nickname">{characterName}</div>
-                  <div className="record">1'47'84</div>
+          return (
+            <li key={player.accountNo + idx} className="content">
+              <div>
+                <div className="rank">{matchRank}</div>
+                <div className="kart">
+                  <img src={kartURI} alt={`${characterName}의 카트`}></img>
                 </div>
-              </li>
-            );
-          }),
-        )}
-
-        {/* <li className="content">
-          <div>
-            <div className="rank">0</div>
-            <div className="kart">
-              <img src="" alt="누구의 카트"></img>
-            </div>
-            <div className="nickname">유저</div>
-            <div className="record">1'47'84</div>
-          </div>
-        </li>
-        <li className="content">
-          <div>
-            <div className="rank">0</div>
-            <div className="kart">카트</div>
-            <div className="nickname">유저</div>
-            <div className="record">1'47'84</div>
-          </div>
-        </li>
-        <li className="content">
-          <div>
-            <div className="rank">0</div>
-            <div className="kart">카트</div>
-            <div className="nickname">유저</div>
-            <div className="record">1'47'84</div>
-          </div>
-        </li>
-        <li className="content">
-          <div>
-            <div className="rank">0</div>
-            <div className="kart">카트</div>
-            <div className="nickname">유저</div>
-            <div className="record">1'47'84</div>
-          </div>
-        </li>
-        <li className="content">
-          <div>
-            <div className="rank">0</div>
-            <div className="kart">카트</div>
-            <div className="nickname">유저</div>
-            <div className="record">1'47'84</div>
-          </div>
-        </li>
-        <li className="content">
-          <div>
-            <div className="rank">0</div>
-            <div className="kart">카트</div>
-            <div className="nickname">유저</div>
-            <div className="record">1'47'84</div>
-          </div>
-        </li>
-        <li className="content">
-          <div>
-            <div className="rank">0</div>
-            <div className="kart">카트</div>
-            <div className="nickname">유저</div>
-            <div className="record">1'47'84</div>
-          </div>
-        </li>
-        <li className="content">
-          <div>
-            <div className="rank">0</div>
-            <div className="kart">카트</div>
-            <div className="nickname">유저</div>
-            <div className="record">1'47'84</div>
-          </div>
-        </li> */}
+                <div className="nickname">{characterName}</div>
+                <div className="record">{matchTime}</div>
+              </div>
+            </li>
+          );
+        })}
+        {}
       </ul>
     </DropdownContainer>
   );
@@ -167,6 +99,12 @@ const DropdownContainer = styled.section`
   .kart {
     height: 78px;
     line-height: 78px;
+    display: flex;
+    justify-content: center;
+
+    img {
+      height: 35px;
+    }
   }
   .nickname {
     height: 17px;

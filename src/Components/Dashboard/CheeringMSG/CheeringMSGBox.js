@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import CheeringMSG from './CheeringMSG';
 
 const CheeringMSGBox = () => {
+  // 로컬에 저장된 값 상태관리
+  const [commentList, setCommentList] = useState([]);
+
   return (
     <>
       <Container>
@@ -14,16 +17,19 @@ const CheeringMSGBox = () => {
           <RightBox>
             <div>
               <span className="twoTitle">오늘</span>
-              <span className="twoTitle"> 5개</span>
+              <span className="twoTitle">&nbsp;{commentList.length}</span>
             </div>
             <div>
               <span className="twoTitle">전체</span>
-              <span className="twoTitle"> 6개</span>
+              <span className="twoTitle">&nbsp;{commentList.length}</span>
             </div>
           </RightBox>
         </Title>
         <GrapeContainer>
-          <CheeringMSG />
+          <CheeringMSG
+            commentList={commentList}
+            setCommentList={setCommentList}
+          />
         </GrapeContainer>
       </Container>
     </>
@@ -78,7 +84,7 @@ const GrapeContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 10px 17px 0 17px;
+  padding: 0 17px;
 `;
 
 export default CheeringMSGBox;

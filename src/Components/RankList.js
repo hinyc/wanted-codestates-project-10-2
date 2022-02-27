@@ -30,6 +30,7 @@ const RankList = (props) => {
 
   return (
     <RankListContainer>
+
       {newMatchLIst.map((match, id) => (
         <RankCard
           match={match}
@@ -37,6 +38,7 @@ const RankList = (props) => {
           key={id}
           ref={id + 3 === newMatchLIst.length ? targetRef : undefined}
         />
+
       ))}
     </RankListContainer>
   );
@@ -44,7 +46,7 @@ const RankList = (props) => {
 
 const RankListContainer = styled.div`
   background-color: #faf9f9;
-
+  padding-bottom: 100px;
   min-width: 1000px;
 
   .list-header-container {
