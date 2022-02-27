@@ -32,7 +32,7 @@ export default function Main({ nickname, matchInfo, setSeletPage }) {
 
         <Dashboard>
           <OverallRecord />
-          <RankChangeChartBox />
+          <RankChangeChartBox matchInfo={matchInfo} />
           <CheeringMSGBox />
         </Dashboard>
         <Tabs />
