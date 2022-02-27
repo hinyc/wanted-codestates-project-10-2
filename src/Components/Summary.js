@@ -15,10 +15,14 @@ function Summary({ matchInfo, nickname }) {
         `,
         headers,
       )
-      .then((response) => response.data)
+      .then((response) => {
+        console.log('응답결과', response.status);
+        return response.data;
+      })
       .then((data) => {
         console.log(data);
-      });
+      })
+      .catch((err) => console.err(err));
   }, []);
   console.log(matchInfo);
   console.log(headers);
