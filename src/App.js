@@ -8,6 +8,7 @@ import Ranking from './Pages/Ranking';
 import GlobalStyles from './GlobalStyles';
 import NavigationBar from './Components/NavigationBar';
 import Footer from './Components/Footer';
+import { dummyMatchesInfo } from './Util/util';
 
 function App() {
   const [seletPage, setSeletPage] = useState('main');
@@ -19,7 +20,7 @@ function App() {
   const [matchInfo, setMatchInfo] = useState(
     JSON.parse(window.localStorage.getItem('matchInfo'))
       ? JSON.parse(window.localStorage.getItem('matchInfo'))
-      : undefined,
+      : dummyMatchesInfo,
   );
 
   return (
