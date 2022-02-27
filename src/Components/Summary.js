@@ -6,8 +6,7 @@ import axios from 'axios';
 import { headers } from '../Util/util';
 
 
-function Summary({ matchInfo, nickname }) {
-  const [accesssId, setAccessId] = useState('id');
+ const Summary = ({ matchInfo, nickname }) => {
 
   const [clickedTab, setClickedTab] = useState('트랙');
   const changeColor = (e) => {
@@ -39,12 +38,13 @@ function Summary({ matchInfo, nickname }) {
 
         <TrackSummary matchInfo={matchInfo} />
 
+
       ) : (
         <KartSummary matchInfo={matchInfo} />
       )}
     </WholeTrack>
   );
-}
+};
 
 const WholeTrack = styled.div`
   width: 330px;

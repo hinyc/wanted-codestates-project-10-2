@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+
+import Toggle from './Common/Toggle';
+
 import RecordListContainer from './RecordListContainer';
+
 
 const Tabs = () => {
   const menuArr = [
@@ -17,6 +21,7 @@ const Tabs = () => {
   return (
     <>
       <TabBox>
+        <Toggle />
         <TabMenu>
           {menuArr.map((el, index) => {
             return (
@@ -112,6 +117,7 @@ const Menu = styled.div`
 const Desc = styled.div`
   width: 100%;
   max-width: 650px;
+  background: powderblue;
   height: 100vh;
   position: absolute;
   top: 70px;
@@ -119,7 +125,9 @@ const Desc = styled.div`
   display: flex;
   // align-items: center;
   justify-content: center;
+
   margin-top: 45px;
+
 `;
 
 export default Tabs;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Summary from '../Components/Summary';
 
@@ -16,7 +16,10 @@ import Tabs from '../Components/Tabs';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
-export default function Main({ nickname, matchInfo }) {
+export default function Main({ nickname, matchInfo, setSeletPage }) {
+  useEffect(() => {
+    setSeletPage('main');
+  }, [setSeletPage]);
   return (
     <>
       <OneYear>
@@ -38,13 +41,12 @@ export default function Main({ nickname, matchInfo }) {
           <Summary nickname={nickname} matchInfo={matchInfo} />
           <RecordListContainer />
         </SummaryWrapper>
-
       </Container>
     </>
   );
 }
 
-const SummaryWrapper = styled.div`
+const SummaryWapper = styled.div`
   min-width: 1000px;
   display: flex;
 `;
@@ -73,6 +75,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 100px;
 `;
 
 const Dashboard = styled.div`
