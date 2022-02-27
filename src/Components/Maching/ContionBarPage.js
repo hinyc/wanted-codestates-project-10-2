@@ -15,11 +15,11 @@ export default function ConditionBarPage({ user, battleUser }) {
     e.preventDefault();
     startPosition.current = e.clientX;
     document.onmousemove = move;
+    document.onmouseup = stopMove;
   };
 
   const move = (e) => {
     if (baseRef.current.getBoundingClientRect().x > e.clientX) {
-      stopMove();
       return;
     }
     positionX.current = startPosition.current - e.clientX + endPostionX.current;
@@ -49,8 +49,6 @@ export default function ConditionBarPage({ user, battleUser }) {
               className="drag_handle"
               ref={dragHandleRef}
               onMouseDown={mouseDownHanlder}
-              onMouseUp={stopMove}
-              onMouseLeave={stopMove}
             ></div>
           </div>
         </div>
@@ -74,8 +72,6 @@ export default function ConditionBarPage({ user, battleUser }) {
               className="drag_handle"
               ref={dragHandleRef}
               onMouseDown={mouseDownHanlder}
-              onMouseUp={stopMove}
-              onMouseLeave={stopMove}
             ></div>
           </div>
         </div>
