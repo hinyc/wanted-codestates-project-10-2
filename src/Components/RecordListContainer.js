@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import RecordListItem from './RecordListItem';
 import RecordListDropdown from './RecordListDropdown';
-import { headers } from '../Util/util';
+import { headers, PROXY } from '../Util/util';
 import axios from 'axios';
 
 const RecordListContainer = () => {
@@ -17,7 +17,10 @@ const RecordListContainer = () => {
   const fetchUserAccessId = async () => {
     // 라이더명으로 유저 정보 조회
     const playerList = await axios
-      .get(`/kart/v1.0/users/nickname/${encodeURI(playerName)}`, headers)
+      .get(
+        `${PROXY}/kart/v1.0/users/nickname/${encodeURI(playerName)}`,
+        headers,
+      )
       .then((response) => response.data)
       .then((data) => {
         // 유저 정보 조회 결과가 담긴 data
@@ -25,7 +28,10 @@ const RecordListContainer = () => {
         const { accessId, name, level } = data;
         // 유저 고유 식별자(accessId)를 이용해서 최근에 플레이한 매치 10개 조회
         return axios
-          .get(`/kart/v1.0/users/${accessId}/matches?&limit=10`, headers)
+          .get(
+            `${PROXY}/kart/v1.0/users/${accessId}/matches?&limit=10`,
+            headers,
+          )
           .then((res) => res.data)
           .then((data) => {
             // console.log(data.matches[0].matches);
@@ -37,7 +43,7 @@ const RecordListContainer = () => {
             return axios
               .all(
                 matchIdList.map((matchId) =>
-                  axios.get(`/kart/v1.0/matches/${matchId}`, headers),
+                  axios.get(`${PROXY}/kart/v1.0/matches/${matchId}`, headers),
                 ),
               )
               .then((allRes) => allRes.map((res) => res.data))
