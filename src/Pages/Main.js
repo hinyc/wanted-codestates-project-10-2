@@ -37,17 +37,17 @@ export default function Main({ nickname, matchInfo, setSeletPage }) {
           <RankChangeChartBox />
           <CheeringMSGBox />
         </Dashboard>
-        <Tabs nickname={nickname} matchInfo={matchInfo} />
 
-        <SummaryWapper>
+        <SummaryWrapper>
+        <Tabs nickname={nickname} matchInfo={matchInfo} />
           <Summary nickname={nickname} matchInfo={matchInfo} />
-        </SummaryWapper>
+        </SummaryWrapper>
       </Container>
     </>
   );
 }
 
-const SummaryWapper = styled.div`
+const SummaryWrapper = styled.div`
   min-width: 1000px;
   display: flex;
 `;

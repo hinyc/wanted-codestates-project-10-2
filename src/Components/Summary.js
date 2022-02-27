@@ -5,6 +5,7 @@ import { TrackSummary } from './TrackSummary';
 import axios from 'axios';
 import { headers } from '../Util/util';
 
+
 const Summary = ({ matchInfo, nickname }) => {
   const [clickedTab, setClickedTab] = useState('트랙');
   const changeColor = (e) => {

@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const RankCard = ({ match, rank }) => {
-  const { id, matchCount, avgRank, winP, retireP } = match;
-
+const RankCard = React.forwardRef(({ match, rank }, ref) => {
+  const { id, matchCount, avgRank } = match;
   return (
-    <RankCardContainer>
+    <RankCardContainer ref={ref}>
       <li className="rank-list">
         <div className="rank-box">
           <span className="rank-no item">{rank + 4}</span>
@@ -18,7 +17,7 @@ const RankCard = ({ match, rank }) => {
       </li>
     </RankCardContainer>
   );
-};
+});
 
 const RankCardContainer = styled.div`
   width: 100%;
