@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { KartSummary } from './KartSummary';
 import { TrackSummary } from './TrackSummary';
-// import axios from 'axios';
-// import { headers } from '../Util/util';
+import axios from 'axios';
+import { headers } from '../Util/util';
 
 function Summary({ matchInfo, nickname }) {
   const [accesssId, setAccessId] = useState('id');
 
-  // console.log(matchInfo);
   // const fetchUserAccessId = async () => {
   //   await axios
   //     .get(`/kart/v1.0/users/nickname/${encodeURI(nickname)}`, headers)
@@ -38,8 +37,7 @@ function Summary({ matchInfo, nickname }) {
   //   console.log('userDatas', userDatas);
   // };
 
-
-function Summary({ matchInfo }) {
+  // function Summary({ matchInfo }) {
   const [clickedTab, setClickedTab] = useState('트랙');
   const changeColor = (e) => {
     let tabName = e.target.innerText;
@@ -67,7 +65,6 @@ function Summary({ matchInfo }) {
         </li>
       </TrackKartNav>
       {clickedTab === '트랙' ? (
-
         <TrackSummary />
       ) : (
         <KartSummary matchInfo={matchInfo} />
