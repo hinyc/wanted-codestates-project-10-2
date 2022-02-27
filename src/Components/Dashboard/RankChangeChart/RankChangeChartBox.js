@@ -2,7 +2,28 @@ import React from 'react';
 import styled from 'styled-components';
 import RankChangeChart from './RankChangeChart';
 
-const RankChangeChartBox = () => {
+const RankChangeChartBox = ({ matchInfo }) => {
+  const recent50matches = matchInfo[0].matches
+    .filter(
+      (match) =>
+        match.player.matchRank !== '' && match.player.matchRank !== '99',
+    )
+    .slice(0, 50);
+
+  const recent200matches = matchInfo[0].matches.filter(
+    (match) => match.player.matchRank !== '' && match.player.matchRank !== '99',
+  );
+
+  const const200matchesRank =
+    recent200matches
+      .map((el) => Number(el.player.matchRank))
+      .reduce((a, b) => a + b) / 184;
+
+  const const50matchesRank =
+    recent50matches
+      .map((el) => Number(el.player.matchRank))
+      .reduce((a, b) => a + b) / 50;
+
   return (
     <>
       <Container>
@@ -13,15 +34,21 @@ const RankChangeChartBox = () => {
           </div>
           <div>
             <span className="twoTitle">지난200경기</span>
-            <span className="blue"> 3.25위</span>
+            <span className="blue">
+              {' '}
+              {Math.round(const200matchesRank * 100) / 100}위
+            </span>
           </div>
           <div>
             <span className="twoTitle">최근50경기</span>
-            <span className="blue"> 3.42위</span>
+            <span className="blue">
+              {' '}
+              {Math.round(const50matchesRank * 100) / 100}위
+            </span>
           </div>
         </Title>
         <GrapeContainer>
-          <RankChangeChart />
+          <RankChangeChart recent50matches={recent50matches} />
         </GrapeContainer>
       </Container>
     </>
