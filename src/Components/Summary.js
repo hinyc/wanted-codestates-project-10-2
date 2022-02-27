@@ -7,11 +7,12 @@ import { headers } from '../Util/util';
 
 function Summary({ matchInfo, nickname }) {
   const [accesssId, setAccessId] = useState('id');
-
+  const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+  const URL = `${PROXY}`;
   useEffect(() => {
     axios
       .get(
-        `/kart/v1.0/users/nickname/${encodeURI('BBEESSTT')}
+        `${URL}/kart/v1.0/users/nickname/${encodeURI('BBEESSTT')}
         `,
         headers,
       )
@@ -22,10 +23,9 @@ function Summary({ matchInfo, nickname }) {
       .then((data) => {
         console.log(data);
       })
-      .catch((err) => console.err(err));
+      .catch((err) => console.error(err));
   }, []);
-  console.log(matchInfo);
-  console.log(headers);
+
   // const fetchUserAccessId = async () => {
   //   await axios
   //     .get(`/kart/v1.0/users/nickname/${encodeURI(nickname)}`, headers)
