@@ -1,6 +1,6 @@
 
 
-from = "/proxy/*"
+from = "/*"
   to = "https://api.nexon.co.kr/:splat"
   status = 200
   force = true
