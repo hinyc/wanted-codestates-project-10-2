@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+
 import Toggle from './Common/Toggle';
+
+import RecordListContainer from './RecordListContainer';
+
 
 const Tabs = () => {
   const menuArr = [
-    { name: '통합', content: '통합' },
+    { name: '통합', content: <RecordListContainer /> },
     { name: '매우빠름', content: '매우빠름' },
     { name: '무한부스터', content: '무한부스터' },
   ];
@@ -34,9 +38,7 @@ const Tabs = () => {
           })}
         </TabMenu>
         <FullWidth />
-        <Desc>
-          <p>{menuArr[currentTab].content}</p>
-        </Desc>
+        <Desc>{menuArr[currentTab].content}</Desc>
       </TabBox>
     </>
   );
@@ -115,14 +117,17 @@ const Menu = styled.div`
 const Desc = styled.div`
   width: 100%;
   max-width: 650px;
-  height: auto;
   background: powderblue;
+  height: 100vh;
   position: absolute;
   top: 70px;
   right: 0;
   display: flex;
-  align-items: center;
+  // align-items: center;
   justify-content: center;
+
+  margin-top: 45px;
+
 `;
 
 export default Tabs;

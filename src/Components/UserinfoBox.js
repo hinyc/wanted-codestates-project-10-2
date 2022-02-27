@@ -30,6 +30,7 @@ export default function UserinfoBox({ nickname, matchInfo }) {
 
   const pageView = 734;
 
+  console.log('test');
   // const URL = 'https://api.nexon.co.kr/kart/v1.0/users/nickname/';
   // const data = axios
   //   .get(`${URL}/${nickname}`, {

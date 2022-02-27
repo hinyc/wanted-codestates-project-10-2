@@ -5,6 +5,8 @@ export const headers = {
   },
 };
 
+export const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
+
 export const matchTimeTimeExtractor = (matchTime) => {
   const min = String(parseInt(matchTime / 1000 / 60));
   const secondDot = String(
@@ -3846,6 +3848,7 @@ const kartList = [
     name: '골든샤크 9',
   },
 ];
+
 export const kartListObj = {};
 kartList.forEach((el) => {
   kartListObj[el.id] = el.name;

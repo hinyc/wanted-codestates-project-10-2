@@ -3,7 +3,7 @@ import RankList from '../Components/RankList';
 import RankerBox from '../Components/Rank/Box';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { headers } from '../Util/util';
+import { headers, PROXY } from '../Util/util';
 
 export default function Ranking({ setSeletPage }) {
   // 개인전 matchType : 7b9f0fd5377c38514dbb78ebe63ac6c3b81009d5a31dd569d1cff8f005aa881a (스피드개인전)
@@ -60,7 +60,7 @@ export default function Ranking({ setSeletPage }) {
       .all(
         userList.map((user) =>
           axios.get(
-            `/kart/v1.0/users/${user}/matches?start_date=${startDate}&end_date=${endDate}&limit=200&match_types=${matchType}`,
+            `${PROXY}/kart/v1.0/users/${user}/matches?start_date=${startDate}&end_date=${endDate}&limit=200&match_types=${matchType}`,
             headers,
           ),
         ),

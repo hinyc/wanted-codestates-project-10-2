@@ -36,10 +36,11 @@ export default function Main({ nickname, matchInfo, setSeletPage }) {
           <CheeringMSGBox />
         </Dashboard>
         <Tabs />
-        <SummaryWapper>
+
+        <SummaryWrapper>
           <Summary nickname={nickname} matchInfo={matchInfo} />
           <RecordListContainer />
-        </SummaryWapper>
+        </SummaryWrapper>
       </Container>
     </>
   );
