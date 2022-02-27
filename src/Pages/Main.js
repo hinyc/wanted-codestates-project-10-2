@@ -33,7 +33,7 @@ export default function Main({ nickname, matchInfo }) {
           <CheeringMSGBox />
         </Dashboard>
         <Tabs />
-        <SummaryWapper>
+        <SummaryWrapper>
           <Summary nickname={nickname} matchInfo={matchInfo} />
           <RecordListContainer />
         </SummaryWrapper>
