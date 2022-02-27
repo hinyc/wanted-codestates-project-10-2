@@ -7,14 +7,14 @@ ListItem에 클래스 추가해서 1등, 리타이어 스타일 적용:
 - retire: 리타이어 (빨간색)
 */
 
-const RecordListItem = (props) => {
+const RecordListItem = ({ handleDropdownDisplay, matchInfo, player }) => {
   const dummyData = {
-    date: '1일 전',
-    rank: '2',
-    totalPlayers: '8',
-    track: '빌리지 운명의 다리',
-    kart: '흰 소X',
-    time: "2'06'70",
+    date: '1일 전', // 현재 시간 기준으로 계산한 값
+    rank: player[0].matchRank,
+    totalPlayers: '8', // matchInfo.players.length
+    track: '빌리지 운명의 다리', // trackId로 맵 이름 조회
+    kart: '흰 소X', // player.kart로 카트 이름 조회
+    time: player[0].matchTime, // 계산한 값 넣기
     dropdownData: [
       {
         id: 1,
@@ -26,7 +26,7 @@ const RecordListItem = (props) => {
   };
 
   return (
-    <ListItem className="retire">
+    <ListItem>
       <p className="date">{dummyData.date}</p>
       <p className="rank">
         <span className="rank-data">#{dummyData.rank}</span>
@@ -35,7 +35,7 @@ const RecordListItem = (props) => {
       <p className="track">{dummyData.track}</p>
       <p className="kart">{dummyData.kart}</p>
       <p className="time">{dummyData.time}</p>
-      <p className="open-dropdown" onClick={props.handleDropdownDisplay}>
+      <p className="open-dropdown" onClick={handleDropdownDisplay}>
         <span></span>
       </p>
     </ListItem>
