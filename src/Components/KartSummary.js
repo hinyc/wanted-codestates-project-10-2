@@ -86,7 +86,7 @@ export const KartSummary = ({ matchInfo }) => {
                       <span className="track">{trackListObj[el[0]]}</span>
                     </div>
                     <span className="record">
-                      {matchTimeTimeExtractor(Number(el[1]))}
+                      {matchTimeTimeExtractor(el[1])}
                     </span>
                   </MapList>
                 );

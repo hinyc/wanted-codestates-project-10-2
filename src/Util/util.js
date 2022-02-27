@@ -12,16 +12,15 @@ export const matchTimeTimeExtractor = (matchTime) => {
   const secondDot = String(
     Math.round(((matchTime / 1000) % 60) * 100) / 100,
   ).split('.');
-  if (secondDot[0].length === 1) {
+  if (String(secondDot[0]).length === 1) {
     secondDot[0] = '0'.concat(secondDot[0]);
   }
-  if (secondDot[1].length === 1) {
+  if (String(secondDot[1]).length === 1) {
     secondDot[1] = secondDot[1].concat('0');
   }
   secondDot.unshift(min);
   return secondDot.join("'");
 };
-
 const kartList = [
   {
     id: '4a3d34d9958d54ab218513e2dc406a6a7bc30e529292895475a11a986550b437',
