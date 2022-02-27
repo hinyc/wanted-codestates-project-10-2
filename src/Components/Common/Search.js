@@ -1,13 +1,10 @@
 import axios from 'axios';
 import React, { useRef } from 'react';
 import styled from 'styled-components';
-import { headers } from '../../Util/util';
+import { headers, PROXY } from '../../Util/util';
 
 export default function Search({ setNickname, setMatchInfo }) {
   const nickname = useRef();
-  const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
-  // const URL = `${PROXY}/kart/v1.0/users/nickname/${encodeURI('BBEESSTT')}`;
-  //날짜생성기
   const makeDate = (lastYear) => {
     const numTwoMaker = (num) => (num < 10 ? `${'0' + num}` : num);
     let newDate = new Date();

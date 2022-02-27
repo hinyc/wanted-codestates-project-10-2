@@ -7,26 +7,6 @@ import { headers } from '../Util/util';
 
 function Summary({ matchInfo, nickname }) {
   const [accesssId, setAccessId] = useState('id');
-  const PROXY = window.location.hostname === 'localhost' ? '' : '/proxy';
-  // const URL = `${PROXY}/kart/v1.0/users/nickname/${encodeURI('BBEESSTT')}`;
-
-  console.log('프록시', PROXY);
-  console.log(URL);
-  useEffect(() => {
-    axios
-      .get(
-        `${PROXY}/kart/v1.0/users/nickname/${encodeURI('BBEESSTT')}`,
-        headers,
-      )
-      .then((response) => {
-        console.log('응답결과', response);
-        return response.data;
-      })
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((err) => console.error(err));
-  }, []);
 
   // const fetchUserAccessId = async () => {
   //   await axios
