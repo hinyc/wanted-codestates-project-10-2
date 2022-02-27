@@ -16,7 +16,7 @@ function Summary({ matchInfo, nickname }) {
         headers,
       )
       .then((response) => {
-        console.log('응답결과', response.status);
+        console.log('응답결과', response);
         return response.data;
       })
       .then((data) => {
