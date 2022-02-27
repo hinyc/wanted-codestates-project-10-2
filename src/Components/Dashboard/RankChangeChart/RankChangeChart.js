@@ -22,12 +22,14 @@ ChartJS.register(
   Legend,
 );
 
-const RankChangeChart = () => {
-  const rankArry = [];
+const RankChangeChart = ({ recent50matches }) => {
+  const rankArry = recent50matches
+    .map((el) => el.player.matchRank)
+    .filter((test) => test <= 8);
+
   const labelsArry = [];
   for (let i = 50; i >= 1; i--) {
     labelsArry.push(`이전 ${i}경기`);
-    rankArry.push(Math.floor(Math.random() * 8 + 1));
   }
 
   const data = {
@@ -75,6 +77,8 @@ const RankChangeChart = () => {
       },
       yAxis: {
         reverse: true,
+        suggestedMin: 1,
+        suggestedMax: 8,
       },
     },
   };

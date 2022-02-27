@@ -5,10 +5,12 @@ import Toggle from './Common/Toggle';
 
 import RecordListContainer from './RecordListContainer';
 
-
-const Tabs = () => {
+const Tabs = ({ nickname, matchInfo }) => {
   const menuArr = [
-    { name: '통합', content: <RecordListContainer /> },
+    {
+      name: '통합',
+      content: <RecordListContainer nickname={nickname} userInfo={matchInfo} />,
+    },
     { name: '매우빠름', content: '매우빠름' },
     { name: '무한부스터', content: '무한부스터' },
   ];
@@ -117,8 +119,7 @@ const Menu = styled.div`
 const Desc = styled.div`
   width: 100%;
   max-width: 650px;
-  background: powderblue;
-  height: 100vh;
+  height: auto;
   position: absolute;
   top: 70px;
   right: 0;
@@ -127,7 +128,6 @@ const Desc = styled.div`
   justify-content: center;
 
   margin-top: 45px;
-
 `;
 
 export default Tabs;

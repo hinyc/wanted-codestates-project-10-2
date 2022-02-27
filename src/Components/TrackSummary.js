@@ -57,6 +57,7 @@ export const TrackSummary = ({ matchInfo }) => {
   const selectTrackHandler = (e) => {
     setSelectTrack(e.target.value);
   };
+  console.log(typeof trackRecords[0][0][1]);
   // console.log(a.forEach((b) => console.log(b[1].trackRecord)));
   console.log(a);
   // console.log(a.forEach((item, i) => console.log(trackRecords[i])));

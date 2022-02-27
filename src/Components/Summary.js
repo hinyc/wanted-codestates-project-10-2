@@ -6,8 +6,7 @@ import axios from 'axios';
 import { headers } from '../Util/util';
 
 
- const Summary = ({ matchInfo, nickname }) => {
-
+const Summary = ({ matchInfo, nickname }) => {
   const [clickedTab, setClickedTab] = useState('트랙');
   const changeColor = (e) => {
     let tabName = e.target.innerText;
@@ -35,10 +34,7 @@ import { headers } from '../Util/util';
         </li>
       </TrackKartNav>
       {clickedTab === '트랙' ? (
-
         <TrackSummary matchInfo={matchInfo} />
-
-
       ) : (
         <KartSummary matchInfo={matchInfo} />
       )}

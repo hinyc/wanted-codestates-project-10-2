@@ -5,15 +5,49 @@ import RecordListDropdown from './RecordListDropdown';
 import { headers, PROXY } from '../Util/util';
 import axios from 'axios';
 
-const RecordListContainer = () => {
+const RecordListContainer = ({ nickname, matchInfo }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [playerName, setPlayerName] = useState('BBEESSTT');
+  const [playerName, setPlayerName] = useState(nickname);
   const [recent10MatchList, setRecent10MatchList] = useState([]);
   const [matches, setMatches] = useState([]);
 
   const handleDropdownDisplay = () => {
     setIsOpen((prev) => !prev);
   };
+
+  useEffect(() => {
+    setPlayerName(nickname);
+  }, [nickname]);
+
+  const getCurrentDatetime = () => {
+    const today = new Date();
+    const date =
+      today.getFullYear() +
+      '-' +
+      (today.getMonth() + 1) +
+      '-' +
+      today.getDate();
+    const time =
+      today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+    return date + 'T' + time;
+  };
+  useEffect(() => {
+    filterRecentMatches();
+  }, []);
+
+  // 최근 일주일 간 매치 데이터만 필터링해서 저장
+  const filterRecentMatches = () => {
+    const currentDatetime = getCurrentDatetime();
+    console.log(currentDatetime);
+  };
+  useEffect(() => {
+    async function fetchData() {
+      const matchData = await fetchUserAccessId().then((data) => data);
+      setRecent10MatchList(matchData.map((match) => match.players)); // recent10MatchPlayers
+      setMatches(matchData);
+    }
+    fetchData();
+  }, []);
 
   const fetchUserAccessId = async () => {
     // 라이더명으로 유저 정보 조회
@@ -52,13 +86,6 @@ const RecordListContainer = () => {
                 // data 변수: 매치 10개에 대한 상세 정보가 담긴 리스트
                 console.log(data);
 
-                /* 이 부분!!!!!!!
-                // 각 매치에서 플레이어 정보 리스트만 빼기
-                const playerList = data.map((match) => match.players);
-
-                // console.log(playerList);
-                return playerList;
-                */
                 return data;
               });
           });
@@ -69,22 +96,13 @@ const RecordListContainer = () => {
     return playerList;
   };
 
-  useEffect(() => {
-    async function fetchData() {
-      const matchData = await fetchUserAccessId().then((data) => data);
-      setRecent10MatchList(matchData.map((match) => match.players)); // recent10MatchPlayers
-      setMatches(matchData);
-    }
-    fetchData();
-  }, []);
-
   // 플레이어 완주 순위대로 정렬
   const sortByRank = (a, b) => {
     return a.matchRank - b.matchRank;
   };
 
   return (
-    <section>
+    <section style={{ height: 'auto' }}>
       <ListWrapper>
         {recent10MatchList.map((players, idx) => {
           const orderedPlayers = players.sort(sortByRank);

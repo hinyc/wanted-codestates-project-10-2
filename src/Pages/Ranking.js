@@ -3,7 +3,8 @@ import RankList from '../Components/RankList';
 import RankerBox from '../Components/Rank/Box';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { headers, PROXY } from '../Util/util';
+
+import { headers, PROXY,  userList } from '../Util/util';
 
 export default function Ranking({ setSeletPage }) {
   // 개인전 matchType : 7b9f0fd5377c38514dbb78ebe63ac6c3b81009d5a31dd569d1cff8f005aa881a (스피드개인전)
@@ -12,26 +13,7 @@ export default function Ranking({ setSeletPage }) {
     setSeletPage('ranking');
   }, [setSeletPage]);
   // 모든 유저 정보를 얻는게 불가능해서 임의로 아래 유저들에 대해서만 랭킹 산정함
-  const [userList, setUserList] = useState([
-    '134525754',
-    '1091146179',
-    '2097689234',
-    '117614495',
-    '1242159681',
-    '1258489521',
-    '537117766',
-    '1140973743',
-    '957139120',
-    '638197971',
-    '1577319674',
-    '1141480757',
-    '1611133164',
-    '184698949',
-    '252318885',
-    '117902742',
-    '1963422428',
-    '1930010498',
-  ]);
+
   const date = new Date();
   const startDate = new Date(
     +new Date(date.setHours(0, 0, 0, 0)) + 3240 * 10000,
@@ -68,7 +50,7 @@ export default function Ranking({ setSeletPage }) {
       .then((allRes) => {
         setResDataList(allRes.map((res) => res.data));
       });
-  }, [matchType]);
+  }, [endDate, startDate, matchType]);
 
   useEffect(() => {
     const arr = [];

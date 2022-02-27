@@ -1,13 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import styled from 'styled-components';
 import RankCard from './RankCard';
 
+const PAGE_NUMBER = 10;
+
 const RankList = (props) => {
+  const targetRef = useRef(null);
+  const [page, setPage] = useState(PAGE_NUMBER);
   const { matchList } = props;
+  const newMatchLIst = matchList.slice(0, page);
+
+  const callback = useCallback(
+    ([entry], observer) => {
+      if (entry.isIntersecting) setPage(page + 10);
+    },
+    [newMatchLIst],
+  );
+
+  useEffect(() => {
+    if (!targetRef.current) return;
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      rootMargin: '0px',
+      threshold: 1.0,
+    });
+    observer.observe(targetRef.current);
+    return () => observer.disconnect();
+  }, [callback]);
+
   return (
     <RankListContainer>
-      {matchList.map((match, id) => (
-        <RankCard match={match} rank={id} key={id} />
+      {newMatchLIst.map((match, id) => (
+        <RankCard
+          match={match}
+          rank={id}
+          key={id}
+          ref={id + 3 === newMatchLIst.length ? targetRef : undefined}
+        />
       ))}
     </RankListContainer>
   );

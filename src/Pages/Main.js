@@ -20,8 +20,10 @@ export default function Main({ nickname, matchInfo, setSeletPage }) {
   useEffect(() => {
     setSeletPage('main');
   }, [setSeletPage]);
+  console.log(nickname, matchInfo);
+
   return (
-    <>
+    <div>
       <OneYear>
         <FontAwesomeIcon icon={faInfoCircle} className="icon" />
         카트라이더 매치데이터는 최근 1년치 데이터만 확인할 수 있습니다
@@ -32,21 +34,21 @@ export default function Main({ nickname, matchInfo, setSeletPage }) {
 
         <Dashboard>
           <OverallRecord />
-          <RankChangeChartBox />
+          <RankChangeChartBox matchInfo={matchInfo} />
           <CheeringMSGBox />
         </Dashboard>
-        <Tabs />
 
-        <SummaryWapper>
+        <Tabs nickname={nickname} matchInfo={matchInfo} />
+        <SummaryWrapper>
           <Summary nickname={nickname} matchInfo={matchInfo} />
           <RecordListContainer />
-        </SummaryWapper>
+        </SummaryWrapper>
       </Container>
-    </>
+    </div>
   );
 }
 
-const SummaryWapper = styled.div`
+const SummaryWrapper = styled.div`
   min-width: 1000px;
   display: flex;
 `;
