@@ -4,13 +4,16 @@
 
 <br />
 
-### 카트라이더 전적검색 TMI🦽
+### 카트라이더 전적검색 TM 🚗
+
 📎 [카트라이더 전적검색 바로가기](https://suspicious-liskov-27f338.netlify.app/)
 
-<div align="center">
-<img width="400px" src="https://user-images.githubusercontent.com/87487161/156332014-2d1d6a85-269f-4e09-986c-f2a80bacd249.png"/>
-</div>
 <br />
+
+<div align="center">
+ <img width="400px" src="https://user-images.githubusercontent.com/87487161/156332014-2d1d6a85-269f-4e09-986c-f2a80bacd249.png"/>
+</div>
+
 <br />
 
 ### About 🪄
@@ -40,9 +43,9 @@
 |[우혁주](https://github.com/Space-Belt) | 팀원 |                                                   |
 |[전용태](https://github.com/yong313)    | 팀원 |                                                   |
 
+<br />
 
 ### 기술 스텍 🛠
-
 <img src="https://img.shields.io/badge/React-lightgray?style=flat-round&logo=React&logoColor=61DBFB"/></a> &nbsp;
 <img src="https://img.shields.io/badge/React--Router-lightgray?style=flat-round&logo=React-Router&logoColor=#CA4245"/></a> &nbsp;
 <img src="https://img.shields.io/badge/Styled--Components-lightgray?style=flat-round&logo=Styled-Components&logoColor=CA4245"/></a>&nbsp;
