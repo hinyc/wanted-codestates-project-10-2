@@ -7,6 +7,10 @@
 ### 카트라이더 전적검색 TMI🦽
 📎 [카트라이더 전적검색 바로가기](https://suspicious-liskov-27f338.netlify.app/)
 
+<div align="center">
+<img width="400px" src="https://user-images.githubusercontent.com/87487161/156332014-2d1d6a85-269f-4e09-986c-f2a80bacd249.png"/>
+</div>
+<br />
 <br />
 
 ### About 🪄
@@ -26,16 +30,16 @@
 
 <br />
 
-### 구현한 기능 목록 📝
- - React를 이용한 SPA 구현
- - 선형 그래프와 원형그래프 구현
- - 에니메이션구현 
-    - 개인전적페이지 | 
-    `신고하기 모달`, `매칭하기 배경`, `순위변경 그래프`, `응원 한마디말풍선`, `네브바 메뉴선택`
-     - 랭킹페이지 | 
-     `배경물결`, `원형그래프`
- 
-<br />
+### 팀 구성 👨‍👨‍👧‍👧
+
+| 이름                                   | 직책 | 역할                                           |
+| ------------------------------------ | ---- | ------------------------------------------------ |
+|[홍인열](https://github.com/hinyc)      | 팀장 |                                                   |
+|[김주영](https://github.com/juo1221)    | 팀원 |                                                   |
+|[복지호](https://github.com/Jiho31)     | 팀원 |                                                   |
+|[우혁주](https://github.com/Space-Belt) | 팀원 |                                                   |
+|[전용태](https://github.com/yong313)    | 팀원 |                                                   |
+
 
 ### 기술 스텍 🛠
 
@@ -48,13 +52,29 @@
 
 <br />
 
-### 팀 구성 👨‍👨‍👧‍👧
 
-**팀장**
-[홍인열](https://github.com/hinyc)
+## 구현한 기능 목록
 
-**팀원**
-[김주영](https://github.com/juo1221) | [박창진](https://github.com/SpearJin) | [복지호](https://github.com/Jiho31) | [우혁주](https://github.com/Space-Belt) | [장혜민](https://github.com/hyemin-jang) | [전용태](https://github.com/yong313)
+<details>
+  <summary>홍인열</summary>
+  -그래프
+</details>
+<details>
+  <summary>김주영</summary>
+  -그래프
+</details>
+<details>
+  <summary>복지호</summary>
+  -그래프
+</details>
+<details>
+  <summary>우혁주</summary>
+  -그래프
+</details>
+<details>
+  <summary>전용태</summary>
+  -그래프
+</details>
+
 
 <br />
-
