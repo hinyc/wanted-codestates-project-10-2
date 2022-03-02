@@ -42,6 +42,9 @@
 |[복지호](https://github.com/Jiho31)     | 팀원 |                                                   |
 |[우혁주](https://github.com/Space-Belt) | 팀원 |                                                   |
 |[전용태](https://github.com/yong313)    | 팀원 |                                                   |
+|[장혜민](https://github.com/hyemin-jang) | 팀원 |                                                   |
+|[박창진](https://github.com/SpearJin)    | 팀원 |                                                   |
+
 
 <br />
 
@@ -78,6 +81,15 @@
   <summary>전용태</summary>
   -그래프
 </details>
+<details>
+  <summary>장혜민</summary>
+  -그래프
+</details>
+<details>
+  <summary>박창진</summary>
+  -그래프
+</details>
+
 
 
 <br />
