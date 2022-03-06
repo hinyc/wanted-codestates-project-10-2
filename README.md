@@ -38,7 +38,7 @@
 | 이름                                   | 직책 | 역할                                           |
 | ------------------------------------ | ---- | ------------------------------------------------ |
 |🏄🏻‍♂️ [홍인열](https://github.com/hinyc)      | 팀장 | 태스크 쪼개기, 닉네임검색 API 받아오기, 카트별 전적표시  |
-|[김주영](https://github.com/juo1221)    | 팀원 |                                                   |
+|[김주영](https://github.com/juo1221)    | 팀원 | 랭킹페이지 애니메이션, 랭킹페이지 차트구현, 랭킹페이지 무한스크롤 구현|
 |[복지호](https://github.com/Jiho31)     | 팀원 |                                                   |
 |[우혁주](https://github.com/Space-Belt) | 팀원 |                                                   |
 |[전용태](https://github.com/yong313)    | 팀원 |                                                   |
@@ -74,7 +74,14 @@
 </details>
 <details>
   <summary>김주영</summary>
-  -그래프
+  <ul>
+   <li> 개인전, 팀전에 해당하는 랭킹 데이터 표기</li>
+   <li> 랭킹 데이터 도넛 차트로 표현 </li>
+   <li> 시각적 효과를 위해 차트 컴포넌트는 1초 후 마운트</li>
+   <li> 모달 창 lazy loading 구현 </li>
+   <li> 랭킹페이지 파도 애니메이션 적용 </li>
+   <li> 랭킹페이지 무한 스크롤 적용 </li>
+  </ul>
 </details>
 <details>
   <summary>복지호</summary>
