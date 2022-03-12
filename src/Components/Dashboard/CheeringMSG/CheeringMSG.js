@@ -28,6 +28,7 @@ const CheeringMSG = ({ commentList, setCommentList }) => {
     saveComment();
     // 로컬에 저장된 값 - setCommentList에 저장해둔 값을 get으로 가져오기
     setCommentList(JSON.parse(window.localStorage.getItem('saveComment')));
+    // input 값 초기화
     nickName.current.value = '';
     comment.current.value = '';
   };
