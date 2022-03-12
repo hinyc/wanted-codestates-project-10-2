@@ -21,6 +21,7 @@ export const matchTimeTimeExtractor = (matchTime) => {
   secondDot.unshift(min);
   return secondDot.join("'");
 };
+
 const kartList = [
   {
     id: '4a3d34d9958d54ab218513e2dc406a6a7bc30e529292895475a11a986550b437',
