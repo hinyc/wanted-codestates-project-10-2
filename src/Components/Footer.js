@@ -29,7 +29,7 @@ const FooterContainer = styled.div`
   height: auto;
   margin: 0 auto;
   padding-bottom: 30px;
-  /* position: relative; */
+  position: relative;
   background-color: ${(props) =>
     props.seletPage === 'main' ? '#fff' : '#faf9f9'};
 `;

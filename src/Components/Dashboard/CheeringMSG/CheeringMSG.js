@@ -28,6 +28,8 @@ const CheeringMSG = ({ commentList, setCommentList }) => {
     saveComment();
     // 로컬에 저장된 값 - setCommentList에 저장해둔 값을 get으로 가져오기
     setCommentList(JSON.parse(window.localStorage.getItem('saveComment')));
+    nickName.current.value = '';
+    comment.current.value = '';
   };
   // 댓글 추가 시 스크롤 위치 하단 고정
   const scrollToBottom = () => {
