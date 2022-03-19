@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import RecordListItem from './RecordListItem';
-import RecordListDropdown from './RecordListDropdown';
 import { headers, PROXY } from '../Util/util';
 import axios from 'axios';
 
 const RecordListContainer = ({ nickname, matchInfo }) => {
-  const [isOpen, setIsOpen] = useState(false);
   const [playerName, setPlayerName] = useState(nickname);
   const [recent10MatchList, setRecent10MatchList] = useState([]);
   const [matches, setMatches] = useState([]);
-
-  const handleDropdownDisplay = () => {
-    setIsOpen((prev) => !prev);
-  };
 
   useEffect(() => {
     setPlayerName(nickname);
@@ -94,39 +88,32 @@ const RecordListContainer = ({ nickname, matchInfo }) => {
     return playerList;
   };
 
-  // 플레이어 완주 순위대로 정렬
-  const sortByRank = (a, b) => {
-    return a.matchRank - b.matchRank;
-  };
-
   return (
     <ListWrapper>
-      {/* <section style={{ height: 'auto' }}> */}
-      {/* {recent10MatchList.map((players, idx) => {
-        const orderedPlayers = players.sort(sortByRank);
-        const searchedPlayer = players.filter(
-          (player) => player.characterName === playerName,
-        );
+      <section style={{ height: 'auto' }}>
+        {recent10MatchList.map((players, idx) => {
+          const searchedPlayer = players.filter(
+            (player) => player.characterName === playerName,
+          );
 
-        return (
-          <div key={idx}>
-            <RecordListItem
-              handleDropdownDisplay={handleDropdownDisplay}
-              matchInfo={matches[idx]}
-              player={searchedPlayer}
-            />
-            {true && <RecordListDropdown players={orderedPlayers} />}
-          </div>
-        );
-      })} */}
-      {/* </section> */}
+          return (
+            <div key={idx}>
+              <RecordListItem
+                matchInfo={matches[idx]}
+                player={searchedPlayer[0]}
+                players={players}
+              />
+            </div>
+          );
+        })}
+      </section>
     </ListWrapper>
   );
 };
 
 const ListWrapper = styled.ul`
   width: 660px;
-  /* height: 3000px; */
+  // height: 3000px;
 `;
 
 export default RecordListContainer;

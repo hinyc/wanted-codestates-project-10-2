@@ -39,7 +39,7 @@ export default function Main({ nickname, matchInfo, setSelectPage }) {
       <Tabs nickname={nickname} matchInfo={matchInfo} />
       <SummaryWrapper>
         <Summary nickname={nickname} matchInfo={matchInfo} />
-        {/* <RecordListContainer /> */}
+        {/* <RecordListContainer nickname={nickname} matchInfo={matchInfo} /> */}
       </SummaryWrapper>
     </Container>
   );
@@ -48,6 +48,7 @@ export default function Main({ nickname, matchInfo, setSelectPage }) {
 const SummaryWrapper = styled.div`
   /* min-width: 1000px; */
   /* display: flex; */
+  align-self: flex-start; // 임시로 넣은 값
 `;
 
 const OneYear = styled.div`
