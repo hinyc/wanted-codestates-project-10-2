@@ -36,7 +36,7 @@ const TrackRankChart = () => {
     labels: [...labelsArry],
     datasets: [
       {
-        label: '순위',
+        label: '라이더비율',
         fill: true,
         backgroundColor: 'rgba(0, 119, 255, 0.1)',
         lineTension: 0.4,

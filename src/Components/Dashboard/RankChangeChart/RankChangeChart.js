@@ -23,9 +23,7 @@ ChartJS.register(
 );
 
 const RankChangeChart = ({ recent50matches }) => {
-  const rankArry = recent50matches
-    .map((el) => el.player.matchRank)
-    .filter((test) => test <= 8);
+  const rankArry = recent50matches;
 
   const labelsArry = [];
   for (let i = 50; i >= 1; i--) {

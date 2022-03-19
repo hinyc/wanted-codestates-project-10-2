@@ -44,8 +44,8 @@ export const TrackSummary = ({ matchInfo }) => {
     );
   };
 
-  const a = makeTrackTotalList(matchInfo[0].matches);
-  let trackRecords = a.map((record) => {
+  const divTrackList = makeTrackTotalList(matchInfo[0].matches);
+  let trackRecords = divTrackList.map((record) => {
     return record[1].trackRecord;
   });
   trackRecords.forEach((record, i) => {
@@ -69,7 +69,7 @@ export const TrackSummary = ({ matchInfo }) => {
         &nbsp;%
       </AvarageHigh>
       <MapName>
-        {trackListObj[a[selectTrack][0]]}
+        {trackListObj[divTrackList[selectTrack][0]]}
         <span>&nbsp;&nbsp;기록분포</span>
       </MapName>
       <GraphBox>
@@ -90,7 +90,7 @@ export const TrackSummary = ({ matchInfo }) => {
             </tr>
           </thead>
           <tbody>
-            {a.map((el, idx) => (
+            {divTrackList.map((el, idx) => (
               <tr key={idx} className="body">
                 <td className="select">
                   <input

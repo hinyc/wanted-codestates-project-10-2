@@ -22,7 +22,7 @@ export default function OverallRecord(data) {
   ).length;
 
   const winRatio = (winCount / matchTotalCount) * 100;
-  const retireRatio = parseInt((retireCount / matchTotalCount) * 100);
+  const retireRatio = (retireCount / matchTotalCount) * 100;
   return (
     <Container>
       <Title>
