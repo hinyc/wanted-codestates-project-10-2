@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import TrackRankChart from '../Components/Dashboard/TrackRankChart';
 import { SummaryTR } from './SummaryTR';
 import { trackListObj, matchTimeTimeExtractor } from '../Util/util';
+import { useSelector } from 'react-redux';
 
-export const TrackSummary = ({ matchInfo }) => {
+export const TrackSummary = () => {
+  const matchInfo = useSelector((state) => state.userInfo.matches);
+
   const makeTrackTotalList = (matches) => {
     const trackTotalList = {};
-
     matches.forEach((el) => {
       let exist = false;
       if (Object.keys(trackTotalList).length > 0) {
@@ -58,6 +60,7 @@ export const TrackSummary = ({ matchInfo }) => {
     setSelectTrack(e.target.value);
   };
 
+  console.log(divTrackList);
   return (
     <RecordBox>
       <TrackOrKartRecord>
