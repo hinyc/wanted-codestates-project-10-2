@@ -1,42 +1,30 @@
 /* eslint-disable jsx-a11y/alt-text */
 
 import React, { useState } from 'react';
-import axios from 'axios';
-import { API } from '../Util/util';
 
 import styled from 'styled-components';
 import ReportModal from './Common/ReportModal';
 import ShareModal from './Common/ShareModal';
 import TeamsSelector from './Common/TeamsSelector';
+import { useSelector } from 'react-redux';
 
-export default function UserinfoBox({ nickname, matchInfo }) {
+export default function UserinfoBox() {
   const [showReport, setShowReport] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
+  const nickName = useSelector((state) => state.userInfo.nickName);
+  const matches = useSelector((state) => state.userInfo.matches);
 
-  // console.log(matchInfo[0].matches[0].player.character);
-  const character = matchInfo
-    ? matchInfo[0].matches[0].player.character
-    : '42c729e64e31aea803e4881432f7b95129ce97535c29e4f9a72919a9f267b418';
+  const character = matches[0].matches[0].player.character;
 
   const ModalOpenHandler = () => {
     document.body.style.overflow = 'hidden';
     setShowReport(true);
   };
 
-  // console.log(nickname);
-  // console.log(API);
   const userImg = `https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/character/${character}.png`;
   const userClass = 'https://tmi.nexon.com/img/icon_l3.png';
 
   const pageView = 734;
-
-  console.log('test');
-  // const URL = 'https://api.nexon.co.kr/kart/v1.0/users/nickname/';
-  // const data = axios
-  //   .get(`${URL}/${nickname}`, {
-  //     headers: { Authorization: API },
-  //   })
-  //   .then((res) => console.log(res));
 
   return (
     <>
@@ -47,7 +35,7 @@ export default function UserinfoBox({ nickname, matchInfo }) {
           </div>
           <div className="center">
             <h1>
-              {`${nickname} `}
+              {`${nickName} `}
               <img src={userClass} />
             </h1>
 

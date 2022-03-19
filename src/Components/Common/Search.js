@@ -1,10 +1,13 @@
 import axios from 'axios';
 import React, { useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { setUserInfo } from '../../modules/userInfo';
 import { headers, PROXY } from '../../Util/util';
 
 export default function Search({ setNickname, setMatchInfo }) {
   const nickname = useRef();
+  const dispatch = useDispatch();
   const makeDate = (lastYear) => {
     const numTwoMaker = (num) => (num < 10 ? `${'0' + num}` : num);
     let newDate = new Date();
@@ -23,9 +26,6 @@ export default function Search({ setNickname, setMatchInfo }) {
   };
 
   const inputHandler = () => {
-    //로컬에 닉네임이 없으면 ref 닉네임으로 요청
-    // 로컬에 있으면 클릭시만 요청 // 구현전
-
     axios
       .get(
         `${PROXY}/kart/v1.0/users/nickname/${encodeURI(
@@ -60,9 +60,6 @@ export default function Search({ setNickname, setMatchInfo }) {
           .then((response) => response.data)
           .then((data) => {
             // data를 이용한 처리
-            console.log(data);
-            console.log(data.matches[0].matches[0]);
-            console.log(data.matches[0].matches.map((el) => el.playerCount));
 
             setNickname(data.nickName);
             setMatchInfo(data.matches);
@@ -71,15 +68,20 @@ export default function Search({ setNickname, setMatchInfo }) {
               'matchInfo',
               JSON.stringify(data.matches),
             );
+            dispatch(setUserInfo(data.nickName, data.matches));
           })
           .catch((err) => console.error(err)); // 에러 처리
       })
       .catch((err) => console.error(err)); // 에러 처리
   };
-
+  const searchEnter = (e) => {
+    if (e.key === 'Enter') {
+      inputHandler();
+    }
+  };
   return (
     <Container name="search">
-      <Input ref={nickname} placeholder="닉네임 검색" />
+      <Input ref={nickname} placeholder="닉네임 검색" onKeyDown={searchEnter} />
       <Button className="buttonBox" onClick={inputHandler}>
         <i className="fa-solid fa-magnifying-glass"></i>
       </Button>

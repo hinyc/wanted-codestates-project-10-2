@@ -1,28 +1,22 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import RankChangeChart from './RankChangeChart';
 
-const RankChangeChartBox = ({ matchInfo }) => {
-  const recent50matches = matchInfo[0].matches
-    .filter(
-      (match) =>
-        match.player.matchRank !== '' && match.player.matchRank !== '99',
-    )
-    .slice(0, 50);
+const RankChangeChartBox = () => {
+  const matchInfo = useSelector((state) => state.userInfo.matches[0].matches);
 
-  const recent200matches = matchInfo[0].matches.filter(
-    (match) => match.player.matchRank !== '' && match.player.matchRank !== '99',
-  );
+  const matches = matchInfo.map((el) => {
+    if (el.player.matchRank === '99' || el.player.matchRank === '') return 8;
+    return Number(el.player.matchRank);
+  });
 
-  const const200matchesRank =
-    recent200matches
-      .map((el) => Number(el.player.matchRank))
-      .reduce((a, b) => a + b) / 184;
+  const matches200 = matches.slice(0, 200);
 
-  const const50matchesRank =
-    recent50matches
-      .map((el) => Number(el.player.matchRank))
-      .reduce((a, b) => a + b) / 50;
+  const matches50 = matches.slice(0, 50);
+
+  const avgMatches200 = matches200.reduce((a, b) => a + b) / matches200.length;
+  const avgMatches50 = matches50.reduce((a, b) => a + b) / matches50.length;
 
   return (
     <>
@@ -36,19 +30,19 @@ const RankChangeChartBox = ({ matchInfo }) => {
             <span className="twoTitle">지난200경기</span>
             <span className="blue">
               {' '}
-              {Math.round(const200matchesRank * 100) / 100}위
+              {Math.round(avgMatches200 * 100) / 100}위
             </span>
           </div>
           <div>
             <span className="twoTitle">최근50경기</span>
             <span className="blue">
               {' '}
-              {Math.round(const50matchesRank * 100) / 100}위
+              {Math.round(avgMatches50 * 100) / 100}위
             </span>
           </div>
         </Title>
         <GrapeContainer>
-          <RankChangeChart recent50matches={recent50matches} />
+          <RankChangeChart recent50matches={matches50} />
         </GrapeContainer>
       </Container>
     </>

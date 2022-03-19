@@ -5,7 +5,6 @@ import { TrackSummary } from './TrackSummary';
 import axios from 'axios';
 import { headers } from '../Util/util';
 
-
 const Summary = ({ matchInfo, nickname }) => {
   const [clickedTab, setClickedTab] = useState('트랙');
   const changeColor = (e) => {
@@ -44,7 +43,7 @@ const Summary = ({ matchInfo, nickname }) => {
 
 const WholeTrack = styled.div`
   width: 330px;
-  height: 691px;
+  /* height: 691px; */
 `;
 
 const TrackKartNav = styled.ul`
