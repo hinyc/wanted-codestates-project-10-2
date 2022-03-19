@@ -49,8 +49,9 @@ function App() {
             element={<Ranking setSelectPage={setSelectPage} />}
           />
         </Routes>
-        <Footer selectPage={selectPage} />
+
       </Wrapper>
+      <Footer seletPage={seletPage} />
     </Router>
   );
 }
@@ -60,8 +61,13 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
   /* width: 100%; */
   /* min-height: 100%; */
+
+  width: 100%;
+  height: 100%;
+
 `;
 
 export default App;
