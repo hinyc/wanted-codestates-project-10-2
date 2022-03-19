@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const initialData = {
@@ -11,7 +11,9 @@ const initialData = {
 
 const RecordListDropdown = ({ recent10MatchList, players }) => {
   // const [playerListData, setPlayerListData] = useState(recent10MatchList);
-  const [playersData, setPlayersData] = useState(players);
+  const [playersData, setPlayersData] = useState(
+    players.sort((a, b) => a.matchRank - b.matchRank),
+  );
 
   // useEffect(() => {
   //   const totalPlayers = players.length;

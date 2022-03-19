@@ -50,7 +50,8 @@ function App() {
           />
         </Routes>
       </Wrapper>
-      <Footer seletPage={selectPage} />
+
+
     </Router>
   );
 }
