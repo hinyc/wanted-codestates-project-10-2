@@ -1,4 +1,4 @@
-import React, { useState, Suspense, lazy } from 'react';
+import React, { useState, Suspense, lazy, useEffect } from 'react';
 import styled from 'styled-components';
 import RankerInfo from './RankerInfo';
 import RankingInfo from './RankingInfo';
@@ -13,9 +13,16 @@ const RankerBox = ({ top3MatchList, matchType, setMatchType }) => {
   const setOnclick = () => setModalState(true);
   const defaultState = [true, false];
   const [isSelected, setIsSelected] = useState(defaultState);
-  const handleMouseEnter = () => {
-    const component = import('./Modal');
-  };
+  const handleMouseEnter = () => import('./Modal');
+
+  useEffect(() => {
+    if (modalState) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [modalState]);
+
   return (
     <>
       <Suspense fallback={null}>
@@ -38,11 +45,8 @@ const RankerBox = ({ top3MatchList, matchType, setMatchType }) => {
           />
         </div>
         <Rankers>
-
-
           {top3MatchList.map((info, id) => {
             return <RankerInfo info={info} key={id} />;
-
           })}
         </Rankers>
         <RankListTitle />
@@ -64,7 +68,6 @@ const BaseWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   overflow: hidden;
-
   .info-wrap {
     width: 1000px;
     margin: 0 auto;
