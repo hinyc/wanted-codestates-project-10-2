@@ -38,7 +38,6 @@ const RecordListContainer = ({ nickname, matchInfo }) => {
   // 최근 일주일 간 매치 데이터만 필터링해서 저장
   const filterRecentMatches = () => {
     const currentDatetime = getCurrentDatetime();
-    console.log(currentDatetime);
   };
   useEffect(() => {
     async function fetchData() {
@@ -84,7 +83,6 @@ const RecordListContainer = ({ nickname, matchInfo }) => {
               .then((allRes) => allRes.map((res) => res.data))
               .then((data) => {
                 // data 변수: 매치 10개에 대한 상세 정보가 담긴 리스트
-                console.log(data);
 
                 return data;
               });
@@ -104,7 +102,7 @@ const RecordListContainer = ({ nickname, matchInfo }) => {
   return (
     <ListWrapper>
       {/* <section style={{ height: 'auto' }}> */}
-      {recent10MatchList.map((players, idx) => {
+      {/* {recent10MatchList.map((players, idx) => {
         const orderedPlayers = players.sort(sortByRank);
         const searchedPlayer = players.filter(
           (player) => player.characterName === playerName,
@@ -120,7 +118,7 @@ const RecordListContainer = ({ nickname, matchInfo }) => {
             {true && <RecordListDropdown players={orderedPlayers} />}
           </div>
         );
-      })}
+      })} */}
       {/* </section> */}
     </ListWrapper>
   );

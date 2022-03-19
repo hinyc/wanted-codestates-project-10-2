@@ -1,15 +1,28 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import DoughnutChartRenew from '../Dashboard/DoughnutChartRenew';
 
-export default function OverallRecord() {
+export default function OverallRecord(data) {
   //00전 00승 00패
   const total = 200;
   const win = 51;
   const lose = 149;
-  const winRatio = 26;
-  const completeRatio = 86;
-  const retireRatio = 14;
+  // const winRatio = 26;
+  // const completeRatio = 86;
+  // const retireRatio = 14;
 
+  const matches = useSelector((state) => state.userInfo.matches);
+  const matchTotalCount = matches[0].matches.length;
+  const winCount = matches[0].matches.filter(
+    (el) => el.matchResult === '1',
+  ).length;
+  const retireCount = matches[0].matches.filter(
+    (el) => el.player.matchRetired === '1',
+  ).length;
+
+  const winRatio = (winCount / matchTotalCount) * 100;
+  const retireRatio = parseInt((retireCount / matchTotalCount) * 100);
   return (
     <Container>
       <Title>
@@ -17,21 +30,45 @@ export default function OverallRecord() {
           <span className=" blue">종합</span>
           <span>전적</span>
         </div>
-        <span className="summary">{`${total}전 ${win}승 ${lose}패`}</span>
+        <span className="summary">{`${matchTotalCount}전 ${winCount}승 ${
+          matchTotalCount - winCount
+        }패`}</span>
       </Title>
       <GrapeContainer>
-        <div>
+        <GrapeWrapper>
           <p className="title">승률</p>
-          <div className="disk blueDisk">{`${winRatio}%`}</div>
-        </div>
-        <div className="center">
+          <ProgressCircle>
+            <DoughnutChartRenew
+              percent={winRatio || 0.01}
+              color="#0077ff"
+              delay={1000}
+            />
+            <DoughnutChartRenew />
+          </ProgressCircle>
+        </GrapeWrapper>
+
+        <GrapeWrapper>
           <p className="title">완주율</p>
-          <div className="disk greenDisk">{`${completeRatio}%`}</div>
-        </div>
-        <div>
+          <ProgressCircle>
+            <DoughnutChartRenew
+              percent={100 - retireRatio || 0.01}
+              color="#9bd728"
+              delay={1000}
+            />
+            <DoughnutChartRenew />
+          </ProgressCircle>
+        </GrapeWrapper>
+        <GrapeWrapper>
           <p className="title">리타이어율</p>
-          <div className="disk redDisk">{`${retireRatio}%`}</div>
-        </div>
+          <ProgressCircle>
+            <DoughnutChartRenew
+              percent={retireRatio || 0.01}
+              color="#f62459"
+              delay={1000}
+            />
+            <DoughnutChartRenew />
+          </ProgressCircle>
+        </GrapeWrapper>
       </GrapeContainer>
       <Bottom>
         <div>
@@ -49,6 +86,18 @@ const Container = styled.div`
   background-color: #fff;
   width: 326.66px;
   height: 266px;
+`;
+
+const GrapeWrapper = styled.div`
+  width: 104px;
+  padding: 0 5px;
+`;
+
+const Circle = styled.div`
+  position: relative;
+  width: 95px;
+  height: 95px;
+  padding-top: 1px;
 `;
 
 const Title = styled.div`
@@ -129,4 +178,11 @@ const Bottom = styled.div`
   .big {
     font-size: 20px;
   }
+`;
+
+const ProgressCircle = styled.div`
+  position: relative;
+  margin: 20px auto;
+  width: 100px;
+  height: 100px;
 `;

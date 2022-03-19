@@ -20,7 +20,6 @@ export default function Main({ nickname, matchInfo, setSelectPage }) {
   useEffect(() => {
     setSelectPage('main');
   }, [setSelectPage]);
-  console.log(nickname, matchInfo);
 
   return (
     <Container>
@@ -28,7 +27,7 @@ export default function Main({ nickname, matchInfo, setSelectPage }) {
         <FontAwesomeIcon icon={faInfoCircle} className="icon" />
         카트라이더 매치데이터는 최근 1년치 데이터만 확인할 수 있습니다
       </OneYear>
-      <UserinfoBox nickname={nickname} matchInfo={matchInfo} />
+      <UserinfoBox />
       <Matching nickname={nickname} />
 
       <Dashboard>
