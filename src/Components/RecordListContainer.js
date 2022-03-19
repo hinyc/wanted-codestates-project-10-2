@@ -102,33 +102,33 @@ const RecordListContainer = ({ nickname, matchInfo }) => {
   };
 
   return (
-    <section style={{ height: 'auto' }}>
-      <ListWrapper>
-        {recent10MatchList.map((players, idx) => {
-          const orderedPlayers = players.sort(sortByRank);
-          const searchedPlayer = players.filter(
-            (player) => player.characterName === playerName,
-          );
+    <ListWrapper>
+      {/* <section style={{ height: 'auto' }}> */}
+      {recent10MatchList.map((players, idx) => {
+        const orderedPlayers = players.sort(sortByRank);
+        const searchedPlayer = players.filter(
+          (player) => player.characterName === playerName,
+        );
 
-          return (
-            <div key={idx}>
-              <RecordListItem
-                handleDropdownDisplay={handleDropdownDisplay}
-                matchInfo={matches[idx]}
-                player={searchedPlayer}
-              />
-              {true && <RecordListDropdown players={orderedPlayers} />}
-            </div>
-          );
-        })}
-      </ListWrapper>
-    </section>
+        return (
+          <div key={idx}>
+            <RecordListItem
+              handleDropdownDisplay={handleDropdownDisplay}
+              matchInfo={matches[idx]}
+              player={searchedPlayer}
+            />
+            {true && <RecordListDropdown players={orderedPlayers} />}
+          </div>
+        );
+      })}
+      {/* </section> */}
+    </ListWrapper>
   );
 };
 
 const ListWrapper = styled.ul`
   width: 660px;
-  height: auto;
+  /* height: 3000px; */
 `;
 
 export default RecordListContainer;

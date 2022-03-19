@@ -16,41 +16,39 @@ import Tabs from '../Components/Tabs';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
-export default function Main({ nickname, matchInfo, setSeletPage }) {
+export default function Main({ nickname, matchInfo, setSelectPage }) {
   useEffect(() => {
-    setSeletPage('main');
-  }, [setSeletPage]);
+    setSelectPage('main');
+  }, [setSelectPage]);
   console.log(nickname, matchInfo);
 
   return (
-    <div>
+    <Container>
       <OneYear>
         <FontAwesomeIcon icon={faInfoCircle} className="icon" />
         카트라이더 매치데이터는 최근 1년치 데이터만 확인할 수 있습니다
       </OneYear>
-      <Container>
-        <UserinfoBox nickname={nickname} matchInfo={matchInfo} />
-        <Matching nickname={nickname} />
+      <UserinfoBox nickname={nickname} matchInfo={matchInfo} />
+      <Matching nickname={nickname} />
 
-        <Dashboard>
-          <OverallRecord />
-          <RankChangeChartBox matchInfo={matchInfo} />
-          <CheeringMSGBox />
-        </Dashboard>
+      <Dashboard>
+        <OverallRecord />
+        <RankChangeChartBox matchInfo={matchInfo} />
+        <CheeringMSGBox />
+      </Dashboard>
 
-        <Tabs nickname={nickname} matchInfo={matchInfo} />
-        <SummaryWrapper>
-          <Summary nickname={nickname} matchInfo={matchInfo} />
-          <RecordListContainer />
-        </SummaryWrapper>
-      </Container>
-    </div>
+      <Tabs nickname={nickname} matchInfo={matchInfo} />
+      <SummaryWrapper>
+        <Summary nickname={nickname} matchInfo={matchInfo} />
+        {/* <RecordListContainer /> */}
+      </SummaryWrapper>
+    </Container>
   );
 }
 
 const SummaryWrapper = styled.div`
-  min-width: 1000px;
-  display: flex;
+  /* min-width: 1000px; */
+  /* display: flex; */
 `;
 
 const OneYear = styled.div`
@@ -73,7 +71,7 @@ const OneYear = styled.div`
 const Container = styled.div`
   width: 100%;
   min-width: 1000px;
-
+  /* height: 3000px; */
   display: flex;
   flex-direction: column;
   align-items: center;
