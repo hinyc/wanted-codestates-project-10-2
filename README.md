@@ -10,10 +10,23 @@
 
 <br />
 
-
+### 홈화면
 <div align="center">
- <img width="400px" src="https://user-images.githubusercontent.com/87487161/156332014-2d1d6a85-269f-4e09-986c-f2a80bacd249.png"/>
+ <img width="500px" src="https://user-images.githubusercontent.com/87487161/159153535-09c81170-cfe1-45c9-bbce-779ce71b5d7e.gif"/>
 </div>
+
+
+
+### 매칭하기 기능
+<div align="center">
+ <img width="500px" src="https://user-images.githubusercontent.com/87487161/159153554-feda5909-015d-4c2c-9ce1-414240b6a761.gif"/>
+</div>
+
+### 랭킹 화면 
+<div align="center">
+ <img width="500px" src="https://user-images.githubusercontent.com/87487161/159153558-a02ef2b8-f675-417d-942e-e4b6f00952a0.gif"/>
+</div>
+
 
 ### 카트라이더 전적검색 TMI 🚗
 
