@@ -4,9 +4,11 @@ import RecordListItem from './RecordListItem';
 import { headers, PROXY } from '../Util/util';
 import axios from 'axios';
 
+const MATCH_LENGTH = 20;
+
 const RecordListContainer = ({ nickname, matchInfo }) => {
   const [playerName, setPlayerName] = useState(nickname);
-  const [recent10MatchList, setRecent10MatchList] = useState([]);
+  const [recentMatchList, setRecentMatchList] = useState([]); // 최근 매치 데이터 일부를 담는 배열
   const [matches, setMatches] = useState([]);
 
   useEffect(() => {
@@ -36,7 +38,7 @@ const RecordListContainer = ({ nickname, matchInfo }) => {
   useEffect(() => {
     async function fetchData() {
       const matchData = await fetchUserAccessId().then((data) => data);
-      setRecent10MatchList(matchData.map((match) => match.players)); // recent10MatchPlayers
+      setRecentMatchList(matchData.map((match) => match.players)); // recentMatchPlayers
       setMatches(matchData);
     }
     fetchData();
@@ -54,10 +56,10 @@ const RecordListContainer = ({ nickname, matchInfo }) => {
         // 유저 정보 조회 결과가 담긴 data
         // console.log(data);
         const { accessId } = data;
-        // 유저 고유 식별자(accessId)를 이용해서 최근에 플레이한 매치 10개 조회
+        // 유저 고유 식별자(accessId)를 이용해서 최근에 플레이한 매치 MATCH_LENGTH 개 조회
         return axios
           .get(
-            `${PROXY}/kart/v1.0/users/${accessId}/matches?&limit=10`,
+            `${PROXY}/kart/v1.0/users/${accessId}/matches?&limit=${MATCH_LENGTH}`,
             headers,
           )
           .then((res) => res.data)
@@ -76,8 +78,7 @@ const RecordListContainer = ({ nickname, matchInfo }) => {
               )
               .then((allRes) => allRes.map((res) => res.data))
               .then((data) => {
-                // data 변수: 매치 10개에 대한 상세 정보가 담긴 리스트
-
+                // data 변수: 매치 MATCH_LENGTH개에 대한 상세 정보가 담긴 리스트
                 return data;
               });
           });
@@ -91,7 +92,7 @@ const RecordListContainer = ({ nickname, matchInfo }) => {
   return (
     <ListWrapper>
       <section style={{ height: 'auto' }}>
-        {recent10MatchList.map((players, idx) => {
+        {recentMatchList.map((players, idx) => {
           const searchedPlayer = players.filter(
             (player) => player.characterName === playerName,
           );
