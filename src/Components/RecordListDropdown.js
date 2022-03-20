@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import emtpyKartURI from '../Asset/empty_kart.png';
 
 const initialData = {
   characterName: '',
@@ -14,19 +15,22 @@ const RecordListDropdown = ({ recent10MatchList, players }) => {
   const [playersData, setPlayersData] = useState(
     players.sort((a, b) => a.matchRank - b.matchRank),
   );
+  const [emptyPlayers, setEmptyPlayers] = useState([]);
 
-  // useEffect(() => {
-  //   const totalPlayers = players.length;
-  //   const fillEmptyPlayers = [];
-  //   for (let i = 0; i < 8 - totalPlayers; i++) {
-  //     fillEmptyPlayers.push(initialData);
-  //   }
-  //   setPlayersData((prev) => {
-  //     console.log(prev);
-  //     console.log(fillEmptyPlayers);
-  //     return prev;
-  //   });
-  // }, []);
+  // 플레이어가 8명 미만일 경우 빈 자리 채우기
+  useEffect(() => {
+    const fillEmptyPlayers = [];
+    for (let i = 0; i < 8 - players.length; i++) {
+      fillEmptyPlayers.push(initialData);
+    }
+    setEmptyPlayers(fillEmptyPlayers);
+    // console.log(fillEmptyPlayers);
+  }, [players]);
+
+  const imageErrorHandler = (e) => {
+    e.target.onerror = null;
+    e.target.src = emtpyKartURI;
+  };
 
   return (
     <DropdownContainer>
@@ -42,22 +46,49 @@ const RecordListDropdown = ({ recent10MatchList, players }) => {
         {playersData.map((player, idx) => {
           const { characterName, matchRank, kart, matchRetired, matchTime } =
             player;
-          const kartURI = `https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/kart/${kart}.png?v=1645788019`;
+          const kartURI = kart
+            ? `https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/kart/${kart}.png?v=1645788019`
+            : emtpyKartURI;
 
           return (
             <li key={player.accountNo + idx} className="content">
               <div>
-                <div className="rank">{matchRank}</div>
+                {matchRetired === '1' ? (
+                  <div className="rank" style={{ color: '#f62459' }}>
+                    리타이어
+                  </div>
+                ) : (
+                  <div className="rank">{matchRank}</div>
+                )}
                 <div className="kart">
-                  <img src={kartURI} alt={`${characterName}의 카트`}></img>
+                  <img
+                    src={kartURI}
+                    alt={`${characterName}의 카트`}
+                    onError={imageErrorHandler}
+                  ></img>
                 </div>
                 <div className="nickname">{characterName}</div>
-                <div className="record">{matchTime}</div>
+                <div className="record">
+                  {matchRetired === '1' || matchRank === '0' ? '-' : matchTime}
+                </div>
               </div>
             </li>
           );
         })}
-        {}
+        {emptyPlayers.map((player, idx) => {
+          return (
+            <li key={'empty_' + idx} className="content">
+              <div>
+                <div className="rank" style={{ color: '#f62459' }}>
+                  리타이어
+                </div>
+                <div className="kart"></div>
+                <div className="nickname"></div>
+                <div className="record">-</div>
+              </div>
+            </li>
+          );
+        })}
       </ul>
     </DropdownContainer>
   );
@@ -103,6 +134,7 @@ const DropdownContainer = styled.section`
     line-height: 78px;
     display: flex;
     justify-content: center;
+    align-items: center;
 
     img {
       height: 35px;

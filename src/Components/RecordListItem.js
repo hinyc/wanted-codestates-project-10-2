@@ -4,7 +4,7 @@ import RecordListDropdown from './RecordListDropdown';
 import { kartListObj, trackListObj } from '../Util/util';
 
 /* 
-ListItem에 클래스 추가해서 1등, 리타이어 스타일 적용:
+PlayerRecord에 클래스 추가해서 1등, 리타이어 스타일 적용:
 - winner: 1등 (파란색)
 - retire: 리타이어 (빨간색)
 */
@@ -32,8 +32,8 @@ const RecordListItem = ({ matchInfo, player, players }) => {
   // matchInfo === undefined 일 경우,
   // 로딩 스피너 띄워주기!!!!!!!!!!!
   useEffect(() => {
-    console.log(matchInfo);
-    console.log(player);
+    // console.log(matchInfo);
+    // console.log(player);
   }, [matchInfo]);
 
   const handleDropdownDisplay = () => {
@@ -55,12 +55,26 @@ const RecordListItem = ({ matchInfo, player, players }) => {
 
   return (
     <ListItem>
-      <PlayerRecord>
+      <PlayerRecord
+        className={
+          player.matchRetired === '1'
+            ? 'retire'
+            : player.matchRank === '1'
+            ? 'winner'
+            : ''
+        }
+      >
         <p className="date">{dummyData.date}</p>
-        <p className="rank">
-          <span className="rank-data">#{player.matchRank}</span>
-          <span>/{matchInfo?.players.length || '8'}</span>
-        </p>
+        {player.matchRetired === '1' ? (
+          <p className="rank" style={{ fontSize: '30px' }}>
+            #리타이어
+          </p>
+        ) : (
+          <p className="rank">
+            <span className="rank-data">#{player.matchRank}</span>
+            <span>/{matchInfo?.players.length || '8'}</span>
+          </p>
+        )}
         <p className="track">
           {
             trackListObj[
@@ -70,7 +84,11 @@ const RecordListItem = ({ matchInfo, player, players }) => {
           }
         </p>
         <p className="kart">{kartListObj[player.kart]}</p>
-        <p className="time">{dummyData.time}</p>
+        {player.matchRetired === '1' ? (
+          <p className="time">-</p>
+        ) : (
+          <p className="time">{dummyData.time}</p>
+        )}
         <p className="open-dropdown" onClick={handleDropdownDisplay}>
           <span></span>
         </p>
