@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { setUserInfo } from '../../modules/userInfo';
 import { headers, PROXY } from '../../Util/util';
@@ -8,6 +9,7 @@ import { headers, PROXY } from '../../Util/util';
 export default function Search({ setNickname, setMatchInfo }) {
   const nickname = useRef();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const makeDate = (lastYear) => {
     const numTwoMaker = (num) => (num < 10 ? `${'0' + num}` : num);
     let newDate = new Date();
@@ -69,6 +71,7 @@ export default function Search({ setNickname, setMatchInfo }) {
               JSON.stringify(data.matches),
             );
             dispatch(setUserInfo(data.nickName, data.matches));
+            navigate('/');
           })
           .catch((err) => console.error(err)); // 에러 처리
       })
