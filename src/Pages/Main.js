@@ -46,7 +46,8 @@ export default function Main({ nickname, matchInfo, setSelectPage }) {
 }
 
 const SummaryWrapper = styled.div`
-  /* min-width: 1000px; */
+  margin: 0 auto;
+  min-width: 1000px;
   /* display: flex; */
   align-self: flex-start; // 임시로 넣은 값
 `;
