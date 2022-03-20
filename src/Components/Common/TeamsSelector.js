@@ -12,7 +12,6 @@ export default function TeamsSelector() {
     setIsSelectSolo(false);
   };
 
-  console.log(isSelectSolo);
   return (
     <Container>
       <Selector

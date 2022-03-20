@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import RecordListDropdown from './RecordListDropdown';
+import { kartListObj, trackListObj } from '../Util/util';
 
 /* 
-ListItem에 클래스 추가해서 1등, 리타이어 스타일 적용:
+PlayerRecord에 클래스 추가해서 1등, 리타이어 스타일 적용:
 - winner: 1등 (파란색)
 - retire: 리타이어 (빨간색)
 */
 
-const RecordListItem = ({ handleDropdownDisplay, matchInfo, player }) => {
+const RecordListItem = ({ matchInfo, player, players }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const dummyData = {
     date: '1일 전', // 현재 시간 기준으로 계산한 값
     // rank: player[0].matchRank,
@@ -25,24 +28,87 @@ const RecordListItem = ({ handleDropdownDisplay, matchInfo, player }) => {
     ],
   };
 
+  // matchInfo fetch 하는 시간 걸려서 첫 렌더링시 matchInfo 값이 undefined로 전달되기 때문에
+  // matchInfo === undefined 일 경우,
+  // 로딩 스피너 띄워주기!!!!!!!!!!!
+  useEffect(() => {
+    // console.log(matchInfo);
+    // console.log(player);
+  }, [matchInfo]);
+
+  const handleDropdownDisplay = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  const getCurrentDatetime = () => {
+    const today = new Date();
+    const date =
+      today.getFullYear() +
+      '-' +
+      (today.getMonth() + 1) +
+      '-' +
+      today.getDate();
+    const time =
+      today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
+    return date + 'T' + time;
+  };
+
   return (
     <ListItem>
-      {/* <p className="date">{dummyData.date}</p>
-      <p className="rank">
-        <span className="rank-data">#{dummyData.rank}</span>
-        <span>/{dummyData.totalPlayers}</span>
-      </p>
-      <p className="track">{dummyData.track}</p>
-      <p className="kart">{dummyData.kart}</p>
-      <p className="time">{dummyData.time}</p>
-      <p className="open-dropdown" onClick={handleDropdownDisplay}>
-        <span></span>
-      </p> */}
+      <PlayerRecord
+        className={
+          player.matchRetired === '1'
+            ? 'retire'
+            : player.matchRank === '1'
+            ? 'winner'
+            : ''
+        }
+      >
+        <p className="date">{dummyData.date}</p>
+        {player.matchRetired === '1' ? (
+          <p className="rank" style={{ fontSize: '30px' }}>
+            #리타이어
+          </p>
+        ) : (
+          <p className="rank">
+            <span className="rank-data">#{player.matchRank}</span>
+            <span>/{matchInfo?.players.length || '8'}</span>
+          </p>
+        )}
+        <p className="track">
+          {
+            trackListObj[
+              matchInfo?.trackId ||
+                '3b3d58a41efb9b00da3e88874a90b2e97ce0bc43381e7adf73e0358c83b2e1dd'
+            ]
+          }
+        </p>
+        <p className="kart">{kartListObj[player.kart]}</p>
+        {player.matchRetired === '1' ? (
+          <p className="time">-</p>
+        ) : (
+          <p className="time">{dummyData.time}</p>
+        )}
+        <p className="open-dropdown" onClick={handleDropdownDisplay}>
+          <span></span>
+        </p>
+      </PlayerRecord>
+      {isOpen ? (
+        <AllPlayersRecord>
+          <RecordListDropdown players={players} />
+        </AllPlayersRecord>
+      ) : (
+        ''
+      )}
     </ListItem>
   );
 };
 
 const ListItem = styled.li`
+  width: auto;
+`;
+
+const PlayerRecord = styled.div`
   position: relative;
   width: 100%;
   height: 88px;
@@ -157,5 +223,7 @@ const ListItem = styled.li`
   `
       : ``}
 `;
+
+const AllPlayersRecord = styled.div``;
 
 export default RecordListItem;

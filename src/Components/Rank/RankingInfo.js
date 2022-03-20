@@ -25,7 +25,6 @@ const RankingInfo = ({ setOnclick, handleMouseEnter }) => {
 
 const PageDescription = styled.div`
   width: 100%;
-  background-color: #005fcc;
   display: flex;
   justify-content: center;
   background-color: #005fcc;

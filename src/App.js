@@ -11,7 +11,7 @@ import Footer from './Components/Footer';
 import { dummyMatchesInfo } from './Util/util';
 
 function App() {
-  const [seletPage, setSeletPage] = useState('main');
+  const [selectPage, setSelectPage] = useState('main');
   const [nickname, setNickname] = useState(
     window.localStorage.getItem('nickname')
       ? window.localStorage.getItem('nickname')
@@ -40,17 +40,18 @@ function App() {
               <Main
                 nickname={nickname}
                 matchInfo={matchInfo}
-                setSeletPage={setSeletPage}
+                setSelectPage={setSelectPage}
               />
             }
           />
           <Route
             path="/ranking"
-            element={<Ranking setSeletPage={setSeletPage} />}
+            element={<Ranking setSelectPage={setSelectPage} />}
           />
         </Routes>
       </Wrapper>
-      <Footer seletPage={seletPage} />
+
+
     </Router>
   );
 }
@@ -58,7 +59,9 @@ function App() {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  /* width: 100%;
+  min-height: 100%; */
   width: 100%;
   height: 100%;
 `;

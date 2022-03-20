@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import TrackRankChart from '../Components/Dashboard/TrackRankChart';
 import { SummaryTR } from './SummaryTR';
 import { trackListObj, matchTimeTimeExtractor } from '../Util/util';
+import { useSelector } from 'react-redux';
 
-export const TrackSummary = ({ matchInfo }) => {
+export const TrackSummary = () => {
+  const matchInfo = useSelector((state) => state.userInfo.matches);
+
   const makeTrackTotalList = (matches) => {
     const trackTotalList = {};
-
     matches.forEach((el) => {
       let exist = false;
       if (Object.keys(trackTotalList).length > 0) {
@@ -44,8 +46,8 @@ export const TrackSummary = ({ matchInfo }) => {
     );
   };
 
-  const a = makeTrackTotalList(matchInfo[0].matches);
-  let trackRecords = a.map((record) => {
+  const divTrackList = makeTrackTotalList(matchInfo[0].matches);
+  let trackRecords = divTrackList.map((record) => {
     return record[1].trackRecord;
   });
   trackRecords.forEach((record, i) => {
@@ -57,10 +59,8 @@ export const TrackSummary = ({ matchInfo }) => {
   const selectTrackHandler = (e) => {
     setSelectTrack(e.target.value);
   };
-  console.log(typeof trackRecords[0][0][1]);
-  // console.log(a.forEach((b) => console.log(b[1].trackRecord)));
-  console.log(a);
-  // console.log(a.forEach((item, i) => console.log(trackRecords[i])));
+
+  console.log(divTrackList);
   return (
     <RecordBox>
       <TrackOrKartRecord>
@@ -72,7 +72,7 @@ export const TrackSummary = ({ matchInfo }) => {
         &nbsp;%
       </AvarageHigh>
       <MapName>
-        {trackListObj[a[selectTrack][0]]}
+        {trackListObj[divTrackList[selectTrack][0]]}
         <span>&nbsp;&nbsp;기록분포</span>
       </MapName>
       <GraphBox>
@@ -93,7 +93,7 @@ export const TrackSummary = ({ matchInfo }) => {
             </tr>
           </thead>
           <tbody>
-            {a.map((el, idx) => (
+            {divTrackList.map((el, idx) => (
               <tr key={idx} className="body">
                 <td className="select">
                   <input

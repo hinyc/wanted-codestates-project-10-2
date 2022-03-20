@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import RecordListItem from './RecordListItem';
-import RecordListDropdown from './RecordListDropdown';
 import { headers, PROXY } from '../Util/util';
 import axios from 'axios';
 
-const RecordListContainer = ({ nickname, matchInfo }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [playerName, setPlayerName] = useState(nickname);
-  const [recent10MatchList, setRecent10MatchList] = useState([]);
-  const [matches, setMatches] = useState([]);
+const MATCH_LENGTH = 20;
 
-  const handleDropdownDisplay = () => {
-    setIsOpen((prev) => !prev);
-  };
+const RecordListContainer = ({ nickname, matchInfo }) => {
+  const [playerName, setPlayerName] = useState(nickname);
+  const [recentMatchList, setRecentMatchList] = useState([]); // 최근 매치 데이터 일부를 담는 배열
+  const [matches, setMatches] = useState([]);
 
   useEffect(() => {
     setPlayerName(nickname);
@@ -38,12 +34,11 @@ const RecordListContainer = ({ nickname, matchInfo }) => {
   // 최근 일주일 간 매치 데이터만 필터링해서 저장
   const filterRecentMatches = () => {
     const currentDatetime = getCurrentDatetime();
-    console.log(currentDatetime);
   };
   useEffect(() => {
     async function fetchData() {
       const matchData = await fetchUserAccessId().then((data) => data);
-      setRecent10MatchList(matchData.map((match) => match.players)); // recent10MatchPlayers
+      setRecentMatchList(matchData.map((match) => match.players)); // recentMatchPlayers
       setMatches(matchData);
     }
     fetchData();
@@ -61,10 +56,10 @@ const RecordListContainer = ({ nickname, matchInfo }) => {
         // 유저 정보 조회 결과가 담긴 data
         // console.log(data);
         const { accessId } = data;
-        // 유저 고유 식별자(accessId)를 이용해서 최근에 플레이한 매치 10개 조회
+        // 유저 고유 식별자(accessId)를 이용해서 최근에 플레이한 매치 MATCH_LENGTH 개 조회
         return axios
           .get(
-            `${PROXY}/kart/v1.0/users/${accessId}/matches?&limit=10`,
+            `${PROXY}/kart/v1.0/users/${accessId}/matches?&limit=${MATCH_LENGTH}`,
             headers,
           )
           .then((res) => res.data)
@@ -83,9 +78,7 @@ const RecordListContainer = ({ nickname, matchInfo }) => {
               )
               .then((allRes) => allRes.map((res) => res.data))
               .then((data) => {
-                // data 변수: 매치 10개에 대한 상세 정보가 담긴 리스트
-                console.log(data);
-
+                // data 변수: 매치 MATCH_LENGTH개에 대한 상세 정보가 담긴 리스트
                 return data;
               });
           });
@@ -96,16 +89,10 @@ const RecordListContainer = ({ nickname, matchInfo }) => {
     return playerList;
   };
 
-  // 플레이어 완주 순위대로 정렬
-  const sortByRank = (a, b) => {
-    return a.matchRank - b.matchRank;
-  };
-
   return (
-    <section style={{ height: 'auto' }}>
-      <ListWrapper>
-        {recent10MatchList.map((players, idx) => {
-          const orderedPlayers = players.sort(sortByRank);
+    <ListWrapper>
+      <section style={{ height: 'auto' }}>
+        {recentMatchList.map((players, idx) => {
           const searchedPlayer = players.filter(
             (player) => player.characterName === playerName,
           );
@@ -113,22 +100,21 @@ const RecordListContainer = ({ nickname, matchInfo }) => {
           return (
             <div key={idx}>
               <RecordListItem
-                handleDropdownDisplay={handleDropdownDisplay}
                 matchInfo={matches[idx]}
-                player={searchedPlayer}
+                player={searchedPlayer[0]}
+                players={players}
               />
-              {true && <RecordListDropdown players={orderedPlayers} />}
             </div>
           );
         })}
-      </ListWrapper>
-    </section>
+      </section>
+    </ListWrapper>
   );
 };
 
 const ListWrapper = styled.ul`
   width: 660px;
-  height: auto;
+  // height: 3000px;
 `;
 
 export default RecordListContainer;
