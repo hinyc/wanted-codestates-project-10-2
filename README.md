@@ -49,18 +49,16 @@
 
 <br />
 
-### 팀 구성 👨‍👨‍👧‍👧
 
-| 이름                                   | 직책 | 역할                                           |
-| ------------------------------------ | ---- | ------------------------------------------------ |
-|🏄🏻‍♂️ [홍인열](https://github.com/hinyc)      | 팀장 | 태스크 쪼개기, 닉네임검색 API 받아오기, 카트별 전적표시  |
-|[김주영](https://github.com/juo1221)    | 팀원 | 랭킹페이지 애니메이션, 랭킹페이지 차트구현, 랭킹페이지 무한스크롤 구현|
-|[복지호](https://github.com/Jiho31)     | 팀원 |                                                   |
-|[우혁주](https://github.com/Space-Belt) | 팀원 |                                                   |
-|[전용태](https://github.com/yong313)    | 팀원 |                                                   |
-|[장혜민](https://github.com/hyemin-jang) | 팀원 |                                                   |
-|[박창진](https://github.com/SpearJin)    | 팀원 |                                                   |
+### 👨‍👨‍👧‍👧 &nbsp; 팀 구성
 
+|     이름     | 직책 |                                                                  GitHub                                                                   |
+| :----------: | :----: | :-------------------------------------------------------------------------------------------------------------------------------------: |
+| 🏄🏻‍♂️ &nbsp; FE_홍인열 | 🎖 팀장  |  [![github](https://img.shields.io/badge/홍인열-181717?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/hinyc)    |
+| 🐸 &nbsp; FE_김주영 | • 팀원  | [![github](https://img.shields.io/badge/김주영-181717?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/juo1221) |
+| 🐮 &nbsp; FE_복지호 | • 팀원  |   [![github](https://img.shields.io/badge/복지호-181717?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/Jiho31)    |
+| 🍔 &nbsp; FE_우혁주 | • 팀원  | [![github](https://img.shields.io/badge/우혁주-181717?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/Space-Belt) |
+| 🍕 &nbsp; FE_전용태 | • 팀원  |    [![github](https://img.shields.io/badge/전용태-181717?style=flat-square&logo=GitHub&logoColor=white)](https://github.com/yong313)     |
 
 <br />
 
@@ -124,14 +122,7 @@
     <li>리타이어 노출 토글 컴포넌트 구현</li>
    </ul>
 </details>
-<details>
-  <summary>장혜민</summary>
-  -그래프
-</details>
-<details>
-  <summary>박창진</summary>
-  -그래프
-</details>
+
 
 
 
