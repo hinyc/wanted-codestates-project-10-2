@@ -108,7 +108,8 @@
 </details>
 <details>
   <summary>우혁주</summary>
-  -그래프
+  -트랙,카트 UI
+  -트랙 (미완)
 </details>
 <details>
   <summary>전용태</summary>
