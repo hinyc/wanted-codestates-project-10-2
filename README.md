@@ -12,8 +12,9 @@
 
 ### 홈화면
 <div align="center">
- <img width="500px" src="https://user-images.githubusercontent.com/87487161/159153535-09c81170-cfe1-45c9-bbce-779ce71b5d7e.gif"/>
+ <img width="500px" src="https://user-images.githubusercontent.com/87487161/160234953-704654c3-1643-4072-ada9-4b29e08ad098.gif"/>
 </div>
+
 
 
 
