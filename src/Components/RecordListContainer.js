@@ -89,11 +89,10 @@ const RecordListContainer = ({ nickname, matchInfo }) => {
     return playerList;
   };
 
-  console.log(recentMatchList);
   return (
     <ListWrapper>
       <section style={{ height: 'auto' }}>
-        {/* {recentMatchList.map((players, idx) => {
+        {recentMatchList.map((players, idx) => {
           const searchedPlayer = players.filter(
             (player) => player.characterName === playerName,
           );
@@ -107,7 +106,7 @@ const RecordListContainer = ({ nickname, matchInfo }) => {
               />
             </div>
           );
-        })} */}
+        })}
       </section>
     </ListWrapper>
   );
@@ -116,6 +115,8 @@ const RecordListContainer = ({ nickname, matchInfo }) => {
 const ListWrapper = styled.ul`
   width: 660px;
   // height: 3000px;
+  margin-top: 40px;
+  margin-left: 10px;
 `;
 
 export default RecordListContainer;
