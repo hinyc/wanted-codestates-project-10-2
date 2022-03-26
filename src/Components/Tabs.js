@@ -1,21 +1,16 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
 import Toggle from './Common/Toggle';
 
-import RecordListContainer from './RecordListContainer';
-
-const Tabs = ({ nickname, matchInfo }) => {
+const Tabs = ({ nickname, matchInfo, currentTab, setCurrentTab }) => {
   const menuArr = [
     {
       name: '통합',
-      content: <RecordListContainer nickname={nickname} userInfo={matchInfo} />,
+      content: '',
     },
     { name: '매우빠름', content: '매우빠름' },
     { name: '무한부스터', content: '무한부스터' },
   ];
-
-  const [currentTab, setCurrentTab] = useState(0);
 
   const selectMenuHandler = (index) => {
     setCurrentTab(index);
@@ -25,22 +20,27 @@ const Tabs = ({ nickname, matchInfo }) => {
       <TabBox>
         <Toggle />
         <TabMenu>
-          {menuArr.map((el, index) => {
+          {/* {menuArr.map((el, index) => {
             return (
               <Menu
                 key={index}
                 className={`${
                   index === currentTab ? 'submenu focused' : 'submenu'
                 }`}
-                onClick={() => selectMenuHandler(index)}
+                onClick={selectMenuHandler(index)}
               >
                 {el.name}
               </Menu>
             );
-          })}
+          })} */}
+          <Menu className="focused" onClick={() => setCurrentTab(0)}>
+            통합
+          </Menu>
+          <Menu onClick={() => setCurrentTab(1)}>매우빠름</Menu>
+          <Menu onClick={() => setCurrentTab(2)}>무한부스터</Menu>
         </TabMenu>
         <FullWidth />
-        <Desc>{menuArr[currentTab].content}</Desc>
+        {/* <Desc>{menuArr[currentTab].content}</Desc> */}
       </TabBox>
     </>
   );
@@ -91,6 +91,20 @@ const Menu = styled.div`
   text-align: center;
   margin-right: 10px;
   transition: 0.3s;
+
+  .focused {
+    color: #0077ff;
+    border-bottom: 4px solid #0077ff;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      width: 100%;
+      border-bottom: 4px solid #0077ff;
+    }
+  }
 
   :hover {
     color: #0077ff;

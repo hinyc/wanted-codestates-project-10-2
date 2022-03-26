@@ -17,7 +17,7 @@ const RecordListItem = ({ matchInfo, player, players }) => {
     totalPlayers: '8', // matchInfo.players.length
     track: '빌리지 운명의 다리', // trackId로 맵 이름 조회
     kart: '흰 소X', // player.kart로 카트 이름 조회
-    // time: player[0].matchTime, // 계산한 값 넣기
+    time: '-', // 계산한 값 넣기
     dropdownData: [
       {
         id: 1,
@@ -57,7 +57,7 @@ const RecordListItem = ({ matchInfo, player, players }) => {
     <ListItem>
       <PlayerRecord
         className={
-          player.matchRetired === '1'
+          player.matchRetired === '1' || player.matchRank === '0'
             ? 'retire'
             : player.matchRank === '1'
             ? 'winner'
@@ -65,7 +65,7 @@ const RecordListItem = ({ matchInfo, player, players }) => {
         }
       >
         <p className="date">{dummyData.date}</p>
-        {player.matchRetired === '1' ? (
+        {player.matchRetired === '1' || player.matchRank === '0' ? (
           <p className="rank" style={{ fontSize: '30px' }}>
             #리타이어
           </p>
@@ -147,7 +147,7 @@ const PlayerRecord = styled.div`
     font-size: 30px;
   }
   .track {
-    width: 150px;
+    width: 165px;
   }
   .kart {
     width: 150px;
