@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Summary from '../Components/Summary';
 
@@ -17,9 +17,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 export default function Main({ nickname, matchInfo, setSelectPage }) {
+  // integrated = 통합
+  // superSpeedy = 매우빠름
+  // infinityBooster = 무한부스터
+  const [currentTab, setCurrentTab] = useState(0);
+  const menuArr = [
+    {
+      name: '통합',
+      content: (
+        <RecordListContainer nickname={nickname} matchInfo={matchInfo} />
+      ),
+    },
+    { name: '매우빠름', content: '매우빠름' },
+    { name: '무한부스터', content: '무한부스터' },
+  ];
+
   useEffect(() => {
     setSelectPage('main');
   }, [setSelectPage]);
+
+  useEffect(() => {
+    console.log(currentTab);
+  }, [currentTab]);
 
   return (
     <Container>
@@ -36,10 +55,14 @@ export default function Main({ nickname, matchInfo, setSelectPage }) {
         <CheeringMSGBox />
       </Dashboard>
 
-      <Tabs nickname={nickname} matchInfo={matchInfo} />
+      <Tabs
+        nickname={nickname}
+        matchInfo={matchInfo}
+        setCurrentTab={setCurrentTab}
+      />
       <SummaryWrapper>
         <Summary nickname={nickname} matchInfo={matchInfo} />
-        {/* <RecordListContainer nickname={nickname} matchInfo={matchInfo} /> */}
+        {menuArr[currentTab].content}
       </SummaryWrapper>
     </Container>
   );
@@ -48,8 +71,8 @@ export default function Main({ nickname, matchInfo, setSelectPage }) {
 const SummaryWrapper = styled.div`
   margin: 0 auto;
   min-width: 1000px;
-  /* display: flex; */
-  align-self: flex-start; // 임시로 넣은 값
+  display: flex;
+  // align-self: flex-start;
 `;
 
 const OneYear = styled.div`
