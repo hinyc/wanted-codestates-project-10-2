@@ -1,38 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Toggle from './Common/Toggle';
 
-const Tabs = ({ nickname, matchInfo, currentTab, setCurrentTab }) => {
-  const menuArr = [
-    {
-      name: '통합',
-      content: '',
-    },
-    { name: '매우빠름', content: '매우빠름' },
-    { name: '무한부스터', content: '무한부스터' },
-  ];
-
-  const selectMenuHandler = (index) => {
-    setCurrentTab(index);
-  };
+const Tabs = ({ currentTab, setCurrentTab }) => {
   return (
     <>
       <TabBox>
         <Toggle />
         <TabMenu>
-          {/* {menuArr.map((el, index) => {
-            return (
-              <Menu
-                key={index}
-                className={`${
-                  index === currentTab ? 'submenu focused' : 'submenu'
-                }`}
-                onClick={selectMenuHandler(index)}
-              >
-                {el.name}
-              </Menu>
-            );
-          })} */}
           <Menu className="focused" onClick={() => setCurrentTab(0)}>
             통합
           </Menu>
