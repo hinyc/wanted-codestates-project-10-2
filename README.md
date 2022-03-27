@@ -103,7 +103,11 @@
 </details>
 <details>
   <summary>복지호</summary>
-  -그래프
+ 
+ - 메인 페이지 전적 리스트 구현
+ - 검색되는 닉네임에 따라 추가로 API 요청해서 플레이어의 최근 200경기 데이터를 가공해서 전적 리스트에 렌더링
+   - 보완할 부분: 플레이어의 경기 기록 시간 데이터 넣기
+ 
 </details>
 <details>
   <summary>우혁주</summary>
