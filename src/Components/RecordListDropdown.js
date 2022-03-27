@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import emtpyKartURI from '../Asset/empty_kart.png';
+import { matchTimeTimeExtractor } from '../Util/util';
 
 const initialData = {
   characterName: '',
@@ -69,7 +70,9 @@ const RecordListDropdown = ({ recent10MatchList, players }) => {
                 </div>
                 <div className="nickname">{characterName}</div>
                 <div className="record">
-                  {matchRetired === '1' || matchRank === '0' ? '-' : matchTime}
+                  {matchRetired === '1' || matchRank === '0'
+                    ? '-'
+                    : matchTimeTimeExtractor(matchTime)}
                 </div>
               </div>
             </li>

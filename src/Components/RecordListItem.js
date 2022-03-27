@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import RecordListDropdown from './RecordListDropdown';
 import { kartListObj, trackListObj } from '../Util/util';
+import { matchTimeTimeExtractor } from '../Util/util';
 
 /* 
 PlayerRecord에 클래스 추가해서 1등, 리타이어 스타일 적용:
@@ -87,7 +88,11 @@ const RecordListItem = ({ matchInfo, player, players }) => {
         {player.matchRetired === '1' ? (
           <p className="time">-</p>
         ) : (
-          <p className="time">{dummyData.time}</p>
+          <p className="time">
+            {player.matchTime !== ''
+              ? matchTimeTimeExtractor(player.matchTime)
+              : '-'}
+          </p>
         )}
         <p className="open-dropdown" onClick={handleDropdownDisplay}>
           <span></span>
