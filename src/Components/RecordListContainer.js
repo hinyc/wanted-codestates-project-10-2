@@ -4,7 +4,7 @@ import RecordListItem from './RecordListItem';
 import { headers, PROXY } from '../Util/util';
 import axios from 'axios';
 
-const MATCH_LENGTH = 20;
+const MATCH_LENGTH = 200;
 
 const RecordListContainer = ({ nickname, matchInfo }) => {
   // const [playerName, setPlayerName] = useState(nickname);
