@@ -60,7 +60,6 @@ export const TrackSummary = () => {
     setSelectTrack(e.target.value);
   };
 
-  console.log(divTrackList);
   return (
     <RecordBox>
       <TrackOrKartRecord>
