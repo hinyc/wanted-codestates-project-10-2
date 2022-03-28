@@ -36,10 +36,6 @@ export default function Main({ nickname, matchInfo, setSelectPage }) {
     setSelectPage('main');
   }, [setSelectPage]);
 
-  useEffect(() => {
-    console.log(currentTab);
-  }, [currentTab]);
-
   return (
     <Container>
       <OneYear>

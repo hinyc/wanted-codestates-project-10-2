@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import emtpyKartURI from '../Asset/empty_kart.png';
 import { matchTimeTimeExtractor } from '../Util/util';
@@ -11,8 +11,7 @@ const initialData = {
   matchTime: '-',
 };
 
-const RecordListDropdown = ({ recent10MatchList, players }) => {
-  // const [playerListData, setPlayerListData] = useState(recent10MatchList);
+const RecordListDropdown = ({ players, currentPlayer }) => {
   const [playersData, setPlayersData] = useState(
     players.sort((a, b) => a.matchRank - b.matchRank),
   );
@@ -25,7 +24,6 @@ const RecordListDropdown = ({ recent10MatchList, players }) => {
       fillEmptyPlayers.push(initialData);
     }
     setEmptyPlayers(fillEmptyPlayers);
-    // console.log(fillEmptyPlayers);
   }, [players]);
 
   const imageErrorHandler = (e) => {
@@ -47,19 +45,26 @@ const RecordListDropdown = ({ recent10MatchList, players }) => {
         {playersData.map((player, idx) => {
           const { characterName, matchRank, kart, matchRetired, matchTime } =
             player;
+          const isCurrentUser = currentPlayer.characterName === characterName;
+          const isFirst = matchRank === '1';
           const kartURI = kart
             ? `https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/kart/${kart}.png?v=1645788019`
             : emtpyKartURI;
 
           return (
-            <li key={player.accountNo + idx} className="content">
+            <li
+              key={player.accountNo + idx}
+              className={isCurrentUser ? 'isCurrentUser' : ''}
+            >
               <div>
                 {matchRetired === '1' ? (
                   <div className="rank" style={{ color: '#f62459' }}>
                     리타이어
                   </div>
                 ) : (
-                  <div className="rank">{matchRank}</div>
+                  <div className={isFirst ? 'rank isFirst' : 'rank'}>
+                    {matchRank}
+                  </div>
                 )}
                 <div className="kart">
                   <img
@@ -150,6 +155,25 @@ const DropdownContainer = styled.section`
   .record {
     height: 42px;
     line-height: 42px;
+  }
+
+  // 검색된 유저일 경우
+
+  li.isCurrentUser > div {
+    font-weight: 600;
+  }
+  li.isCurrentUser .rank {
+    background-color: #e6e8eb;
+  }
+  li.isCurrentUser .kart,
+  li.isCurrentUser .nickname,
+  li.isCurrentUser .record {
+    background-color: #f2f3f4;
+  }
+
+  // 유저가 1등인 경우
+  .isFirst {
+    color: #07f;
   }
 `;
 
