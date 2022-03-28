@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import RecordListDropdown from './RecordListDropdown';
 import { kartListObj, trackListObj } from '../Util/util';
+import { matchTimeTimeExtractor } from '../Util/util';
 
 /* 
 PlayerRecord에 클래스 추가해서 1등, 리타이어 스타일 적용:
@@ -32,7 +33,6 @@ const RecordListItem = ({ matchInfo, player, players }) => {
   // matchInfo === undefined 일 경우,
   // 로딩 스피너 띄워주기!!!!!!!!!!!
   useEffect(() => {
-    // console.log(matchInfo);
     // console.log(player);
   }, [matchInfo]);
 
@@ -40,17 +40,14 @@ const RecordListItem = ({ matchInfo, player, players }) => {
     setIsOpen((prev) => !prev);
   };
 
-  const getCurrentDatetime = () => {
-    const today = new Date();
-    const date =
-      today.getFullYear() +
-      '-' +
-      (today.getMonth() + 1) +
-      '-' +
-      today.getDate();
-    const time =
-      today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
-    return date + 'T' + time;
+  // a 날짜로부터 b 날짜까지 일 수 차이 계산해서 반환
+  const getDateDiffInDays = (a, b) => {
+    const date1 = new Date(a);
+    const date2 = new Date(b);
+
+    return Math.floor(
+      (date1.getTime() - date2.getTime()) / (1000 * 60 * 60 * 24),
+    );
   };
 
   return (
@@ -64,7 +61,14 @@ const RecordListItem = ({ matchInfo, player, players }) => {
             : ''
         }
       >
-        <p className="date">{dummyData.date}</p>
+        <p className="date">
+          {matchInfo
+            ? `${getDateDiffInDays(
+                new Date(),
+                new Date(matchInfo.startTime.slice(0, 10)),
+              )}일 전`
+            : '1일 전'}
+        </p>
         {player.matchRetired === '1' || player.matchRank === '0' ? (
           <p className="rank" style={{ fontSize: '30px' }}>
             #리타이어
@@ -87,7 +91,11 @@ const RecordListItem = ({ matchInfo, player, players }) => {
         {player.matchRetired === '1' ? (
           <p className="time">-</p>
         ) : (
-          <p className="time">{dummyData.time}</p>
+          <p className="time">
+            {player.matchTime !== ''
+              ? matchTimeTimeExtractor(player.matchTime)
+              : '-'}
+          </p>
         )}
         <p className="open-dropdown" onClick={handleDropdownDisplay}>
           <span></span>
@@ -95,7 +103,7 @@ const RecordListItem = ({ matchInfo, player, players }) => {
       </PlayerRecord>
       {isOpen ? (
         <AllPlayersRecord>
-          <RecordListDropdown players={players} />
+          <RecordListDropdown players={players} currentPlayer={player} />
         </AllPlayersRecord>
       ) : (
         ''
