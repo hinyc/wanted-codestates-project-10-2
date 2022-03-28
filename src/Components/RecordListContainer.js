@@ -4,39 +4,19 @@ import RecordListItem from './RecordListItem';
 import { headers, PROXY } from '../Util/util';
 import axios from 'axios';
 
-const MATCH_LENGTH = 20;
+const MATCH_LENGTH = 200;
 
 const RecordListContainer = ({ nickname, matchInfo }) => {
   // const [playerName, setPlayerName] = useState(nickname);
   const [recentMatchList, setRecentMatchList] = useState([]); // 최근 매치 데이터 일부를 담는 배열
   const [matches, setMatches] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // useEffect(() => {
-  //   setPlayerName(nickname);
-  // }, [nickname]);
-
-  const getCurrentDatetime = () => {
-    const today = new Date();
-    const date =
-      today.getFullYear() +
-      '-' +
-      (today.getMonth() + 1) +
-      '-' +
-      today.getDate();
-    const time =
-      today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds();
-    return date + 'T' + time;
-  };
-  useEffect(() => {
-    filterRecentMatches();
-  }, []);
-
-  // 최근 일주일 간 매치 데이터만 필터링해서 저장
-  const filterRecentMatches = () => {
-    const currentDatetime = getCurrentDatetime();
-  };
+  // 최근 200 경기에 대한 데이터만 조회해서 저장
   useEffect(() => {
     const fetchUserAccessId = async () => {
+      setIsLoading(true);
+
       // 라이더명으로 유저 정보 조회
       const playerList = await axios
         .get(
@@ -84,6 +64,7 @@ const RecordListContainer = ({ nickname, matchInfo }) => {
       const matchData = await fetchUserAccessId().then((data) => data);
       setRecentMatchList(matchData.map((match) => match.players)); // recentMatchPlayers
       setMatches(matchData);
+      setIsLoading(false);
     }
     fetchData();
   }, [nickname]);
@@ -91,22 +72,33 @@ const RecordListContainer = ({ nickname, matchInfo }) => {
   return (
     <ListWrapper>
       <section style={{ height: 'auto' }}>
-        {recentMatchList.map((players, idx) => {
-          const searchedPlayer = players.filter(
-            (player) => player.characterName === nickname,
-          );
-          if (searchedPlayer[0]) {
-            return (
-              <div key={idx}>
-                <RecordListItem
-                  matchInfo={matches[idx]}
-                  player={searchedPlayer[0]}
-                  players={players}
-                />
-              </div>
+        {isLoading ? (
+          <LoadingSpinner>
+            <div className="lds-ring">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </LoadingSpinner>
+        ) : (
+          recentMatchList.map((players, idx) => {
+            const searchedPlayer = players.filter(
+              (player) => player.characterName === nickname,
             );
-          }
-        })}
+            if (searchedPlayer[0]) {
+              return (
+                <div key={idx}>
+                  <RecordListItem
+                    matchInfo={matches[idx]}
+                    player={searchedPlayer[0]}
+                    players={players}
+                  />
+                </div>
+              );
+            }
+          })
+        )}
       </section>
     </ListWrapper>
   );
@@ -117,6 +109,48 @@ const ListWrapper = styled.ul`
   // height: 3000px;
   margin-top: 40px;
   margin-left: 10px;
+`;
+
+const LoadingSpinner = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border: 8px solid #cef;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #cef transparent transparent transparent;
+  }
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 `;
 
 export default RecordListContainer;
